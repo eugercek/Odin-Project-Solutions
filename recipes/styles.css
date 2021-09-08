@@ -1,0 +1,21 @@
+a {
+  color: #111111;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f012be;
+}
+
+/* selected link */
+a:active {
+  color: #85144b;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  color: #11111;
+}
