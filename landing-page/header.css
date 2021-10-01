@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    align-items: center;
+    background-color: #1F2937;
+    padding-top: 8px;
+}
+
+.logo{
+    font-size: 24px;
+    color: #F9FaF8;
+    font-weight: bold;
+}
+
+.header-link{
+    font-size: 18px;
+    color: #EfE7EB;
+}

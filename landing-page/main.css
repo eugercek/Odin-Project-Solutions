@@ -1,0 +1,47 @@
+ .main{
+    display: flex;
+    background-color: #1F2937;
+    gap: 72px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 48px;
+}
+
+.main-sign-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px;
+}
+
+.main-text{
+    font-size: 48px;
+    margin: 0px;
+    color: #F9FaF8;
+}
+
+.secondary-text{
+    font-size: 18px;
+    color: #E5E7EB;
+}
+
+.main button{
+    background-color: #3882F6;
+    color: white;
+    font-weight: bold;
+    padding: 8px 24px;
+    border: 0px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.image-placeholder{
+    width: 375px;
+    height: 175px;
+    flex-shrink: 0px;
+    background-color: #6C747C;
+    color: #F8F8F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
