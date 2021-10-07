@@ -14,11 +14,15 @@ const end = {
 
 const GAME_NUMBER = 5;
 
+let scores = [];
+
 function game() {
   for (let i = 0; i < GAME_NUMBER; i++) {
     const { result, resultString } = playRound(playerPlay(), computerPlay());
     consoleDisplay(resultString);
+    scores.push(result);
   }
+  consoleReport();
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -101,6 +105,14 @@ function playerPlay() {
   return prompt().toLowerCase();
 }
 
+function reportScores() {
+  const win = scores.filter((x) => x == end.win);
+  const lose = scores.filter((x) => x == end.lose);
+  const draw = scores.filter((x) => x == end.draw);
+
+  return { win: win, lost: lose, draw: draw };
+}
+
 function consoleDisplay(resultString) {
   if (resultString.startsWith("Draw!"))
     console.log(
@@ -117,6 +129,10 @@ function consoleDisplay(resultString) {
       "%c" + resultString,
       "padding: 5px; background-color: #7CAE7A; color: white;font-size: 2em;"
     );
+}
+
+function consoleReport(obj) {
+  console.table(reportScores());
 }
 
 game();
