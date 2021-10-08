@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+:root {
+  --main-a: #00eafd;
+  --main-b: #ff4ae3;
+  --text: #fcefee;
+  --background: black;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+
+  background-color: black;
+  color: var(--text);
+
+  font-family: "Courier New", Courier, monospace;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  font-size: 48px;
+
+  font-family: "Rubik Mono One", sans-serif;
+
+  letter-spacing: 2px;
+  text-shadow: -4px 0px 1px var(--main-b), 4px 0px 1px var(--main-a);
+
+
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+
+#forms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -40px;
+  margin-bottom: 30px;
+}
+
+#scores {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+#scores h2 {
+  font-size: 30px;
+}
+
+#scores p {
+  font-family: "Rubik Mono One", sans-serif;
+  font-family: monospace;
+  font-size: 32px;
+}
+
+footer {
+  margin-top: auto;
+  color: #ff4ae3;
+  font-size: 12px;
+}
+
+footer a {
+  color: greenyellow;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: rgb(135, 209, 23);
+}
+
+footer a:active {
+  color: white;
+}
+
+/* Because scissor's image is smaller */
+.scissors {
+  padding-left: 40px;
+}
