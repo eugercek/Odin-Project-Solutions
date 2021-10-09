@@ -6,24 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="program.js" defer></script>
   </head>
   <body>
-    <script src="program.js"></script>
     <h1 class="title">Choose your weapon!</h1>
     <div id="forms">
-      <img src="./images/rock.png" alt="Rock" class="form" />
-      <img src="./images/paper.png" alt="Paper" class="form" />
-      <img src="./images/scissors.png" alt="Scissors" class="form scissors" />
+      <img src="./images/rock.png" alt="Rock" class="form" id="rock"/>
+      <img src="./images/paper.png" alt="Paper" class="form" id="paper"/>
+      <img src="./images/scissors.png" alt="Scissors" class="form" id="scissors"/>
     </div>
     <div id="scores">
       <div class="player">
         <h2>You</h2>
-        <p>0</p>
+        <p id="player-score">0</p>
       </div>
       <div class="computer">
         <h2>Computer</h2>
-        <p>0</p>
+        <p id="computer-score">0</p>
       </div>
+    </div>
+    <div>
+      <p id="round-result"></p>
     </div>
     <footer>
       Images:

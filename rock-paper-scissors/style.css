@@ -85,3 +85,8 @@ footer a:active {
 .scissors {
   padding-left: 40px;
 }
+
+#round-result{
+  text-align: center;
+  font-size: 32px;
+}

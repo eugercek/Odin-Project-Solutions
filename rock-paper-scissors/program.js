@@ -12,20 +12,15 @@ const end = {
   LOSE: "lose",
 };
 
-const GAME_NUMBER = 5;
+const playerScore = document.querySelector("#player-score");
+const computerScore = document.querySelector("#computer-score");
+const roundResult = document.querySelector("#round-result");
 
-let scores = [];
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
 
-function game() {
-  for (let i = 0; i < GAME_NUMBER; i++) {
-    const { result, resultString } = playRound(playerPlay(), computerPlay());
-    consoleDisplay(resultString);
-    scores.push(result);
-  }
-  consoleReport();
-}
-
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
   const getResultString = (r) => {
     if (r == end.DRAW) return "Draw!";
 
@@ -34,10 +29,29 @@ function playRound(playerSelection, computerSelection) {
       : `You Win! ${playerSelection} beats ${computerSelection}`;
   };
 
-  const result = engine(playerSelection, computerSelection);
-  const resultString = getResultString(result);
+  const getResultColor = function (r) {
 
-  return { result, resultString };
+    if (r == end.DRAW) return "#9DB4C0";
+
+    return r == end.LOSE
+      ? "#F15156"
+      : "#7CAE7A";
+  };
+
+  const computerSelection = computerPlay();
+
+  const result = engine(playerSelection, computerSelection);
+
+  const resultString = getResultString(result);
+  const resultColor = getResultColor(result);
+
+  if (result == end.WIN)
+    playerScore.textContent = parseInt(playerScore.textContent) + 1;
+  else if (result == end.LOSE)
+    computerScore.textContent = parseInt(computerScore.textContent) + 1;
+
+  roundResult.textContent = resultString;
+  roundResult.style.color = resultColor;
 }
 
 function engine(first, second) {
@@ -72,7 +86,7 @@ function engine(first, second) {
   // Result is relative to the first!
   switch (modValue) {
     case 1:
-      return end.win;
+      return end.WIN;
 
     case formList.length - 1:
       return end.LOSE;
@@ -102,37 +116,18 @@ function computerPlay() {
 }
 
 function playerPlay() {
-  return prompt().toLowerCase();
+  // return prompt().toLowerCase();
+  return 10;
 }
 
-function reportScores() {
-  const win = scores.filter((x) => x == end.win);
-  const lose = scores.filter((x) => x == end.lose);
-  const draw = scores.filter((x) => x == end.draw);
+rock.addEventListener("click", () => {
+  playRound(form.ROCK);
+});
 
-  return { win: win, lost: lose, draw: draw };
-}
+paper.addEventListener("click", () => {
+  playRound(form.PAPER);
+});
 
-function consoleDisplay(resultString) {
-  if (resultString.startsWith("Draw!"))
-    console.log(
-      "%c" + resultString,
-      "padding: 5px; background-color: #9DB4C0 ; color: white;font-size: 2em;"
-    );
-  else if (resultString.startsWith("You Lose"))
-    console.log(
-      "%c" + resultString,
-      "padding: 5px; background-color: #F15156; color: white;font-size: 2em;"
-    );
-  else
-    console.log(
-      "%c" + resultString,
-      "padding: 5px; background-color: #7CAE7A; color: white;font-size: 2em;"
-    );
-}
-
-function consoleReport(obj) {
-  console.table(reportScores());
-}
-
-game();
+scissors.addEventListener("click", () => {
+  playRound(form.SCISSORS);
+});
