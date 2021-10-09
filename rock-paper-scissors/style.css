@@ -6,6 +6,9 @@
   --main-b: #ff4ae3;
   --text: #fcefee;
   --background: black;
+  --result-win: #31d62b;
+  --result-draw: #9DB4C0;
+  --result-lose: #e22228;
 }
 
 body {
@@ -33,23 +36,22 @@ body {
   letter-spacing: 2px;
   text-shadow: -4px 0px 1px var(--main-b), 4px 0px 1px var(--main-a);
 
-
-  margin-top: 20px;
-  margin-bottom: 32px;
+  margin-top: 5vh;
+  margin-bottom: 15vh;
 }
 
 #forms {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -40px;
-  margin-bottom: 30px;
+  margin-bottom: 10vh;
 }
 
 #scores {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  margin-bottom: 5vh;
 }
 
 #scores h2 {
@@ -82,11 +84,22 @@ footer a:active {
 }
 
 /* Because scissor's image is smaller */
-.scissors {
+#scissors {
   padding-left: 40px;
 }
 
 #round-result{
   text-align: center;
   font-size: 32px;
+}
+
+.win{
+  color: var(--result-win);
+}
+
+.draw{
+  color: var(--result-draw);
+}
+.lose{
+  color: var(--result-lose);
 }

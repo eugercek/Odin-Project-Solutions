@@ -29,21 +29,11 @@ function playRound(playerSelection) {
       : `You Win! ${playerSelection} beats ${computerSelection}`;
   };
 
-  const getResultColor = function (r) {
-
-    if (r == end.DRAW) return "#9DB4C0";
-
-    return r == end.LOSE
-      ? "#F15156"
-      : "#7CAE7A";
-  };
-
   const computerSelection = computerPlay();
 
   const result = engine(playerSelection, computerSelection);
 
   const resultString = getResultString(result);
-  const resultColor = getResultColor(result);
 
   if (result == end.WIN)
     playerScore.textContent = parseInt(playerScore.textContent) + 1;
@@ -51,7 +41,7 @@ function playRound(playerSelection) {
     computerScore.textContent = parseInt(computerScore.textContent) + 1;
 
   roundResult.textContent = resultString;
-  roundResult.style.color = resultColor;
+  roundResult.setAttribute('class', result);
 }
 
 function engine(first, second) {
