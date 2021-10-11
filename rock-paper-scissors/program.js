@@ -1,4 +1,4 @@
-import { FORM, FORM_LIST, END } from "./constants.js";
+import { FORM, FORM_LIST, END, FINAL_SCORE } from "./constants.js";
 
 const playerScoreElem = document.getElementById("player-score");
 const computerScoreElem = document.getElementById("computer-score");
@@ -20,20 +20,36 @@ function playRound(playerSelection) {
       : `You Lose! ${computerSelection} beats ${playerSelection}`;
   };
 
+  const isGameEnd = () =>
+    playerScore >= FINAL_SCORE || computerScore >= FINAL_SCORE;
+
+  if (isGameEnd()) {
+    const winner = playerScore > computerScore ? "Player" : "Computer";
+    alert(`${winner} has won!`);
+    restartGame();
+    return;
+  }
+
   const computerSelection = computerPlay();
 
   const result = engine(playerSelection, computerSelection);
 
   const resultString = getResultString(result);
 
-  if (result == END.WIN) playerScore++;
-  else if (result == END.LOSE) computerScore++;
+  if (result == END.WIN) {
+    playerScore++;
+    roundResultElem.classList.add(END.WIN);
+    roundResultElem.classList.remove(END.LOSE);
+  } else if (result == END.LOSE) {
+    computerScore++;
+    roundResultElem.classList.add(END.LOSE);
+    roundResultElem.classList.remove(END.WIN);
+  }
 
   playerScoreElem.textContent = playerScore;
   computerScoreElem.textContent = computerScore;
 
   roundResultElem.textContent = resultString;
-  roundResultElem.setAttribute("class", result);
 }
 
 function engine(first, second) {
@@ -97,14 +113,19 @@ function computerPlay() {
   return getFormType(index);
 }
 
-function game() {
-  function gameSetup() {
-    rockElem.addEventListener("click", () => playRound(FORM.ROCK));
-    paperElem.addEventListener("click", () => playRound(FORM.PAPER));
-    scissorsElem.addEventListener("click", () => playRound(FORM.SCISSORS));
-  }
-
-  gameSetup();
+function gameSetup() {
+  rockElem.addEventListener("click", () => playRound(FORM.ROCK));
+  paperElem.addEventListener("click", () => playRound(FORM.PAPER));
+  scissorsElem.addEventListener("click", () => playRound(FORM.SCISSORS));
 }
 
-game();
+function restartGame() {
+  playerScore = 0;
+  computerScore = 0;
+
+  playerScoreElem.textContent = "0";
+  computerScoreElem.textContent = "0";
+  roundResultElem.textContent = "";
+}
+
+gameSetup();

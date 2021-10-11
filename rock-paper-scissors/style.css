@@ -7,7 +7,7 @@
   --text: #fcefee;
   --background: black;
   --result-win: #31d62b;
-  --result-draw: #9DB4C0;
+  --result-draw: #9db4c0;
   --result-lose: #e22228;
 }
 
@@ -18,12 +18,12 @@ body {
   display: flex;
   flex-direction: column;
 
-  min-height: 100vh;
-
   background-color: black;
   color: var(--text);
 
   font-family: "Courier New", Courier, monospace;
+
+  height: 100vh;
 }
 
 .title {
@@ -37,7 +37,7 @@ body {
   text-shadow: -4px 0px 1px var(--main-b), 4px 0px 1px var(--main-a);
 
   margin-top: 5vh;
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
 }
 
 #forms {
@@ -45,6 +45,17 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10vh;
+}
+
+#forms img {
+  float: left;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+#forms img:hover {
+  transform: scale(1.01);
 }
 
 #scores {
@@ -83,27 +94,18 @@ footer a:active {
   color: white;
 }
 
-/* Because scissor's image is smaller */
-#scissors {
-  padding-left: 40px;
-}
-
-#round-result{
+#round-result {
   text-align: center;
   font-size: 32px;
 }
 
-.win{
+.win {
   color: var(--result-win);
 }
 
-.draw{
+.draw {
   color: var(--result-draw);
 }
-.lose{
+.lose {
   color: var(--result-lose);
-}
-
-img:hover {
-  transform:scale(1.01);
 }

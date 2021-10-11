@@ -12,4 +12,6 @@ const END = {
   LOSE: "lose",
 };
 
-export { FORM, FORM_LIST, END };
+const FINAL_SCORE = 5;
+
+export { FORM, FORM_LIST, END, FINAL_SCORE };
