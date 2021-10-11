@@ -1,32 +1,23 @@
-const form = {
-  ROCK: "rock",
-  PAPER: "paper",
-  SCISSORS: "scissors",
-};
+import { FORM, FORM_LIST, END } from "./constants.js";
 
-const formList = [form.ROCK, form.PAPER, form.SCISSORS];
+const playerScoreElem = document.getElementById("player-score");
+const computerScoreElem = document.getElementById("computer-score");
+const roundResultElem = document.getElementById("round-result");
 
-const end = {
-  WIN: "win",
-  DRAW: "draw",
-  LOSE: "lose",
-};
+const rockElem = document.getElementById("rock");
+const paperElem = document.getElementById("paper");
+const scissorsElem = document.getElementById("scissors");
 
-const playerScore = document.querySelector("#player-score");
-const computerScore = document.querySelector("#computer-score");
-const roundResult = document.querySelector("#round-result");
-
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
+let playerScore = 0;
+let computerScore = 0;
 
 function playRound(playerSelection) {
   const getResultString = (r) => {
-    if (r == end.DRAW) return "Draw!";
+    if (r == END.DRAW) return "Draw!";
 
-    return r == end.LOSE
-      ? `You Lose! ${computerSelection} beats ${playerSelection}`
-      : `You Win! ${playerSelection} beats ${computerSelection}`;
+    return r == END.win
+      ? `You Win! ${playerSelection} beats ${computerSelection}`
+      : `You Lose! ${computerSelection} beats ${playerSelection}`;
   };
 
   const computerSelection = computerPlay();
@@ -35,13 +26,14 @@ function playRound(playerSelection) {
 
   const resultString = getResultString(result);
 
-  if (result == end.WIN)
-    playerScore.textContent = parseInt(playerScore.textContent) + 1;
-  else if (result == end.LOSE)
-    computerScore.textContent = parseInt(computerScore.textContent) + 1;
+  if (result == END.WIN) playerScore++;
+  else if (result == END.LOSE) computerScore++;
 
-  roundResult.textContent = resultString;
-  roundResult.setAttribute('class', result);
+  playerScoreElem.textContent = playerScore;
+  computerScoreElem.textContent = computerScore;
+
+  roundResultElem.textContent = resultString;
+  roundResultElem.setAttribute("class", result);
 }
 
 function engine(first, second) {
@@ -66,23 +58,23 @@ function engine(first, second) {
    */
 
   const delta =
-    formList.findIndex((x) => x == first) -
-    formList.findIndex((x) => x == second);
+    FORM_LIST.findIndex((x) => x == first) -
+    FORM_LIST.findIndex((x) => x == second);
 
-  const modValue = (delta + formList.length) % formList.length;
+  const modValue = (delta + FORM_LIST.length) % FORM_LIST.length;
 
   // TODO Find arr length -1 is scalable for other games that has even forms such as rock paper scissors lizard spock
 
   // Result is relative to the first!
   switch (modValue) {
     case 1:
-      return end.WIN;
+      return END.WIN;
 
-    case formList.length - 1:
-      return end.LOSE;
+    case FORM_LIST.length - 1:
+      return END.LOSE;
 
     default:
-      return end.DRAW;
+      return END.DRAW;
   }
 }
 
@@ -92,32 +84,27 @@ function computerPlay() {
   const getFormType = (number) => {
     switch (number) {
       case 0:
-        return form.ROCK;
+        return FORM.ROCK;
       case 1:
-        return form.PAPER;
+        return FORM.PAPER;
       case 2:
-        return form.SCISSORS;
+        return FORM.SCISSORS;
     }
   };
 
-  const index = getRandomInteger(3);
+  const index = getRandomInteger(FORM_LIST.length);
 
   return getFormType(index);
 }
 
-function playerPlay() {
-  // return prompt().toLowerCase();
-  return 10;
+function game() {
+  function gameSetup() {
+    rockElem.addEventListener("click", () => playRound(FORM.ROCK));
+    paperElem.addEventListener("click", () => playRound(FORM.PAPER));
+    scissorsElem.addEventListener("click", () => playRound(FORM.SCISSORS));
+  }
+
+  gameSetup();
 }
 
-rock.addEventListener("click", () => {
-  playRound(form.ROCK);
-});
-
-paper.addEventListener("click", () => {
-  playRound(form.PAPER);
-});
-
-scissors.addEventListener("click", () => {
-  playRound(form.SCISSORS);
-});
+game();
