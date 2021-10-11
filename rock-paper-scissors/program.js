@@ -15,7 +15,7 @@ function playRound(playerSelection) {
   const getResultString = (r) => {
     if (r == END.DRAW) return "Draw!";
 
-    return r == END.win
+    return r == END.WIN
       ? `You Win! ${playerSelection} beats ${computerSelection}`
       : `You Lose! ${computerSelection} beats ${playerSelection}`;
   };
@@ -36,20 +36,15 @@ function playRound(playerSelection) {
 
   const resultString = getResultString(result);
 
-  if (result == END.WIN) {
-    playerScore++;
-    roundResultElem.classList.add(END.WIN);
-    roundResultElem.classList.remove(END.LOSE);
-  } else if (result == END.LOSE) {
-    computerScore++;
-    roundResultElem.classList.add(END.LOSE);
-    roundResultElem.classList.remove(END.WIN);
-  }
+  if (result == END.WIN) playerScore++;
+  else if (result == END.LOSE) computerScore++;
+
+  roundResultElem.textContent = resultString;
+  roundResultElem.setAttribute('class', result);
 
   playerScoreElem.textContent = playerScore;
   computerScoreElem.textContent = computerScore;
 
-  roundResultElem.textContent = resultString;
 }
 
 function engine(first, second) {
