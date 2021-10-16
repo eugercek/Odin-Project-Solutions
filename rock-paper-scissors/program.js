@@ -12,12 +12,12 @@ let playerScore = 0;
 let computerScore = 0;
 
 function playRound(playerSelection) {
-  const getResultString = (r) => {
+  const getResultString = (r,p,c) => {
     if (r == END.DRAW) return "Draw!";
 
     return r == END.WIN
-      ? `You Win! ${playerSelection} beats ${computerSelection}`
-      : `You Lose! ${computerSelection} beats ${playerSelection}`;
+      ? `You Win! ${p} beats ${c}`
+      : `You Lose! ${c} beats ${p}`;
   };
 
   const isGameEnd = () =>
@@ -34,7 +34,7 @@ function playRound(playerSelection) {
 
   const result = engine(playerSelection, computerSelection);
 
-  const resultString = getResultString(result);
+  const resultString = getResultString(result,playerSelection, computerSelection);
 
   if (result == END.WIN) playerScore++;
   else if (result == END.LOSE) computerScore++;
