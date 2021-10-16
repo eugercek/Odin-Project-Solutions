@@ -12,16 +12,22 @@
 body{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .toy{
-  background-color: var(--main-border-color);
-  padding: 0px 5vh;
-  border-radius: 50px;
   display: flex;
   flex-direction: column;
   gap: 2vh;
+
+  background-color: var(--main-border-color);
+
+  padding: 0px 5vh;
+  border-radius: 50px;
+
+  margin-top: -5vh;
 }
 
 .top{
@@ -68,7 +74,6 @@ body{
 .pixel{
   display: inline-block;
   background-color: var(--pixel-empty);
-  border: 1px solid gray;
   flex: 1 0 auto;
   height: auto;
 }
