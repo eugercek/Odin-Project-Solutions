@@ -3,20 +3,25 @@
 :root {
   --main-border-color: #d82435;
   --button-gold-color: #FDFC01;
+
+  /* Pixel Values */
+  --pixel-empty: white;
+  --pixel-filled: black;
 }
 
 body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3000px;
 }
 
 .toy{
-  min-width: 80vw;
   background-color: var(--main-border-color);
-  padding: 0px 80px;
-  border-radius: 20px;
+  padding: 0px 5vh;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 
 .top{
@@ -32,31 +37,68 @@ body{
 
   color: var(--button-gold-color);
   background-color: var(--main-border-color);
-  border: 0px;
+
+  border: 1px solid var(--button-gold-color);
   border-radius: 10px;
 }
+
 #main-button:hover{
   background-color: #aa1c2a;
 }
 
+#board-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.board{
+#board{
   background-color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 50vh;
+}
+
+.board-row{
+  display: flex;
+}
+
+.pixel{
+  display: inline-block;
+  background-color: var(--pixel-empty);
+  border: 1px solid gray;
+  flex: 1 0 auto;
+  height: auto;
+}
+/* https://carlanderson.xyz/how-to-keep-your-flexbox-square/ */
+.pixel:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.pixel-filled{
+  background-color: var(--pixel-filled);
 }
 
 .knobs{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  column-gap: 40vw;
-  margin-bottom: 5vh;
-  margin-top: 5vh;
+  /* gap: 10vw; */
+  
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: -1.5vw;
+  margin-right: -1.5vw;
 }
 
 .left,.right{
-  width: 100px;
-  height: 100px;
+  width: 5vw;
+  height: 5vw;
   background-color: white;
-  border-radius: 50px;
+  border-radius: 50%;
 
 }
