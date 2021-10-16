@@ -24,7 +24,7 @@ body {
 
   font-family: "Ubuntu", sans-serif;
 
-  margin-left: -20vw;
+  margin-left: -10vw;
 }
 
 .toy {
@@ -35,7 +35,7 @@ body {
   background-color: var(--main-border-color);
 
   padding: 0px 5vh;
-  border-radius: 50px;
+  border-radius: 5%;
 
   margin-left: -20vw;
   margin-top: -5vh;
@@ -50,7 +50,7 @@ body {
 
 #main-button {
   font-family: "MinuetW01-Regular";
-  font-size: 32px;
+  font-size: 2em;
 
   color: var(--button-gold-color);
   background-color: var(--main-border-color);

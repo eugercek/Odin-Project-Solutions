@@ -1,6 +1,10 @@
 const board = document.getElementById("board");
-const button = document.getElementById("main-button");
+const mainButton = document.getElementById("main-button");
+
 const slider = document.getElementById("slider");
+const pixelSize = document.getElementById("pixel-size");
+
+const clearButton = document.getElementById("clear-button");
 
 let boardSize = 16; 
 
@@ -46,15 +50,18 @@ function fillPixel(pixel) {
   pixel.style.border = "1px solid black";
 }
 
-button.addEventListener("click", () => {
+mainButton.addEventListener("click", () => {
   boardSize = prompt("Number of pixel in a row:", "16");
   renderBoard();
 });
 
 slider.addEventListener("input", (e) => {
   boardSize = e.target.value;
+  pixelSize.innerText = boardSize + "x" + boardSize;
   renderBoard();
 });
+
+clearButton.addEventListener('click', renderBoard)
 
 window.onload = () => {
   renderBoard();
