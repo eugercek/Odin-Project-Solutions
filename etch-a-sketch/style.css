@@ -1,23 +1,33 @@
 @import url(//db.onlinewebfonts.com/c/b65a50ad3e85fe80d05947b061f86445?family=MinuetW01-Regular);
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 :root {
   --main-border-color: #d82435;
-  --button-gold-color: #FDFC01;
+  --button-gold-color: #fdfc01;
 
   /* Pixel Values */
   --pixel-empty: white;
   --pixel-filled: black;
 }
 
-body{
+body {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100vh;
 }
 
-.toy{
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+
+  font-family: "Ubuntu", sans-serif;
+
+  margin-left: -20vw;
+}
+
+.toy {
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -27,10 +37,11 @@ body{
   padding: 0px 5vh;
   border-radius: 50px;
 
+  margin-left: -20vw;
   margin-top: -5vh;
 }
 
-.top{
+.top {
   display: flex;
   min-height: 5vh;
   justify-content: center;
@@ -48,17 +59,17 @@ body{
   border-radius: 10px;
 }
 
-#main-button:hover{
+#main-button:hover {
   background-color: #aa1c2a;
 }
 
-#board-container{
+#board-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#board{
+#board {
   background-color: white;
 
   display: flex;
@@ -67,43 +78,44 @@ body{
   width: 50vh;
 }
 
-.board-row{
+.board-row {
   display: flex;
 }
 
-.pixel{
+.pixel {
   display: inline-block;
   background-color: var(--pixel-empty);
   flex: 1 0 auto;
   height: auto;
+  border: 1px gray solid;
 }
 /* https://carlanderson.xyz/how-to-keep-your-flexbox-square/ */
 .pixel:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
+  content: "";
+  display: block;
+  padding-top: 100%;
 }
 
-.pixel-filled{
+.pixel-filled {
   background-color: var(--pixel-filled);
 }
 
-.knobs{
+.knobs {
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* gap: 10vw; */
-  
+
   margin-top: 2vh;
   margin-bottom: 2vh;
   margin-left: -1.5vw;
   margin-right: -1.5vw;
 }
 
-.left,.right{
+.left,
+.right {
   width: 5vw;
   height: 5vw;
   background-color: white;
   border-radius: 50%;
-
 }

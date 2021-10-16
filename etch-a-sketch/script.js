@@ -1,29 +1,26 @@
 const board = document.getElementById("board");
 const button = document.getElementById("main-button");
+const slider = document.getElementById("slider");
 
-let boardValues = {
-  row: 16,
-  col: 16,
-};
-
-function createPixel() {
-  const pix = document.createElement("div");
-  pix.className = "pixel";
-  return pix;
-}
-
-function createRow() {
-  const row = document.createElement("div");
-  row.className = "board-row";
-
-  for (let i = 0; i < boardValues.row; i++) {
-    const pix = createPixel();
-    row.appendChild(pix);
-  }
-  return row;
-}
+let boardSize = 16; 
 
 function renderBoard() {
+  const createRow = () => {
+    const createPixel = () => {
+      const pix = document.createElement("div");
+      pix.className = "pixel";
+      return pix;
+    };
+
+    const row = document.createElement("div");
+    row.className = "board-row";
+
+    for (let i = 0; i < boardSize; i++) {
+      const pix = createPixel();
+      row.appendChild(pix);
+    }
+    return row;
+  };
   const removeChildren = (parent) => {
     while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
@@ -32,7 +29,7 @@ function renderBoard() {
 
   removeChildren(board);
 
-  for (let i = 0; i < boardValues.col; i++) {
+  for (let i = 0; i < boardSize; i++) {
     const row = createRow();
     board.appendChild(row);
   }
@@ -46,12 +43,16 @@ function renderBoard() {
 
 function fillPixel(pixel) {
   pixel.classList.add("pixel-filled");
+  pixel.style.border = "1px solid black";
 }
 
 button.addEventListener("click", () => {
-  const row = prompt("Number of pixel in a row:", "16");
-  boardValues.row = row;
-  boardValues.col = row;
+  boardSize = prompt("Number of pixel in a row:", "16");
+  renderBoard();
+});
+
+slider.addEventListener("input", (e) => {
+  boardSize = e.target.value;
   renderBoard();
 });
 
