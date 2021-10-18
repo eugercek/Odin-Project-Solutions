@@ -6,39 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Calculator</title>
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <div class="calculator">
-      <div class="screen">0</div>
+      <div id="screen">0</div>
       <div class="row top-row">
-        <div id="clear" class="item">C</div>
-        <div id="toggle-sign" class="item">+/-</div>
+        <div class="item action" data-action="clear">C</div>
+        <div id="toggle-sign" class="item ">+/-</div>
         <div id="mod" class="item">%</div>
         <div id="divide" class="op item">/</div>
       </div>
       <div class="row">
-        <div class="number item">7</div>
-        <div class="number item">8</div>
-        <div class="number item">9</div>
+        <div class="number item" data-number="7">7</div>
+        <div class="number item" data-number="8">8</div>
+        <div class="number item" data-number="9">9</div>
         <div id="multiply" class="op item">*</div>
       </div>
       <div class="row">
-        <div class="number item">4</div>
-        <div class="number item">5</div>
-        <div class="number item">6</div>
+        <div class="number item" data-number="4">4</div>
+        <div class="number item" data-number="5">5</div>
+        <div class="number item" data-number="6">6</div>
         <div id="minus" class="op item">-</div>
       </div>
       <div class="row">
-        <div class="number item">1</div>
-        <div class="number item">2</div>
-        <div class="number item">3</div>
+        <div class="number item" data-number="1">1</div>
+        <div class="number item" data-number="2">2</div>
+        <div class="number item" data-number="3">3</div>
         <div id="sum" class="op item">+</div>
       </div>
       <div class="row">
         <div class="item"></div>
-        <div class="item number">0</div>
+        <div class="item number" data-number="0">0</div>
         <div id="comma" class="item">,</div>
-        <div id="calculate" class="op item">=</div>
+        <div id="calculate" class="op item" data-action="calculate">=</div>
       </div>
     </div>
   </body>
