@@ -79,17 +79,15 @@ function result() {
   numStack = [];
 }
 
-// TODO Should create Operation static class?
+const Operation = {
+  sum: (a, b) => a + b,
+  minus: (a, b) => a - b,
+  multiply: (a, b) => a * b,
+  divide: (a, b) => a / b,
+  mod: (a,b) => a % b
+}
 function calculate(op, left, right) {
-  const sum = (a, b) => a + b;
-  const minus = (a, b) => a - b;
-  const multiply = (a, b) => a * b;
-  const divide = (a, b) => a / b;
-
-  if (op == "sum") return sum(right, left);
-  else if (op == "minus") return minus(right, left);
-  else if (op == "multiply") return multiply(right, left);
-  else if (op == "divide") return divide(right, left);
+  return Operation[op](right, left);
 }
 
 function evaluate() {
