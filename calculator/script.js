@@ -13,9 +13,20 @@ class CalculatorScreen {
     return this.element.innerText == "0" || this.element.innerText == "";
   }
 
-  appendNumber(num) {
-    if (this.isEmpty()) this.element.innerText = num;
-    else this.element.innerText = this.element.innerText.concat(num);
+  appendNumber(number) {
+    if (this.isEmpty()) this.element.innerText = number;
+    else this.element.innerText = this.element.innerText.concat(number);
+  }
+
+  setNumber(number) {
+    this.element.innerText = number;
+  }
+
+  getNumber(number) {
+    return this.element.innerText;
+  }
+  clear() {
+    this.element.innerText = "";
   }
 }
 
@@ -25,20 +36,33 @@ let opStack = [];
 let numStack = [];
 
 function doAction(action) {
-  if (action == "clear") screen.innerText = "0";
-  else if (action == "result") calculate();
+  if (action == "clear") screen.clear();
+  else if (action == "result") result();
 }
 
 function doOperation(op) {
-  calculatePrev();
-  const num = screen.innerText;
+  const num = screen.getNumber();
   numStack.push(num);
   opStack.push(op);
-  screen.innerText = "";
-  const res = evaluate();
+  screen.clear();
 }
 
+function result() {
+  const lastNumber = screen.getNumber();
+  if (lastNumber != "") numStack.push(lastNumber);
+
+  const res = evaluate();
+  screen.setNumber(res);
+
+  // Clean stacks
+  opStack = [];
+  numStack = [];
+}
+
+// TODO Should create Operation static class?
 function calculate(op, left, right) {
+  left = parseInt(left);
+  right = parseInt(right);
   const sum = (a, b) => a + b;
   const minus = (a, b) => a - b;
   const multiply = (a, b) => a * b;
@@ -51,9 +75,9 @@ function calculate(op, left, right) {
 }
 
 function evaluate() {
-  if (numStack.length == 1) return numStack.pop()
+  if (numStack.length == 1) return numStack.pop();
 
-  return calculate(opStack.pop(), numStack.pop(), evaluate())
+  return calculate(opStack.pop(), numStack.pop(), evaluate());
 }
 
 for (const number of [...numbers])
@@ -62,7 +86,11 @@ for (const number of [...numbers])
   );
 
 for (const action of [...actions])
-  action.addEventListener("click", () => doAction(action.getAttribute("data-action")));
+  action.addEventListener("click", () =>
+    doAction(action.getAttribute("data-action"))
+  );
 
 for (const operation of [...operations])
-  operation.addEventListener("click", () => doOperation(operation.getAttribute("data-op")));
+  operation.addEventListener("click", () =>
+    doOperation(operation.getAttribute("data-op"))
+  );

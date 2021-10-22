@@ -33,6 +33,7 @@ body {
 
 #screen{
     text-align: right;
+    min-height: 1rem;
 }
 
 .row {
