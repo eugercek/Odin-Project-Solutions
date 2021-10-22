@@ -2,15 +2,27 @@ const numbers = document.getElementsByClassName("number");
 const actions = document.getElementsByClassName("action");
 const operations = document.getElementsByClassName("op");
 
-const screen = document.getElementById("screen");
+const screenElement = document.getElementById("screen");
+
+class CalculatorScreen {
+  constructor(element) {
+    this.element = element;
+  }
+
+  isEmpty(){
+    return this.element.innerText == "0" || this.element.innerText == "";
+  }
+
+  appendNumber(num) {
+    if (this.isEmpty()) this.element.innerText = num;
+    else this.element.innerText = this.element.innerText.concat(number);
+  }
+}
+
+const screen = new CalculatorScreen(screenElement);
 
 let opStack = [];
 let numStack = [];
-
-function insertNumber(number) {
-  if (screen.innerText == "0") screen.innerText = number;
-  else screen.innerText = screen.innerText.concat(number);
-}
 
 function doAction(action) {
   if (action == "clear") screen.innerText = "0";
@@ -22,7 +34,7 @@ function doOperation(op) {
   const num = screen.innerText;
   numStack.push(num);
   opStack.push(op);
-  screen.innerText = '';
+  screen.innerText = "";
 }
 
 function calculatePrev() {
@@ -52,7 +64,7 @@ function calculate(op, left, right) {
 
 for (const n of [...numbers])
   n.addEventListener("click", () =>
-    insertNumber(n.getAttribute("data-number"))
+    screen.appendNumber(n.getAttribute("data-number"))
   );
 
 for (const a of [...actions])
@@ -60,5 +72,3 @@ for (const a of [...actions])
 
 for (const o of [...operations])
   o.addEventListener("click", () => doOperation(a.getAttribute("data-op")));
-
-function calc() {}
