@@ -32,10 +32,15 @@ class CalculatorScreen {
     numberIsFloat = false;
   }
 
-  insertFractionalSeparator(){
-    this.element.innerText += '.';
+  insertFractionalSeparator() {
+    this.element.innerText += ".";
   }
 
+  toggleSign() {
+    const currentSign = this.element.innerText[0];
+    if (currentSign == "-") this.element.innerText = this.element.innerText.substring(1);
+    else this.element.innerText = '-' + this.element.innerText;
+  }
 }
 
 const screen = new CalculatorScreen(screenElement);
@@ -48,8 +53,9 @@ let numberIsFloat = false;
 
 function doAction(action) {
   if (action == "clear") screen.clear();
-  else if(action == "fraction") addFractionalSeparator();
+  else if (action == "fraction") addFractionalSeparator();
   else if (action == "result") result();
+  else if (action == "sign") screen.toggleSign();
 }
 
 function doOperation(op) {
@@ -60,8 +66,8 @@ function doOperation(op) {
   screen.clear();
 }
 
-function addFractionalSeparator(){
-  if(!numberIsFloat){
+function addFractionalSeparator() {
+  if (!numberIsFloat) {
     screen.insertFractionalSeparator();
     numberIsFloat = true;
   }
@@ -84,8 +90,8 @@ const Operation = {
   minus: (a, b) => a - b,
   multiply: (a, b) => a * b,
   divide: (a, b) => a / b,
-  mod: (a,b) => a % b
-}
+  mod: (a, b) => a % b,
+};
 function calculate(op, left, right) {
   return Operation[op](right, left);
 }
