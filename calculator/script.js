@@ -28,6 +28,8 @@ class CalculatorScreen {
 
   clear() {
     this.element.innerText = "";
+
+    numberIsFloat = false;
   }
 
   insertFractionalSeparator(){
@@ -53,6 +55,7 @@ function doAction(action) {
 function doOperation(op) {
   const num = screen.getNumber();
   numStack.push(num);
+  numberIsFloat = false;
   opStack.push(op);
   screen.clear();
 }
@@ -83,10 +86,10 @@ function calculate(op, left, right) {
   const multiply = (a, b) => a * b;
   const divide = (a, b) => a / b;
 
-  if (op == "sum") return sum(left, right);
-  else if (op == "minus") return minus(left, right);
-  else if (op == "multiply") return multiply(left, right);
-  else if (op == "divide") return divide(left, right);
+  if (op == "sum") return sum(right, left);
+  else if (op == "minus") return minus(right, left);
+  else if (op == "multiply") return multiply(right, left);
+  else if (op == "divide") return divide(right, left);
 }
 
 function evaluate() {
