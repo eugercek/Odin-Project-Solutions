@@ -4,8 +4,8 @@
   --number-bg: #363636;
   --top-row-bg: #a4a4a4;
   --op-bg: #ff9e2d;
-  --button-size: 20px;
-  --button-size-2: 40px;
+  --button-size: 65px;
+  --font-size: 22px;
 }
 
 body {
@@ -14,6 +14,7 @@ body {
   align-items: center;
   font-family: monospace;
   height: 100vh;
+  font-size: var(--font-size);
 }
 
 .calculator {
@@ -24,16 +25,19 @@ body {
   background-color: var(--calculator-bg);
   color: var(--text-color);
 
-  padding: 5px;
-  padding-top: 20px;
+  padding: 10px;
+  padding-top: 60px;
   gap: 5px;
 
   margin-top: -20vh;
 }
 
-#screen{
-    text-align: right;
-    min-height: 1rem;
+#screen {
+  text-align: right;
+  height: 38px;
+  font-size: 37px;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 .row {
@@ -51,7 +55,6 @@ body {
   align-items: center;
   border-radius: 50%;
   background-color: var(--number-bg);
-  font-size: 8px;
   height: var(--button-size);
   width: var(--button-size);
   text-align: center;
