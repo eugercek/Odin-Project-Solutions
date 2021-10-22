@@ -38,8 +38,9 @@ class CalculatorScreen {
 
   toggleSign() {
     const currentSign = this.element.innerText[0];
-    if (currentSign == "-") this.element.innerText = this.element.innerText.substring(1);
-    else this.element.innerText = '-' + this.element.innerText;
+    if (currentSign == "-")
+      this.element.innerText = this.element.innerText.substring(1);
+    else this.element.innerText = "-" + this.element.innerText;
   }
 }
 
@@ -92,6 +93,7 @@ const Operation = {
   divide: (a, b) => a / b,
   mod: (a, b) => a % b,
 };
+
 function calculate(op, left, right) {
   return Operation[op](right, left);
 }
