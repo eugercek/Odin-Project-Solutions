@@ -9,13 +9,13 @@ class CalculatorScreen {
     this.element = element;
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.element.innerText == "0" || this.element.innerText == "";
   }
 
   appendNumber(num) {
     if (this.isEmpty()) this.element.innerText = num;
-    else this.element.innerText = this.element.innerText.concat(number);
+    else this.element.innerText = this.element.innerText.concat(num);
   }
 }
 
@@ -35,19 +35,7 @@ function doOperation(op) {
   numStack.push(num);
   opStack.push(op);
   screen.innerText = "";
-}
-
-function calculatePrev() {
-  if (opStack.length == 0 || numStack.length != 2) return;
-
-  let preOp = opStack.pop();
-
-  const right = numStack.pop();
-  const left = numStack.pop();
-
-  let res = calculate(preOp, left, right);
-
-  screen.innerText = res;
+  const res = evaluate();
 }
 
 function calculate(op, left, right) {
@@ -62,13 +50,19 @@ function calculate(op, left, right) {
   else if (op == "divide") return divide(left, right);
 }
 
-for (const n of [...numbers])
-  n.addEventListener("click", () =>
-    screen.appendNumber(n.getAttribute("data-number"))
+function evaluate() {
+  if (numStack.length == 1) return numStack.pop()
+
+  return calculate(opStack.pop(), numStack.pop(), evaluate())
+}
+
+for (const number of [...numbers])
+  number.addEventListener("click", () =>
+    screen.appendNumber(number.getAttribute("data-number"))
   );
 
-for (const a of [...actions])
-  a.addEventListener("click", () => doAction(a.getAttribute("data-action")));
+for (const action of [...actions])
+  action.addEventListener("click", () => doAction(action.getAttribute("data-action")));
 
-for (const o of [...operations])
-  o.addEventListener("click", () => doOperation(a.getAttribute("data-op")));
+for (const operation of [...operations])
+  operation.addEventListener("click", () => doOperation(operation.getAttribute("data-op")));
