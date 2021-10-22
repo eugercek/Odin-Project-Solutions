@@ -23,11 +23,17 @@ class CalculatorScreen {
   }
 
   getNumber(number) {
-    return this.element.innerText;
+    return parseFloat(this.element.innerText);
   }
+
   clear() {
     this.element.innerText = "";
   }
+
+  insertFractionalSeparator(){
+    this.element.innerText += '.';
+  }
+
 }
 
 const screen = new CalculatorScreen(screenElement);
@@ -35,8 +41,12 @@ const screen = new CalculatorScreen(screenElement);
 let opStack = [];
 let numStack = [];
 
+// Does number has fractional number separator (. or ,)
+let numberIsFloat = false;
+
 function doAction(action) {
   if (action == "clear") screen.clear();
+  else if(action == "fraction") addFractionalSeparator();
   else if (action == "result") result();
 }
 
@@ -45,6 +55,13 @@ function doOperation(op) {
   numStack.push(num);
   opStack.push(op);
   screen.clear();
+}
+
+function addFractionalSeparator(){
+  if(!numberIsFloat){
+    screen.insertFractionalSeparator();
+    numberIsFloat = true;
+  }
 }
 
 function result() {
@@ -61,8 +78,6 @@ function result() {
 
 // TODO Should create Operation static class?
 function calculate(op, left, right) {
-  left = parseInt(left);
-  right = parseInt(right);
   const sum = (a, b) => a + b;
   const minus = (a, b) => a - b;
   const multiply = (a, b) => a * b;
