@@ -2,7 +2,7 @@ const addBookButton = document.getElementById("add-book");
 const library = document.getElementById("library");
 
 const popUp = document.getElementById("pop-up-bg");
-const closePopUp = document.getElementById("close-button");
+const cancelPopUp = document.getElementById("cancel-add");
 const okPopUp = document.getElementById("add-button");
 
 const inputTitle = document.getElementById("input-title");
@@ -10,7 +10,7 @@ const inputAuthor = document.getElementById("input-author");
 const inputHaveRead = document.getElementById("input-have-read");
 
 addBookButton.addEventListener("click", () => (popUp.style.display = "flex"));
-closePopUp.addEventListener("click", () => (popUp.style.display = "none"));
+cancelPopUp.addEventListener("click", () => (popUp.style.display = "none"));
 okPopUp.addEventListener("click", addBook);
 
 let lastId = 0;
@@ -40,26 +40,23 @@ function addBook() {
 function createBookCard(curBook) {
   let card = document.createElement("div");
   card.classList.add("book-card");
+  card.setAttribute("data-id", curBook.id);
 
   card.innerHTML = `
     <div class="card-item">Title: ${curBook.title}</div>
     <div class="card-item">Author: ${curBook.author}</div>
     <div class="card-item">Status: ${
       curBook.readStatus == "on" ? "Read" : "Not read"
-    }</div> `;
+    }</div>
+    <button class="close-button" id="delete-book">X</button>
+     `;
 
   library.appendChild(card);
+  const button = card.getElementsByClassName("close-button")[0];
+  button.addEventListener("click", () => deleteBook(curBook.id));
 }
 
-function fake() {
-  const a = {
-    title: "Introduction to Algorithms ",
-    author: "CLRS",
-    cover: "./images/clrs.jpg",
-    readStatus: false,
-  };
-
-  createBookCard(a);
+function deleteBook(id) {
+  const ele = document.querySelector(`.book-card[data-id="${id}"]`);
+  ele.remove();
 }
-
-fake();
