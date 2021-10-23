@@ -83,3 +83,16 @@ body {
   position: absolute;
   cursor: pointer;
 }
+
+#add-button {
+  font-size: 32px;
+  border: 1px solid white;
+  width: min-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10%;
+  background-color: inherit;
+  color: white;
+
+  cursor: pointer;
+}
