@@ -5,3 +5,5 @@
 # TODO
 
 - Use grid instead of flexbox
+- Add keyboard interaction
+- Fix number overflow (Do something like max 8 digit after .)
