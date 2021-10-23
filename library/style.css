@@ -22,7 +22,7 @@ body {
   margin-right: 1vw;
 }
 
-.pop-up-bg {
+#pop-up-bg {
   display: flex;
   justify-content: center;
   align-items: center;
