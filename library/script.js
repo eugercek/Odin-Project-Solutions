@@ -48,7 +48,7 @@ function createBookCard(curBook) {
     <div class="card-item">Status: ${
       curBook.readStatus == "on" ? "Read" : "Not read"
     }</div>
-    <button class="close-button" id="delete-book">X</button>
+    <button class="close-button" id="delete-book">x</button>
      `;
 
   library.appendChild(card);

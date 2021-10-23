@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
 body {
   margin: 0px;
   padding: 0px;
@@ -6,20 +8,28 @@ body {
 .top {
   display: flex;
   justify-content: center;
+  margin-top: 1vv;
   padding: 1vh 1vw;
 }
 
-.title,
-#add-book {
-  margin-left: auto;
-}
-
 .title {
-  font-size: 32px;
+  font-size: 48px;
+  font-family: "Ubuntu";
 }
 
 #add-book {
   margin-right: 1vw;
+  position: absolute;
+  top: 10vh;
+  right: 6vw;
+
+  font-size: 32px;
+
+  border-radius: 50%;
+  border: 1px solid black;
+
+  color: black;
+  background-color: white;
 }
 
 #pop-up-bg {
@@ -29,7 +39,7 @@ body {
 
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(10, 10, 10, 0.3);
   position: fixed;
   top: 0;
 
@@ -42,7 +52,8 @@ body {
   justify-content: center;
   gap: 1em;
 
-  color: white;
+  background-color: #ffebd9;
+  color: black;
   padding: 30px;
   width: 300px;
   height: 300px;
@@ -52,14 +63,16 @@ body {
   border: 1px solid white;
   border-radius: 10px;
 }
+
 #have-read-label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 1em;
 }
 
 #pop-up input {
   font-size: 32px;
+  padding: 5px;
   border-radius: 10px;
 }
 
@@ -71,29 +84,28 @@ body {
 
 .close-button {
   font-size: 32px;
+  font-weight: bold;
+
   border: 0px;
   border-radius: 10%;
+
   background-color: inherit;
   color: white;
 
-  top: 10px;
-  right: 10px;
-  font-size: 32px;
+  order: -1;
+  align-self: flex-end;
 
-  position: absolute;
   cursor: pointer;
+  margin-right: -20px;
 }
 
 #add-button {
   font-size: 32px;
-  border: 1px solid white;
   width: min-content;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10%;
   background-color: inherit;
-  color: white;
-
   cursor: pointer;
 }
 
@@ -111,14 +123,20 @@ body {
   align-items: center;
   gap: 1em;
   padding: 1em;
-  border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   width: 200px;
 
+  cursor: pointer;
   position: relative;
+
+  box-shadow: 0 0 2.5px 1px #d0d0d0;
 }
 
 #delete-book {
   color: red;
+  font-weight: bold;
   font-size: 1em;
+  margin-right: -10px;
+  margin-top: -10px;
+  margin-bottom: -1.5em;
 }
