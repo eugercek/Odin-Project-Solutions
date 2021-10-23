@@ -14,6 +14,7 @@ closePopUp.addEventListener("click", () => (popUp.style.display = "none"));
 okPopUp.addEventListener("click", addBook);
 
 let lastId = 0;
+let books = [];
 
 function addBook() {
   const title = inputTitle.value;
@@ -41,20 +42,24 @@ function createBookCard(curBook) {
   card.classList.add("book-card");
 
   card.innerHTML = `
-    <p>Title: ${curBook.title}</p>
-    <p>Author: ${curBook.author}</p>
-    <p>Status: ${curBook.readStatus == "on" ? "Read" : "Not read"}</p> `;
+    <div class="card-item">Title: ${curBook.title}</div>
+    <div class="card-item">Author: ${curBook.author}</div>
+    <div class="card-item">Status: ${
+      curBook.readStatus == "on" ? "Read" : "Not read"
+    }</div> `;
 
   library.appendChild(card);
 }
 
-let books = [];
-
-function fakeInput() {
-  books.push({
+function fake() {
+  const a = {
     title: "Introduction to Algorithms ",
     author: "CLRS",
     cover: "./images/clrs.jpg",
     readStatus: false,
-  });
+  };
+
+  createBookCard(a);
 }
+
+fake();
