@@ -21,9 +21,10 @@ const loadContact = () => console.log("hi");
 
 function createHeader() {
   const header = document.createElement("nav");
+  header.setAttribute("id", "nav-header");
 
-  const menuButton = createButton("Menu", loadMenu());
-  const contactButton = createButton("Contact", loadContact());
+  const menuButton = createButton("Menu", loadMenu);
+  const contactButton = createButton("Contact", loadContact);
 
   header.appendChild(menuButton);
   header.appendChild(contactButton);

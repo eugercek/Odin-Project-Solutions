@@ -1,7 +1,7 @@
-function createElement(type = "div", _class = "", textNode = "") {
+function createElement(type = "div", _class = "", textContent = "") {
   const element = document.createElement(type);
   element.classList.add(_class);
-  element.textNode = textNode;
+  element.textContent = textContent;
 
   return element;
 }
