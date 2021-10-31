@@ -10,4 +10,10 @@ function isActiveElement(element, activeClassName = "active") {
   return element.classList.contains(activeClassName);
 }
 
-export { createElement, isActiveElement };
+function removeOthers(selector, className) {
+  const elements = document.querySelectorAll(selector);
+
+  elements.forEach((e) => e.classList.remove(className));
+}
+
+export { createElement, isActiveElement, removeOthers };

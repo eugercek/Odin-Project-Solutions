@@ -1,4 +1,4 @@
-import { createElement, isActiveElement } from "./util";
+import { createElement, isActiveElement, removeOthers } from "./util";
 
 function createButton(name, loadFunction) {
   const element = createElement("button", "nav-button", name);
@@ -8,6 +8,7 @@ function createButton(name, loadFunction) {
       return;
     }
 
+    removeOthers(".nav-button", "active");
     e.target.classList.add("active");
     // Show menu when user clicked menu
     loadFunction();
