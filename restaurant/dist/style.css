@@ -1,0 +1,26 @@
+:root {
+  --button-color: #312f2f;
+  --button-bg-color: #bf98a0;
+  --button-hover-bg-color: #81676c;
+}
+
+#nav-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10vw;
+}
+
+.nav-button {
+  border: 0px;
+  color: var(--button-color);
+  background-color: var(--button-bg-color);
+}
+
+.nav-button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.active {
+  border: 3px solid black;
+}
