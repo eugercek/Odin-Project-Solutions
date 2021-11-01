@@ -1,10 +1,7 @@
-import { createElement } from "./util";
+import { createElement } from "../util/util";
 
 function createTitle() {
-  const title = document.createElement("h1");
-  title.classList.add("menu-title");
-
-  return title;
+  return createElement("h1", "menu-title", "Galley Grub");
 }
 
 function contentFactory(name, price) {
@@ -28,6 +25,7 @@ function menuItemFactory(content) {
 
 function createMenu() {
   const menu = createElement("div", "menu");
+  menu.appendChild(createTitle());
   menuContentList.forEach((c) => menu.appendChild(menuItemFactory(c)));
 
   return menu;

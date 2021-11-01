@@ -1,5 +1,4 @@
-import { createElement, isActiveElement, removeOthers } from "./util";
-import { createMenu } from "./menu";
+import { createElement, isActiveElement, removeOthers } from "../util/util";
 
 function createButton(name, loadFunction) {
   const element = createElement("button", "nav-button", name);
@@ -18,10 +17,10 @@ function createButton(name, loadFunction) {
   return element;
 }
 
-const loadMenu = () => console.log("hi");
-const loadContact = () => console.log("hi");
-
 function createHeader() {
+  const loadMenu = () => console.log("hi");
+  const loadContact = () => console.log("hi");
+
   const header = document.createElement("nav");
   header.setAttribute("id", "nav-header");
 
@@ -34,11 +33,4 @@ function createHeader() {
   return header;
 }
 
-function createContent() {
-  const root = document.getElementById("content");
-
-  root.appendChild(createHeader());
-  root.appendChild(createMenu());
-}
-
-export { createContent };
+export { createHeader };
