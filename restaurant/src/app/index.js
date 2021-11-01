@@ -1,3 +1,4 @@
-import { createPage } from "./page";
+import { createPage, initialState } from "./page";
 
 createPage();
+initialState();
