@@ -16,4 +16,10 @@ function removeOthers(selector, className) {
   elements.forEach((e) => e.classList.remove(className));
 }
 
-export { createElement, isActiveElement, removeOthers };
+function addOthers(selector, className) {
+  const elements = document.querySelectorAll(selector);
+
+  elements.forEach((e) => e.classList.add(className));
+}
+
+export { createElement, isActiveElement, removeOthers, addOthers };

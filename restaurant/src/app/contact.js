@@ -28,6 +28,8 @@ const contactItemList = [
 
 function createContact() {
   const contact = createElement("div", "contact");
+  contact.classList.add("tab-content");
+
   contact.appendChild(createTitle());
   contactItemList.forEach((c) => contact.appendChild(createContactItem(c)));
 

@@ -25,6 +25,7 @@ function menuItemFactory(content) {
 
 function createMenu() {
   const menu = createElement("div", "menu");
+  menu.classList.add("tab-content");
   menu.appendChild(createTitle());
   menuContentList.forEach((c) => menu.appendChild(menuItemFactory(c)));
 

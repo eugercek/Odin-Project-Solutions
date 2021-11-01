@@ -21,6 +21,10 @@
   background-color: var(--button-hover-bg-color);
 }
 
-.active {
+.nav-button.active {
   border: 3px solid black;
+}
+
+.hidden {
+  display: none;
 }
