@@ -1,4 +1,5 @@
 import { createElement, isActiveElement, removeOthers } from "./util";
+import { createMenu } from "./menu";
 
 function createButton(name, loadFunction) {
   const element = createElement("button", "nav-button", name);
@@ -37,6 +38,7 @@ function createContent() {
   const root = document.getElementById("content");
 
   root.appendChild(createHeader());
+  root.appendChild(createMenu());
 }
 
 export { createContent };
