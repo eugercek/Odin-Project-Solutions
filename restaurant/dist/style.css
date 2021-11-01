@@ -1,3 +1,4 @@
+@import url("http://fonts.cdnfonts.com/css/spongebob-font-condensed");
 :root {
   --button-color: #312f2f;
   --button-bg-color: #bf98a0;
@@ -27,4 +28,45 @@
 
 .hidden {
   display: none;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "SpongeBob Font Condensed", sans-serif;
+  /* font-family: "SpongeBob Font Wide", sans-serif; */
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  background-color: #edd4a4;
+
+  border: solid 4px #5b300f;
+  border-radius: 10px;
+
+  margin-top: 5vh;
+  padding-bottom: 3vh;
+}
+.menu-title {
+  color: #61251b;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  gap: 5px;
+}
+
+.menu-item-dot {
+  width: auto;
+  border-bottom: dotted 3px black;
+  flex-grow: 1;
 }

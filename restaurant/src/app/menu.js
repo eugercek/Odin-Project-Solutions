@@ -26,8 +26,12 @@ function menuItemFactory(content) {
 function createMenu() {
   const menu = createElement("div", "menu");
   menu.classList.add("tab-content");
-  menu.appendChild(createTitle());
-  menuContentList.forEach((c) => menu.appendChild(menuItemFactory(c)));
+
+  const card = createElement("div", "menu-card");
+  menu.appendChild(card);
+
+  card.appendChild(createTitle());
+  menuContentList.forEach((c) => card.appendChild(menuItemFactory(c)));
 
   return menu;
 }
