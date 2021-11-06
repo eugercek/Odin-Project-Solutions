@@ -1,9 +1,11 @@
 import { createElement } from '../util/util';
 
-function createAvatar() {
-  const avatar = createElement('div', 'avatar');
+export default function createCharacter() {
+  const character = createElement('div', 'character');
+  const image = createElement('img', 'character-img');
+  image.src = './eugene.png';
 
-  avatar.appendChild(createElement('img', 'avatar-img'));
+  character.appendChild(image);
 
-  return avatar;
+  return character;
 }

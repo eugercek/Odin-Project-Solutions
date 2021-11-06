@@ -1,6 +1,7 @@
 import createMenu from './menu';
 import createHeader from './header';
 import createContact from './contact';
+import createCharacter from './character';
 
 const root = document.getElementById('content');
 
@@ -8,6 +9,7 @@ function createPage() {
   root.appendChild(createHeader());
   root.appendChild(createMenu());
   root.appendChild(createContact());
+  root.appendChild(createCharacter());
 }
 
 function initialState() {
