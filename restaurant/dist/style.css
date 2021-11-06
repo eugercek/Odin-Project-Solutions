@@ -1,8 +1,8 @@
 @import url("https://fonts.cdnfonts.com/css/spongebob-font-condensed");
 :root {
-  --button-color: #312f2f;
-  --button-bg-color: #bf98a0;
-  --button-hover-bg-color: #81676c;
+  --button-color: #1c1c1c;
+  --button-bg-color: #f8f940;
+  --button-hover-bg-color: #f9f940d3;
 }
 
 body{
@@ -10,10 +10,12 @@ body{
   height: 100vh;
   margin: 0px;
   padding: 0px;
+
+  background-color: #5abfdd;
 }
 
 #nav-header {
-  padding-top: 10px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +27,10 @@ body{
   color: var(--button-color);
   background-color: var(--button-bg-color);
   transition: 0.5s;
+  padding: 10px;
+
+  border-radius: 10px;
+  cursor: url('./spatula.png'), auto;
 }
 
 .nav-button:hover {
@@ -32,8 +38,7 @@ body{
 }
 
 .nav-button.active {
-  border: 3px solid black;
-  transition: none;
+  border: 10px solid #f48799;
   background-color: var(--button-bg-color);
 }
 
