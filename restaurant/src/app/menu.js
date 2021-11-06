@@ -37,5 +37,8 @@ export default function createMenu() {
   card.appendChild(createTitle());
   menuContentList.forEach((c) => card.appendChild(menuItemFactory(c)));
 
+  menu.addEventListener('mouseover', () => { document.getElementById('character-img').src = './eugene-money.png'; });
+  menu.addEventListener('mouseleave', () => { document.getElementById('character-img').src = './eugene.png'; });
+
   return menu;
 }
