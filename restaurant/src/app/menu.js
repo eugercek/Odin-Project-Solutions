@@ -12,6 +12,10 @@ const menuContentList = [
   contentFactory("Krabby Patty", 1.25),
   contentFactory("Double Krabby Patty", 2),
   contentFactory("Triple Krabby Patty", 3),
+  contentFactory("Small", 1),
+  contentFactory("Medium", 1.25),
+  contentFactory("Large", 1.50),
+  contentFactory("Kelp Rings", 1.50),
 ];
 
 function menuItemFactory(content) {

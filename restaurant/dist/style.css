@@ -26,10 +26,6 @@
   border: 3px solid black;
 }
 
-.hidden {
-  display: none;
-}
-
 /* Menu */
 .menu {
   display: flex;
@@ -69,4 +65,8 @@
   width: auto;
   border-bottom: dotted 3px black;
   flex-grow: 1;
+}
+
+.hidden {
+  display: none;
 }
