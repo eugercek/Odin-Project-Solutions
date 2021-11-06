@@ -5,6 +5,11 @@
   --button-hover-bg-color: #81676c;
 }
 
+body{
+  cursor: url('./spatula.png'), auto;
+  height: 100vh;
+}
+
 #nav-header {
   display: flex;
   justify-content: center;
@@ -16,6 +21,7 @@
   border: 0px;
   color: var(--button-color);
   background-color: var(--button-bg-color);
+  transition: 0.5s;
 }
 
 .nav-button:hover {
@@ -24,6 +30,8 @@
 
 .nav-button.active {
   border: 3px solid black;
+  transition: none;
+  background-color: var(--button-bg-color);
 }
 
 /* Menu */
