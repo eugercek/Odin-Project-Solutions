@@ -4,7 +4,7 @@ export default class Form {
     this.title = this.form.querySelector("#input-title");
     this.author = this.form.querySelector("#input-author");
     this.page = this.form.querySelector("#input-page");
-    this.haveRead = this.form.querySelector("#input-have-read");
+    this.readStatus = this.form.querySelector("#input-read-status");
 
     this.parent = document.getElementById("pop-up-bg");
 
@@ -42,15 +42,15 @@ export default class Form {
       title: this.title.value,
       author: this.author.value,
       page: this.page.value,
-      havRead: this.haveRead.value,
+      readStatus: this.readStatus.value,
     };
   }
 
-  loadValues(title, author, page, haveRead) {
+  loadValues(title, author, page, readStatus) {
     this.title.value = title;
     this.author.value = author;
     this.page.value = page;
-    this.haveRead.value = haveRead;
+    this.readStatus.value = readStatus;
   }
 
   swapSubmitFunction(fn) {

@@ -1,4 +1,7 @@
 import Form from "./Form.js";
+import Storage from "./Storage.js";
+
+const storage = new Storage(JSON.parse(localStorage.getItem("books")));
 
 const form = new Form(document.getElementById("add-form"), addBook);
 
@@ -71,14 +74,14 @@ function deleteState() {
 }
 
 function oneEditContent(book) {
-  const haveRead = form.haveRead.value;
+  const readStatus = form.readStatus.value;
   book.querySelector(".title").innerText = form.title.value;
   book.querySelector(".author").innerText = form.author.value;
   book.querySelector(".page").innerText = form.page.value;
 
   book.classList.remove("read");
   book.classList.remove("not-read");
-  book.classList.add(haveRead == "Read" ? "read" : "not-read");
+  book.classList.add(readStatus == "Read" ? "read" : "not-read");
 
   book.replaceWith(book.cloneNode(true));
 
