@@ -40,13 +40,32 @@ body {
   align-items: center;
   gap: 1em;
   padding: 1em;
+
+  width: min-content;
+
   border-radius: 10px;
-  width: 200px;
+  border-radius: 40px 5px 5px 40px;
 
   cursor: pointer;
   position: relative;
 
-  border: 1px solid black;
+  border: 8px solid black;
+  border-left: 30px solid black;
+}
+
+.book-card .title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.book-card .author {
+  font-size: 24px;
+  font-style: italic;
+}
+
+.book-card .page {
+  order: 100;
+  align-self: center;
 }
 
 #add-book {

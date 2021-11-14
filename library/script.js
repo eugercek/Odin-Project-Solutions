@@ -42,6 +42,7 @@ function addBook() {
 
   createBookCard(curBook);
 
+  form.reset();
   popUp.style.display = "none";
 }
 
@@ -51,10 +52,9 @@ function createBookCard(curBook) {
   card.setAttribute("data-id", curBook.id);
 
   card.innerHTML = `
-    <div class="card-item">Title: ${curBook.title}</div>
-    <div class="card-item">Author: ${curBook.author}</div>
-    <div class="card-item">Page: ${curBook.page}</div>
-    <div class="card-item">Status: ${curBook.readStatus}</div>
+    <div class="card-item title">${curBook.title}</div>
+    <div class="card-item author">${curBook.author}</div>
+    <div class="card-item page">${curBook.page}</div>
     <button class="close-button" id="delete-book">x</button>
      `;
 
