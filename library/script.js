@@ -1,4 +1,6 @@
-const form = document.getElementById("add-form");
+import Form from "./Form.js";
+
+const form = new Form(document.getElementById("add-form"), addBook);
 
 const toolbarAdd = document.getElementById("add-book");
 const toolbarDelete = document.getElementById("delete-book");
@@ -6,33 +8,19 @@ const toolbarEdit = document.getElementById("edit-book");
 
 const library = document.getElementById("library");
 
-const popUp = document.getElementById("pop-up-bg");
 const cancelPopUp = document.getElementById("cancel-add");
 
-const inputTitle = document.getElementById("input-title");
-const inputAuthor = document.getElementById("input-author");
-const inputPage = document.getElementById("input-page");
-const inputHaveRead = document.getElementById("input-have-read");
-
-form.addEventListener("submit", addBook);
-
-toolbarAdd.addEventListener("click", () => (popUp.style.display = "flex"));
+toolbarAdd.addEventListener("click", () => form.show());
 toolbarDelete.addEventListener("click", () => deleteState());
 toolbarEdit.addEventListener("click", () => editState());
 
-cancelPopUp.addEventListener("click", () => {
-  form.reset();
-  popUp.style.display = "none";
-});
+cancelPopUp.addEventListener("click", () => form.hide());
 
 let lastId = 0;
 let books = [];
 
 function addBook() {
-  const title = inputTitle.value;
-  const author = inputAuthor.value;
-  const page = inputPage.value;
-  const readStatus = inputHaveRead.value;
+  const { title, author, page, readStatus } = form.getValues();
 
   const curBook = {
     id: lastId,
@@ -48,8 +36,7 @@ function addBook() {
 
   createBookCard(curBook);
 
-  form.reset();
-  popUp.style.display = "none";
+  form.clearHide();
 }
 
 function createBookCard(curBook) {
@@ -84,31 +71,38 @@ function deleteState() {
 }
 
 function oneEditContent(book) {
-  const haveRead = inputHaveRead.value;
-  book.querySelector(".title").innerText = inputTitle.value;
-  book.querySelector(".author").innerText = inputAuthor.value;
-  book.querySelector(".page").innerText = inputPage.value;
+  const haveRead = form.haveRead.value;
+  book.querySelector(".title").innerText = form.title.value;
+  book.querySelector(".author").innerText = form.author.value;
+  book.querySelector(".page").innerText = form.page.value;
 
   book.classList.remove("read");
   book.classList.remove("not-read");
   book.classList.add(haveRead == "Read" ? "read" : "not-read");
 
-  popUp.style.display = "none";
-  form.removeEventListener("submit", oneEditContent);
-  form.addEventListener("submit", addBook);
+  book.replaceWith(book.cloneNode(true));
+
+  form.swapSubmitFunction(addBook);
+  // form.removeEventListener("submit", oneEditContent);
+  // form.addEventListener("submit", addBook);
+
+  form.clearHide();
 }
 
 function oneEdit(book) {
   // Load current book's info to form
-  inputTitle.value = book.querySelector(".title").innerText;
-  inputAuthor.value = book.querySelector(".author").innerText;
-  inputPage.value = book.querySelector(".page").innerText;
-  inputHaveRead.value = book.classList.contains("read") ? "Read" : "Not read";
+  form.loadValues(
+    book.querySelector(".title").innerText,
+    book.querySelector(".author").innerText,
+    book.querySelector(".page").innerText,
+    book.classList.contains("read") ? "Read" : "Not read"
+  );
 
-  form.removeEventListener("submit", addBook);
-  form.addEventListener("submit", () => oneEditContent(book));
+  form.swapSubmitFunction(() => oneEditContent(book));
+  // form.removeEventListener("submit", addBook);
+  // form.addEventListener("submit", () => oneEditContent(book));
 
-  popUp.style.display = "flex";
+  form.show();
 
   const bookList = Array.from(document.querySelectorAll(`.book-card`));
 
