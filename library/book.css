@@ -12,7 +12,7 @@
   padding: 2em;
 
   width: min-content;
-  height: min-content;
+  min-height: min-content;
 
   border-radius: 20px 16px 16px 20px;
 
