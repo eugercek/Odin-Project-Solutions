@@ -1,0 +1,48 @@
+:root {
+  --read-color: rgb(89, 150, 89);
+  --not-read-color: rgb(109, 29, 29);
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 2em;
+
+  width: min-content;
+
+  border-radius: 20px 16px 16px 20px;
+
+  cursor: pointer;
+  position: relative;
+
+  border: 10px solid black;
+  border-left: 40px solid black;
+
+  user-select: none;
+}
+
+.book-card .title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.book-card .author {
+  font-size: 24px;
+  font-style: italic;
+}
+
+.book-card .page {
+  order: 100;
+  align-self: center;
+}
+
+.read {
+  border-color: var(--read-color);
+}
+
+.not-read {
+  border-color: var(--not-read-color);
+}
