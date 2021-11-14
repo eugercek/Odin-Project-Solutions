@@ -14,7 +14,10 @@ const inputHaveRead = document.getElementById("input-have-read");
 form.addEventListener("submit", addBook);
 
 addBookButton.addEventListener("click", () => (popUp.style.display = "flex"));
-cancelPopUp.addEventListener("click", () => (popUp.style.display = "none"));
+cancelPopUp.addEventListener("click", () => {
+  form.reset();
+  popUp.style.display = "none";
+});
 
 let lastId = 0;
 let books = [];
