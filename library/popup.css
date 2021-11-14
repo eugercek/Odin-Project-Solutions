@@ -18,10 +18,27 @@
   top: 0;
 }
 
+#pop-up {
+  display: flex;
+  flex-direction: column;
+}
+
 #pop-up .close-button {
-  position: absolute;
-  right: 30px;
-  top: 5px;
+  font-size: 32px;
+  font-weight: bold;
+
+  border: 0px;
+  border-radius: 10%;
+
+  background-color: inherit;
+  color: white;
+
+  cursor: pointer;
+  align-self: flex-end;
+
+  margin-bottom: -50px;
+  margin-right: 10px;
+  z-index: 1;
 }
 
 #pop-up form {

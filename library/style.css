@@ -39,23 +39,6 @@ main {
   padding: 5em;
 }
 
-.close-button {
-  font-size: 32px;
-  font-weight: bold;
-
-  border: 0px;
-  border-radius: 10%;
-
-  background-color: inherit;
-  color: white;
-
-  order: -1;
-  align-self: flex-end;
-
-  cursor: pointer;
-  margin-right: -20px;
-}
-
 #delete-book {
   color: red;
   font-weight: bold;
