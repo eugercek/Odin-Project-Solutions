@@ -1,0 +1,33 @@
+#tool-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 30px;
+
+  width: min-content;
+  height: 25vh;
+  border-radius: 10px;
+
+  background-color: #a39085;
+}
+
+#tool-bar button {
+  margin: 0px;
+  padding: 0px;
+
+  font-size: 32px;
+  font-weight: bold;
+
+  border-radius: 50%;
+  border: 0px solid var(--border-color);
+
+  color: var(--bg-color);
+  background-color: var(--text-color);
+
+  width: 50px;
+  height: 50px;
+
+  cursor: pointer;
+
+  font-family: sans-serif;
+}

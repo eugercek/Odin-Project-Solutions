@@ -1,5 +1,6 @@
 @import url("popup.css");
 @import url("book.css");
+@import url("toolbar.css");
 
 :root {
   --bg-color: #66462c;
@@ -14,6 +15,10 @@ body {
   padding: 0px;
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+main {
+  display: flex;
 }
 
 .top {
@@ -32,29 +37,6 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   padding: 5em;
-}
-
-#add-book {
-  margin-right: 1vw;
-  position: absolute;
-  top: 10vh;
-  right: 6vw;
-
-  font-size: 32px;
-  font-weight: bold;
-
-  border-radius: 50%;
-  border: 0px solid var(--border-color);
-
-  color: var(--bg-color);
-  background-color: var(--text-color);
-
-  width: 50px;
-  height: 50px;
-
-  cursor: pointer;
-
-  font-family: sans-serif;
 }
 
 .close-button {
