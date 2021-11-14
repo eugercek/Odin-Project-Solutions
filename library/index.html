@@ -15,7 +15,7 @@
     </div>
     <div id="pop-up-bg" style="display: none">
       <div id="pop-up">
-        <form autocomplete="off">
+        <form autocomplete="off" onsubmit="return false" id="add-form">
           <button class="close-button" id="cancel-add">x</button>
           <div class="input-element">
             <label for="input-title">Title</label>
@@ -32,8 +32,8 @@
           <div class="input-element">
             <label for="input-have-read">Status</label>
             <select id="input-have-read">
-              <option value="read">Not read</option>
-              <option value="not-read">Read</option>
+              <option value="Not read">Not read</option>
+              <option value="Read">Read</option>
             </select>
           </div>
           <button id="add-button" type="submit">Add</button>
