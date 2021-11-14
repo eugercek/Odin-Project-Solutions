@@ -2,7 +2,8 @@
   --bg-color: #66462c;
   --text-color: #efd6ac;
 
-  --popup-bg-color: #dfbbb1;
+  --popup-bg-color: #b7a196;
+  /* --popup-bg-color: #d3a588; */
 }
 
 #pop-up-bg {
@@ -17,7 +18,13 @@
   top: 0;
 }
 
-#pop-up {
+#pop-up .close-button {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+}
+
+#pop-up form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,47 +42,47 @@
   color: black;
 }
 
-#pop-up input {
+.input-element {
+  display: flex;
+  justify-content: space-between;
+}
+
+#pop-up form input,
+#pop-up form select {
   padding: 5px;
   border-radius: 10px;
   border: 0px;
 }
 
-#pop-up input:focus {
+#pop-up input:focus,
+#pop-up select:focus {
   border: 0px;
   outline: 0px;
 }
 
-#pop-up #input-have-read {
-  width: 24px;
-  height: 24px;
-
-  font-weight: bold;
-}
-
-#have-read-label {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  font-family: serif;
-}
-
 #add-button {
   font-size: 24px;
-  font-family: serif;
+  font-family: sans-serif;
 
   margin-left: auto;
   margin-right: auto;
   border-radius: 10%;
-  border: 3px solid var(--bg-color);
+  border: 0px;
 
-  background-color: inherit;
+  padding: 10px;
+
+  background-color: white;
   cursor: pointer;
 }
 
-#pop-up .close-button {
-  position: absolute;
-  right: 30px;
-  top: 5px;
+#add-button:hover {
+  background-color: var(--text-color);
+}
+
+#add-button:hover {
+  background-color: var(--text-color);
+}
+
+#add-button:active {
+  background-color: var(--bg-color);
 }
