@@ -21,7 +21,7 @@ toolbarDelete.addEventListener("click", () => deleteState());
 toolbarEdit.addEventListener("click", () => editState());
 toolbarSave.addEventListener("click", saveLocal);
 toolbarGetLocal.addEventListener("click", getLocal);
-toolbarGetFile.addEventListener("click", getLocal);
+toolbarGetFile.addEventListener("click", getFile);
 
 cancelPopUp.addEventListener("click", () => form.hide());
 
@@ -145,4 +145,8 @@ function getLocal() {
     createBookCard(b);
     lastId++;
   });
+}
+
+function getFile(e) {
+  console.log(e);
 }

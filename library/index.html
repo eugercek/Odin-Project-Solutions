@@ -46,10 +46,14 @@
         <button id="edit-book" data-tooltip="Edit a book's content">✐</button>
         <button id="save" data-tooltip="Save library">🖫</button>
         <button id="load-local" data-tooltip="Load library">⇧</button>
-        <button id="load-file" data-tooltip="Load library from a file">
-          🗁
-        </button>
-        <!-- <input type="file"> -->
+        <div>
+          <label for="load-file" id="label-file">🗁</label>
+          <input
+            id="load-file"
+            data-tooltip="Load library from a file"
+            type="file"
+          />
+        </div>
       </div>
       <div id="library"></div>
     </main>

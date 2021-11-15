@@ -1,8 +1,8 @@
 #tool-bar {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  padding: 30px;
+  gap: 30px;
+  padding: 20px;
 
   width: min-content;
   height: min-content;
@@ -11,11 +11,12 @@
   background-color: #a39085;
 }
 
-#tool-bar button {
+#tool-bar button,
+#label-file {
   margin: 0px;
-  padding: 0px;
+  padding: px;
 
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
 
   border-radius: 50%;
@@ -30,4 +31,19 @@
   cursor: pointer;
 
   font-family: sans-serif;
+}
+
+/* Hide input */
+#load-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  position: absolute;
+}
+
+#label-file {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
