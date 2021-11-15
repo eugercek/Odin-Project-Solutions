@@ -8,6 +8,9 @@ const form = new Form(document.getElementById("add-form"), addBook);
 const toolbarAdd = document.getElementById("add-book");
 const toolbarDelete = document.getElementById("delete-book");
 const toolbarEdit = document.getElementById("edit-book");
+const toolbarSave = document.getElementById("save");
+const toolbarGetLocal = document.getElementById("load-local");
+const toolbarGetFile = document.getElementById("load-file");
 
 const library = document.getElementById("library");
 
@@ -16,6 +19,9 @@ const cancelPopUp = document.getElementById("cancel-add");
 toolbarAdd.addEventListener("click", () => form.show());
 toolbarDelete.addEventListener("click", () => deleteState());
 toolbarEdit.addEventListener("click", () => editState());
+toolbarSave.addEventListener("click", saveLocal);
+toolbarGetLocal.addEventListener("click", getLocal);
+toolbarGetFile.addEventListener("click", getLocal);
 
 cancelPopUp.addEventListener("click", () => form.hide());
 
@@ -123,4 +129,20 @@ function editState() {
   for (let book of bookList) {
     book.addEventListener("click", () => oneEdit(book));
   }
+}
+
+function saveLocal() {
+  localStorage.setItem("books", JSON.stringify(books));
+}
+
+function getLocal() {
+  if (books.length != 0) {
+    return;
+  }
+
+  books = JSON.parse(localStorage.getItem("books"));
+  books.forEach((b) => {
+    createBookCard(b);
+    lastId++;
+  });
 }
