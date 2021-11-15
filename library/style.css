@@ -1,6 +1,7 @@
 @import url("popup.css");
 @import url("book.css");
 @import url("toolbar.css");
+@import url("tooltip.css");
 
 :root {
   --bg-color: #66462c;
