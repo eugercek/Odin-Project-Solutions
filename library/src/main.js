@@ -7,8 +7,18 @@ import Book from "./Book.js";
 import Toolbar from "./Toolbar.js";
 
 const bookObject = new Book(); // Model
+
 const libraryObject = new Library("library"); // View Builder?
-const form = new Form(document.getElementById("add-form"), addBook); // View
+
+const form = new Form(document.getElementById("add-form"), function () {
+  const book = form.getValues();
+
+  bookObject.addBook(book);
+
+  libraryObject.createBookCard(bookObject.lastBook);
+
+  form.clearHide();
+}); // View
 
 const toolbarObject = new Toolbar(
   "#add-book",
@@ -19,14 +29,10 @@ const toolbarObject = new Toolbar(
 
 toolbarObject.add.addEventListener("click", () => form.show());
 
-toolbarObject.del.addEventListener("click", () => libraryObject.stateDeletion);
+toolbarObject.del.addEventListener("click", () =>
+  libraryObject.stateDeletion()
+);
 
-function addBook() {
-  const book = form.getValues();
-
-  bookObject.addBook(book);
-
-  libraryObject.createBookCard(bookObject.lastBook);
-
-  form.clearHide();
-}
+toolbarObject.save.addEventListener("click", () =>
+  localStorage.setItem("books", JSON.stringify(bookObject.books))
+);
