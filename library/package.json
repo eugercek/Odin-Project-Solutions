@@ -2,7 +2,7 @@
   "name": "library",
   "version": "1.0.0",
   "description": "[Live Preview](https://eugercek.github.io/Odin-Project-Solutions/library)",
-  "main": "script.js",
+  "main": "./src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
