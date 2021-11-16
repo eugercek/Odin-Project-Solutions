@@ -32,6 +32,7 @@ export default class Form {
   show() {
     this.__show();
   }
+
   clearShow() {
     this.clear();
     this.__show();

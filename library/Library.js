@@ -1,46 +1,20 @@
+/* eslint-disable no-loop-func */
 export default class Library {
-  constructor(root) {
-    this.lastId = 0;
-    this.books = [];
-    this.root = root;
+  constructor(rootId) {
+    this.__id = rootId;
   }
 
-  addBook({ title, author, page, readStatus }) {
-    this.books.push({ title, author, page, readStatus });
-    this.lastId++;
-  }
-
-  // Add event listener too all books!
-  addHandler(trigger, fn) {
-    this.books.forEach((b) => b.addEventListener(trigger, fn));
-  }
-
-  removeHandler(trigger, fn) {
-    this.books.forEach((b) => b.removeEventListener(trigger, fn));
-  }
-
-  removeAllHandlers() {
-    for (let b of this.books) {
-      b.replaceWith(b.cloneNode(true));
-    }
-  }
-
-  get lastBook() {
-    return this.books[this.lastId - 1];
-  }
-
-  renderBooks() {
-    this.root.innerHTML = "";
-    this.books.forEach((b) => this.createBookCard(b));
+  get root() {
+    return document.getElementById(this.__id);
   }
 
   createBookCard(book) {
-    let card = document.createElement("div");
+    const card = document.createElement("div");
 
     card.classList.add("book-card");
     card.setAttribute("data-id", book.id);
 
-    card.classList.add(book.readStatus == "Read" ? "read" : "not-read");
+    card.classList.add(book.readStatus === "Read" ? "read" : "not-read");
 
     card.innerHTML = `
     <div class="card-item title">${book.title}</div>
@@ -49,5 +23,33 @@ export default class Library {
      `;
 
     this.root.appendChild(card);
+  }
+
+  __deleteSelf(book) {
+    const { id } = book;
+    book.remove();
+
+    this.removeDeleteHandlers();
+    return id;
+  }
+
+  setDeleteHandlers() {
+    this.rootArray.forEach((book) => {
+      book.addEventListener("click", () => this.__deleteSelf(book));
+    });
+  }
+
+  removeDeleteHandlers() {
+    this.rootArray.forEach((book) => {
+      book.removeEventListener("click", () => this.__deleteSelf(book));
+    });
+  }
+
+  stateDeletion() {
+    this.setDeleteHandlers();
+  }
+
+  get rootArray() {
+    return Array.from(this.root.children);
   }
 }

@@ -8,5 +8,13 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "no-underscore-dangle": "off",
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement",
+    ],
+  },
 };
