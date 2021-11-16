@@ -21,7 +21,7 @@ toolbarDelete.addEventListener("click", () => deleteState());
 toolbarEdit.addEventListener("click", () => editState());
 toolbarSave.addEventListener("click", saveLocal);
 toolbarGetLocal.addEventListener("click", getLocal);
-toolbarGetFile.addEventListener("click", getFile);
+toolbarGetFile.addEventListener("change", getFile);
 
 cancelPopUp.addEventListener("click", () => form.hide());
 
@@ -141,12 +141,29 @@ function getLocal() {
   }
 
   books = JSON.parse(localStorage.getItem("books"));
+
   books.forEach((b) => {
     createBookCard(b);
     lastId++;
   });
 }
 
-function getFile(e) {
-  console.log(e);
+function getFile(event) {
+  if (books.length != 0) {
+    return;
+  }
+  let reader = new FileReader();
+
+  let file = event.target.files[0];
+
+  reader.onload = function (e) {
+    books = JSON.parse(e.target.result);
+
+    books.forEach((b) => {
+      createBookCard(b);
+      lastId++;
+    });
+  };
+
+  reader.readAsText(file);
 }
