@@ -9,6 +9,8 @@
   border-radius: 10px;
 
   background-color: #a39085;
+
+  user-select: none;
 }
 
 #tool-bar button,

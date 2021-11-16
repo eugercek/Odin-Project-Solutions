@@ -1,8 +1,6 @@
 import Form from "./Form.js";
 import Storage from "./Storage.js";
 
-const storage = new Storage(JSON.parse(localStorage.getItem("books")));
-
 const form = new Form(document.getElementById("add-form"), addBook);
 
 const toolbarAdd = document.getElementById("add-book");
@@ -68,6 +66,7 @@ function oneDeletion(book) {
   book.remove();
   const bookList = Array.from(document.querySelectorAll(`.book-card`));
   for (let b of bookList) {
+    b.style.cursor = "default";
     b.replaceWith(b.cloneNode(true));
   }
 }
@@ -76,6 +75,7 @@ function deleteState() {
   const bookList = Array.from(document.querySelectorAll(`.book-card`));
   for (let book of bookList) {
     book.addEventListener("click", () => oneDeletion(book));
+    book.style.cursor = "pointer";
   }
 }
 
