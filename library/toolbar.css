@@ -16,7 +16,6 @@
 #tool-bar button,
 #label-file {
   margin: 0px;
-  padding: px;
 
   font-size: 24px;
   font-weight: bold;
@@ -44,8 +43,11 @@
 }
 
 #label-file {
-  display: block;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pressed {
+  background-color: #bea788ad !important;
 }

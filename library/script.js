@@ -1,5 +1,4 @@
 import Form from "./Form.js";
-import Storage from "./Storage.js";
 
 const form = new Form(document.getElementById("add-form"), addBook);
 
@@ -14,12 +13,45 @@ const library = document.getElementById("library");
 
 const cancelPopUp = document.getElementById("cancel-add");
 
-toolbarAdd.addEventListener("click", () => form.show());
-toolbarDelete.addEventListener("click", () => deleteState());
-toolbarEdit.addEventListener("click", () => editState());
-toolbarSave.addEventListener("click", saveLocal);
-toolbarGetLocal.addEventListener("click", getLocal);
-toolbarGetFile.addEventListener("change", getFile);
+const toggleButtonColor = function () {
+  if (this.classList.contains("pressed")) {
+    this.classList.remove("pressed");
+  } else {
+    this.classList.add("pressed");
+  }
+};
+
+toolbarAdd.addEventListener("click", function () {
+  toggleButtonColor.apply(this);
+  form.show();
+});
+
+toolbarDelete.addEventListener("click", function () {
+  if (this.classList.contains("pressed")) {
+    toggleButtonColor.apply(this);
+  }
+  deleteState();
+});
+
+toolbarEdit.addEventListener("click", function () {
+  toggleButtonColor.apply(this);
+  editState();
+});
+
+toolbarSave.addEventListener("click", function () {
+  toggleButtonColor.apply(this);
+  saveLocal();
+});
+
+toolbarGetLocal.addEventListener("click", () => {
+  toggleButtonColor.apply(this);
+  getLocal();
+});
+
+toolbarGetFile.addEventListener("change", (e) => {
+  toggleButtonColor.apply(document.getElementById("label-file"));
+  getFile(e);
+});
 
 cancelPopUp.addEventListener("click", () => form.hide());
 
@@ -44,6 +76,7 @@ function addBook() {
   createBookCard(curBook);
 
   form.clearHide();
+  toggleButtonColor.apply(toolbarAdd);
 }
 
 function createBookCard(curBook) {
@@ -69,6 +102,7 @@ function oneDeletion(book) {
     b.style.cursor = "default";
     b.replaceWith(b.cloneNode(true));
   }
+  toggleButtonColor.apply(toolbarDelete);
 }
 
 function deleteState() {
@@ -95,6 +129,7 @@ function oneEditContent(book) {
   // form.removeEventListener("submit", oneEditContent);
   // form.addEventListener("submit", addBook);
 
+  toggleButtonColor.apply(toolbarAdd);
   form.clearHide();
 }
 
@@ -133,6 +168,7 @@ function editState() {
 
 function saveLocal() {
   localStorage.setItem("books", JSON.stringify(books));
+  toggleButtonColor.apply(toolbarSave);
 }
 
 function getLocal() {
@@ -146,6 +182,7 @@ function getLocal() {
     createBookCard(b);
     lastId++;
   });
+  toggleButtonColor.apply(toolbarGetLocal);
 }
 
 function getFile(event) {
@@ -166,4 +203,6 @@ function getFile(event) {
   };
 
   reader.readAsText(file);
+
+  // toggleButtonColor.apply(toolbarGetFile);
 }
