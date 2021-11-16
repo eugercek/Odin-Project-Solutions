@@ -1,4 +1,5 @@
 import Form from "./Form.js";
+import Library from "./Library.js";
 
 const form = new Form(document.getElementById("add-form"), addBook);
 
@@ -10,6 +11,7 @@ const toolbarGetLocal = document.getElementById("load-local");
 const toolbarGetFile = document.getElementById("load-file");
 
 const library = document.getElementById("library");
+const libraryObject = new Library(document.getElementById("library"));
 
 const cancelPopUp = document.getElementById("cancel-add");
 
@@ -61,21 +63,13 @@ let books = [];
 function addBook() {
   const { title, author, page, readStatus } = form.getValues();
 
-  const curBook = {
-    id: lastId,
-    title,
-    author,
-    page,
-    readStatus,
-  };
+  libraryObject.addBook({ title, author, page, readStatus });
 
-  books.push(curBook);
-
-  lastId++;
-
-  createBookCard(curBook);
+  // createBookCard(libraryObject.lastBook);
+  libraryObject.renderBooks();
 
   form.clearHide();
+
   toggleButtonColor.apply(toolbarAdd);
 }
 
