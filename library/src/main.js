@@ -8,16 +8,6 @@ const bookObject = new Book(); // Model
 
 const libraryObject = new Library("library", bookObject); // View Builder?
 
-const form = new Form(document.getElementById("add-form"), function addBook() {
-  const book = form.getValues();
-
-  bookObject.addBook(book);
-
-  libraryObject.createBookCard(bookObject.lastBook);
-
-  form.clearHide();
-}); // View
-
 const toolbarObject = new Toolbar(
   "#add-book", // add
   "#delete-book", // del
@@ -25,11 +15,37 @@ const toolbarObject = new Toolbar(
   "#save" // save
 );
 
-toolbarObject.addHandler("add", () => form.show());
-toolbarObject.addHandler("del", () => libraryObject.stateDeletion());
+const form = new Form(document.getElementById("add-form"), function addBook() {
+  const book = form.getValues();
+
+  bookObject.addBook(book);
+
+  libraryObject.createBookCard(bookObject.lastBook);
+
+  toolbarObject.off("add");
+  form.clearHide();
+}); // View
+
+toolbarObject.addHandler(
+  "add",
+  () => form.show(),
+  () => toolbarObject.on("add")
+);
+
+toolbarObject.addHandler(
+  "del",
+  () => libraryObject.stateDeletion(),
+  () => toolbarObject.on("del")
+);
+
 toolbarObject.addHandler(
   "save",
   () => localStorage.setItem("books", JSON.stringify(bookObject.books)),
   () => toolbarObject.on("save"),
   () => setTimeout(() => toolbarObject.off("save"), 300)
 );
+
+document.getElementById("cancel-add").addEventListener("click", () => {
+  toolbarObject.off("add");
+  form.hide();
+});
