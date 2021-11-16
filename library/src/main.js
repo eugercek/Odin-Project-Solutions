@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable func-names */
 /* eslint-disable import/extensions */
 import Form from "./Form.js";
 import Library from "./Library.js";
@@ -10,7 +8,7 @@ const bookObject = new Book(); // Model
 
 const libraryObject = new Library("library", bookObject); // View Builder?
 
-const form = new Form(document.getElementById("add-form"), function () {
+const form = new Form(document.getElementById("add-form"), function addBook() {
   const book = form.getValues();
 
   bookObject.addBook(book);
@@ -21,18 +19,17 @@ const form = new Form(document.getElementById("add-form"), function () {
 }); // View
 
 const toolbarObject = new Toolbar(
-  "#add-book",
-  "#delete-book",
-  "#edit-book",
-  "#save"
+  "#add-book", // add
+  "#delete-book", // del
+  "#edit-book", // edit
+  "#save" // save
 );
 
-toolbarObject.add.addEventListener("click", () => form.show());
-
-toolbarObject.del.addEventListener("click", () =>
-  libraryObject.stateDeletion()
-);
-
-toolbarObject.save.addEventListener("click", () =>
-  localStorage.setItem("books", JSON.stringify(bookObject.books))
+toolbarObject.addHandler("add", () => form.show());
+toolbarObject.addHandler("del", () => libraryObject.stateDeletion());
+toolbarObject.addHandler(
+  "save",
+  () => localStorage.setItem("books", JSON.stringify(bookObject.books)),
+  () => toolbarObject.on("save"),
+  () => setTimeout(() => toolbarObject.off("save"), 300)
 );

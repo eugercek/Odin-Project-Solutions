@@ -10,7 +10,7 @@ export default class Book {
   }
 
   get lastBook() {
-    return this.books[this.lastId - 1];
+    return this.books.at(-1);
   }
 
   removeBook(id) {

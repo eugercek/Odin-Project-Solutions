@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 export default class Library {
   constructor(rootId, books) {
     this.__id = rootId;
