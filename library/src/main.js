@@ -8,7 +8,7 @@ import Toolbar from "./Toolbar.js";
 
 const bookObject = new Book(); // Model
 
-const libraryObject = new Library("library"); // View Builder?
+const libraryObject = new Library("library", bookObject); // View Builder?
 
 const form = new Form(document.getElementById("add-form"), function () {
   const book = form.getValues();

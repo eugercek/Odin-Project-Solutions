@@ -1,7 +1,8 @@
 /* eslint-disable no-loop-func */
 export default class Library {
-  constructor(rootId) {
+  constructor(rootId, books) {
     this.__id = rootId;
+    this.books = books.books;
   }
 
   get root() {
@@ -30,6 +31,7 @@ export default class Library {
     book.remove();
 
     this.removeDeleteHandlers();
+    this.books.splice(id, 1);
     return id;
   }
 
