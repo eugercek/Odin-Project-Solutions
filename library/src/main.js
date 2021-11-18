@@ -68,6 +68,28 @@ toolbarObject.addHandler(
   () => setTimeout(() => toolbarObject.off("loadLocal"), 300)
 );
 
+toolbarObject.addHandler(
+  "loadFile",
+  (event) => {
+    const reader = new FileReader();
+
+    const file = event.target.files[0];
+
+    reader.onload = function (e) {
+      if (bookObject.size !== 0) {
+        return;
+      }
+      bookObject.loadBooks(JSON.parse(e.target.result));
+      bookObject.books.forEach((b) => libraryObject.createBookCard(b));
+    };
+
+    reader.readAsText(file);
+  },
+  () => toolbarObject.on("loadFile"),
+  () => setTimeout(() => toolbarObject.off("loadFile"), 300),
+  "change"
+);
+
 document.getElementById("cancel-add").addEventListener("click", () => {
   toolbarObject.off("add");
   form.hide();

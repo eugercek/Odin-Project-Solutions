@@ -19,15 +19,15 @@ export default class Toolbar {
     this.buttons = [this.add, this.del, this.edit, this.save];
   }
 
-  addHandler(button, fn, preHook, afterHook) {
+  addHandler(button, fn, preHook, afterHook, trigger = "click") {
     const curButton = this.dispatch[button];
-    curButton.addEventListener("click", () => {
+    curButton.addEventListener(trigger, (e) => {
       if (curButton.classList.contains("pressed")) {
         this.off(button);
         return;
       }
       if (preHook !== undefined) preHook();
-      fn();
+      fn(e);
       if (afterHook !== undefined) afterHook();
     });
   }
