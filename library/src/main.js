@@ -12,7 +12,9 @@ const toolbarObject = new Toolbar(
   "#add-book", // add
   "#delete-book", // del
   "#edit-book", // edit
-  "#save" // save
+  "#save", // save
+  "#load-local",
+  "#load-file"
 );
 
 const form = new Form(document.getElementById("add-form"), function addBook() {
@@ -49,6 +51,21 @@ toolbarObject.addHandler(
   "edit",
   () => libraryObject.stateEdit(() => toolbarObject.off("edit"), form),
   () => toolbarObject.on("edit")
+);
+
+toolbarObject.addHandler(
+  "loadLocal",
+  () => {
+    if (bookObject.size !== 0) {
+      return;
+    }
+
+    bookObject.loadBooks(JSON.parse(localStorage.getItem("books")));
+
+    bookObject.books.forEach((b) => libraryObject.createBookCard(b));
+  },
+  () => toolbarObject.on("loadLocal"),
+  () => setTimeout(() => toolbarObject.off("loadLocal"), 300)
 );
 
 document.getElementById("cancel-add").addEventListener("click", () => {

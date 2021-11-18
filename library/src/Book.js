@@ -28,4 +28,17 @@ export default class Book {
   ) {
     this.books[id] = { title, author, page, readStatus };
   }
+
+  get size() {
+    return this.books.length;
+  }
+
+  loadBooks(books) {
+    if (this.size !== 0) {
+      // eslint-disable-next-line no-console
+      console.error("Can't load into non empty library");
+      return;
+    }
+    this.books = books;
+  }
 }
