@@ -34,7 +34,7 @@ toolbarObject.addHandler(
 
 toolbarObject.addHandler(
   "del",
-  () => libraryObject.stateDeletion(),
+  () => libraryObject.stateDeletion(() => toolbarObject.off("del")),
   () => toolbarObject.on("del")
 );
 
@@ -44,6 +44,8 @@ toolbarObject.addHandler(
   () => toolbarObject.on("save"),
   () => setTimeout(() => toolbarObject.off("save"), 300)
 );
+
+toolbarObject.addHandler("edit");
 
 document.getElementById("cancel-add").addEventListener("click", () => {
   toolbarObject.off("add");

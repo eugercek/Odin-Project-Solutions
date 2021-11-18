@@ -2,6 +2,8 @@ export default class Library {
   constructor(rootId, books) {
     this.__id = rootId;
     this.books = books.books;
+
+    this.__deleteSelf = this.__deleteSelf.bind(this);
   }
 
   get root() {
@@ -25,30 +27,38 @@ export default class Library {
     this.root.appendChild(card);
   }
 
-  __deleteSelf(book) {
-    const { id } = book;
+  __deleteSelf(book, cb) {
+    const { id } = book.dataset;
     book.remove();
 
-    this.removeDeleteHandlers();
+    this.removeHandlers(this.__deleteSelf);
     this.books.splice(id, 1);
-    return id;
+    cb();
   }
 
-  setDeleteHandlers() {
+  setHandlers(main, cb) {
+    // this.rootArray.forEach((book) => {
+    //   book.addEventListener("click", () => {
+    //     main(book, cb);
+    //   });
+    // });
+
+    for (const ele of this.rootArray) {
+      ele.addEventListener("click", () => main(ele, cb));
+    }
+  }
+
+  removeHandlers(main) {
     this.rootArray.forEach((book) => {
-      book.addEventListener("click", () => this.__deleteSelf(book));
+      book.removeEventListener("click", () => main(book));
     });
   }
 
-  removeDeleteHandlers() {
-    this.rootArray.forEach((book) => {
-      book.removeEventListener("click", () => this.__deleteSelf(book));
-    });
+  stateDeletion(cb) {
+    this.setHandlers(this.__deleteSelf, cb);
   }
 
-  stateDeletion() {
-    this.setDeleteHandlers();
-  }
+  // stateEdit(cb) {}
 
   get rootArray() {
     return Array.from(this.root.children);

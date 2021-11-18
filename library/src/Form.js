@@ -10,6 +10,8 @@ export default class Form {
 
     this.submitFunction = submitFunction;
     this.form.addEventListener("submit", submitFunction);
+
+    // this.debugFill();
   }
 
   clear() {
@@ -58,5 +60,9 @@ export default class Form {
     this.form.removeEventListener("submit", this.submitFunction);
     this.form.addEventListener("submit", fn);
     this.submitFunction = fn;
+  }
+
+  debugFill() {
+    this.loadValues("A title", "a author", 123, "Read");
   }
 }

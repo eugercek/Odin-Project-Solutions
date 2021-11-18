@@ -11,6 +11,8 @@ export default class Toolbar {
       edit: this.edit,
       save: this.save,
     };
+
+    this.buttons = [this.add, this.del, this.edit, this.save];
   }
 
   addHandler(button, fn, preHook, afterHook) {
