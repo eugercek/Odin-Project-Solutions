@@ -45,7 +45,11 @@ toolbarObject.addHandler(
   () => setTimeout(() => toolbarObject.off("save"), 300)
 );
 
-toolbarObject.addHandler("edit");
+toolbarObject.addHandler(
+  "edit",
+  () => libraryObject.stateEdit(() => toolbarObject.off("edit"), form),
+  () => toolbarObject.on("edit")
+);
 
 document.getElementById("cancel-add").addEventListener("click", () => {
   toolbarObject.off("add");

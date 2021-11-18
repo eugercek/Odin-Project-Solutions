@@ -11,7 +11,9 @@ export default class Form {
     this.submitFunction = submitFunction;
     this.form.addEventListener("submit", submitFunction);
 
-    // this.debugFill();
+    this.functionStack = [submitFunction];
+
+    this.debugFill();
   }
 
   clear() {
@@ -40,16 +42,16 @@ export default class Form {
     this.__show();
   }
 
-  getValues() {
+  getValues = () => {
     return {
       title: this.title.value,
       author: this.author.value,
       page: this.page.value,
       readStatus: this.readStatus.value,
     };
-  }
+  };
 
-  loadValues(title, author, page, readStatus) {
+  loadValues({ title, author, page, readStatus }) {
     this.title.value = title;
     this.author.value = author;
     this.page.value = page;
@@ -57,12 +59,27 @@ export default class Form {
   }
 
   swapSubmitFunction(fn) {
+    this.functionStack.push(this.submitFunction);
+
     this.form.removeEventListener("submit", this.submitFunction);
     this.form.addEventListener("submit", fn);
+
     this.submitFunction = fn;
   }
 
+  backToOldSubmitFunction() {
+    this.form.removeEventListener("submit", this.submitFunction);
+    this.submitFunction = this.submitFunctionStack.pop();
+
+    this.form.addEventListener("click", this.submitFunction);
+  }
+
   debugFill() {
-    this.loadValues("A title", "a author", 123, "Read");
+    this.loadValues({
+      title: "A title",
+      author: "a author",
+      page: 123,
+      readStatus: "Read",
+    });
   }
 }
