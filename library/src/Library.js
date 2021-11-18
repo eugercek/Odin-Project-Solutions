@@ -37,12 +37,6 @@ export default class Library {
   }
 
   setHandlers(main, cb) {
-    // this.rootArray.forEach((book) => {
-    //   book.addEventListener("click", () => {
-    //     main(book, cb);
-    //   });
-    // });
-
     for (const ele of this.rootArray) {
       ele.addEventListener("click", () => main(ele, cb));
     }

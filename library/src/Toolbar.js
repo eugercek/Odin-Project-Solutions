@@ -16,7 +16,13 @@ export default class Toolbar {
   }
 
   addHandler(button, fn, preHook, afterHook) {
-    this.dispatch[button].addEventListener("click", () => {
+    const curButton = this.dispatch[button];
+    curButton.addEventListener("click", () => {
+      if (curButton.classList.contains("pressed")) {
+        this.off(button);
+        return;
+      }
+      console.log("i");
       if (preHook !== undefined) preHook();
       fn();
       if (afterHook !== undefined) afterHook();
