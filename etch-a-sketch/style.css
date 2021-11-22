@@ -1,8 +1,10 @@
-@import url(//db.onlinewebfonts.com/c/b65a50ad3e85fe80d05947b061f86445?family=MinuetW01-Regular);
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@font-face {
+  font-family: "MinuetW01-Regular";
+  src: url("./Minuet\ W01\ Regular.ttf");
+}
 
 :root {
-  --main-border-color: #d82435;
+  --main-border-color: #dc0028;
   --button-gold-color: #fdfc01;
 
   /* Pixel Values */
@@ -15,6 +17,7 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .panel {
@@ -22,7 +25,7 @@ body {
   flex-direction: column;
   gap: 1vh;
 
-  font-family: "Ubuntu", sans-serif;
+  font-family: sans-serif;
 
   margin-left: -10vw;
 }
@@ -34,7 +37,7 @@ body {
 
   background-color: var(--main-border-color);
 
-  padding: 0px 5vh;
+  padding: 0px 6vh;
   border-radius: 5%;
 
   margin-left: -20vw;
@@ -114,8 +117,8 @@ body {
 
 .left,
 .right {
-  width: 5vw;
-  height: 5vw;
+  width: 75px;
+  height: 75px;
   background-color: white;
   border-radius: 50%;
 }
