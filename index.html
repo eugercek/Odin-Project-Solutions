@@ -7,28 +7,55 @@
     <title>Finished Projects</title>
   </head>
   <body>
-    <ul>
-      <li>
-        <a href="./recipes/">Recipes</a>
-      </li>
-      <li>
-        <a href="./rock-paper-scissors/">Rock Paper Scissors</a>
-      </li>
-      <li>
-        <a href="./etch-a-sketch">Etch A Sketch</a>
-      </li>
-      <li>
-        <a href="./calculator">Calculator</a>
-      </li>
-      <li>
-        <a href="./library/">Library</a>
-      </li>
-      <li>
-        <a href="./tic-tac-toe/">Tic Tac Toe</a>
-      </li>
-      <li>
-        <a href="./restaurant/dist/">Restaurant</a>
-      </li>
-    </ul>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      main {
+        display: flex;
+        flex-wrap: wrap;
+
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+
+        gap: 1vh;
+      }
+      a {
+        width: 40vw;
+      }
+
+      img {
+        width: 40vw;
+        border-radius: 10px;
+      }
+    </style>
+    <main>
+      <a href="./recipes/">
+        <img src="./images/recipes.png" alt="Recipes" />
+      </a>
+      <a href="./rock-paper-scissors/">
+        <img
+          src="./images/rock-paper-scissors.png"
+          alt="Rock Paper Scissors>"
+        />
+      </a>
+      <a href="./etch-a-sketch">
+        <img src="./images/etch-a-sketch.png" alt="Etch A Sketch" />
+      </a>
+      <a href="./calculator">
+        <img src="./images/calculator.png" alt="Calculator" />
+      </a>
+      <a href="./library/">
+        <img src="./images/library.png" alt="Library" />
+      </a>
+      <a href="./tic-tac-toe/">
+        <img src="./images/tic-tac-toe.png" alt="Tic Tac Toe" />
+      </a>
+      <a href="./restaurant/dist/">
+        <img src="./images/restaurant.png" alt="Restaurant" />
+      </a>
+    </main>
   </body>
 </html>
