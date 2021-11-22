@@ -8,13 +8,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <main>
-      <div id="add-bar">
+      <div id="project-container">
+        <div id="add-project">+</div>
+        <div id="add-project-popup" style="visibility: hidden">
+          <form id="add-todo-form" autocomplete="off" onsubmit="return false">
+            <input class="input-title" type="text" required />
+            <button class="add-button" type="submit">Add</button>
+            <button class="cancel-button" type="reset">Cancel</button>
+          </form>
+        </div>
         <div id="project-list"></div>
       </div>
       <div id="todo-container">
-        <div id="add-todo"></div>
+        <div id="add-todo">+</div>
+        <div id="add-todo-popup" style="visibility: hidden">
+          <form id="add-todo-form" autocomplete="off" onsubmit="return false">
+            <input id="input-title" type="text" required />
+            <button id="add-button" type="submit">Add</button>
+            <button id="cancel-button" type="reset">Cancel</button>
+          </form>
+        </div>
         <div id="todo-list"></div>
       </div>
     </main>
