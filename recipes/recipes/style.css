@@ -1,0 +1,13 @@
+body {
+  font-size: 16px;
+  width: 100vw;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+main {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}

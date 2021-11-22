@@ -1,3 +1,12 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  height: 80vh;
+}
+
 a {
   color: greenyellow;
   text-decoration: none;
@@ -8,41 +17,43 @@ a:hover {
 }
 
 a:active {
-  color:white;
+  color: blue;
 }
 
-#main-list{
+#main-list {
   list-style-type: "cd ";
   padding: 10;
 }
 
-*{
+* {
   background-color: black;
   color: greenyellow;
   font-family: monospace;
 }
 
-p, li{
+p,
+li {
   color: white;
 }
 
-a.go-parent{
+a.go-parent {
   color: red;
   font-weight: bold;
 }
 
-a.go-parent:hover{
-  color:palevioletred;
+a.go-parent:hover {
+  color: palevioletred;
 }
 
-a.go-parent:active{
-  color:white;
+a.go-parent:active {
+  color: white;
 }
 img {
-  max-width: 30%;
+  max-width: 300px;
   height: auto;
+  border-radius: 6px;
 }
 
-ul{
+ul {
   list-style-type: "~ ";
 }
