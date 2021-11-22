@@ -10,6 +10,7 @@
   align-items: center;
   gap: 1em;
   padding: 2em;
+  min-width: 5em;
 
   width: min-content;
   min-height: min-content;
@@ -25,12 +26,12 @@
 }
 
 .book-card .title {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .book-card .author {
-  font-size: 24px;
+  font-size: 12px;
   font-style: italic;
 }
 

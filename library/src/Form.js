@@ -22,10 +22,12 @@ export default class Form {
 
   __show() {
     this.parent.style.display = "flex";
+    document.querySelector("main").classList.add("blur");
   }
 
   hide() {
     this.parent.style.display = "none";
+    document.querySelector("main").classList.remove("blur");
   }
 
   clearHide() {
