@@ -27,6 +27,8 @@ body {
   font-size: var(--font-size);
 
   background-color: #f3f2f8;
+
+  overflow: hidden;
 }
 
 .calculator {
