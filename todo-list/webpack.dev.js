@@ -10,4 +10,5 @@ module.exports = {
   devServer: {
     static: "./dist",
   },
+  devtool: "source-map",
 };
