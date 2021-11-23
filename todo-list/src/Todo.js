@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 export default function Todo(project, hasDone, title) {
   this.title = title;
   this.hasDone = hasDone;
@@ -11,6 +12,7 @@ export default function Todo(project, hasDone, title) {
 }
 
 Todo.prototype.idList = { today: 0 };
+
 Todo.prototype.toString = function () {
   return `${this.project}: ${this.title}`;
 };

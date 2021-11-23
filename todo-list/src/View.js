@@ -2,7 +2,8 @@ const View = (() => {
   const root = document.getElementById("todo-list");
   const addTodoElement = document.getElementById("add-todo");
   const addProjectElement = document.getElementById("add-project");
-  const todoForm = addTodoElement.querySelector(".form");
+  const todoForm = document.getElementById("add-todo-form");
+  const projectForm = document.getElementById("add-project-form");
 
   const createTodoCard = ({ title }) => {
     const ele = document.createElement("div");
@@ -13,19 +14,32 @@ const View = (() => {
   };
 
   const showTodoForm = () => {
-    const form = addTodoElement.querySelector(".form");
-    form.style.visibility = "visible";
+    todoForm.style.visibility = "visible";
   };
 
   const hideTodoForm = () => {
     todoForm.style.visibility = "hidden";
   };
 
+  const showProjectForm = () => {
+    projectForm.style.visibility = "visible";
+  };
+
+  const hideProjectForm = () => {
+    projectForm.style.visibility = "hidden";
+  };
+
   const insertTodoCard = (obj) => {
     root.appendChild(createTodoCard(obj));
   };
 
-  return { insertTodoCard, showTodoForm, hideTodoForm };
+  return {
+    insertTodoCard,
+    showTodoForm,
+    hideTodoForm,
+    showProjectForm,
+    hideProjectForm,
+  };
 })();
 
 export default View;

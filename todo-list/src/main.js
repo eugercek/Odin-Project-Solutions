@@ -7,3 +7,4 @@ const addProjectElement = document.getElementById("add-project");
 View.insertTodoCard(new Todo("today", true, "Meet with friend"));
 
 addTodoElement.addEventListener("click", View.showTodoForm);
+addProjectElement.addEventListener("click", View.showProjectForm);
