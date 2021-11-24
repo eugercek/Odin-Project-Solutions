@@ -1,0 +1,33 @@
+#quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e7eb;
+
+  padding-top: 10vh;
+  padding-bottom: 9vh;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 40vw;
+  align-items: center;
+}
+
+#quote article {
+  color: #1f2937;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 200;
+}
+
+#quote aside {
+  align-self: flex-end;
+
+  font-weight: bold;
+  font-size: 24px;
+  color: #1f2937;
+}

@@ -3,7 +3,8 @@
 @import "header.css";
 @import "main.css";
 @import "info.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap");
+@import "quote.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;700;800&display=swap");
 
 body {
   font-family: "Roboto", sans-serif;
