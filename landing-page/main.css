@@ -1,19 +1,18 @@
-main.c-cont {
+#hero.c-cont {
   background-color: #1f2937;
   gap: 72px;
   padding: 100px 0px;
 }
 
-.main-sign-container {
+.hero-sign-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   max-width: 30vw;
 }
 
-.main-sign-container h2 {
+.hero-sign-container h2 {
   font-size: 48px;
-  line-height: 1.2;
   font-weight: bold;
   margin: 0px;
   color: #f9faf8;
@@ -24,7 +23,7 @@ main.c-cont {
   color: #e5e7eb;
 }
 
-.main-sign-container button {
+.hero-sign-container button {
   background-color: #3882f6;
   color: white;
   font-weight: bold;
