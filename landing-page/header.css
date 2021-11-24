@@ -4,7 +4,7 @@ header {
 
 header nav {
   background-color: #1f2937;
-  padding: 8px 0px;
+  padding: 16px 0px;
 }
 
 .logo {
@@ -15,5 +15,5 @@ header nav {
 
 .header-link {
   font-size: 18px;
-  color: #efe7eb;
+  color: #e5e7eb;
 }
