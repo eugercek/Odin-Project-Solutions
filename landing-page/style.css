@@ -1,9 +1,11 @@
 @import "css-reset.css";
 @import "general.css";
 @import "header.css";
-@import "main.css";
+@import "hero.css";
 @import "info.css";
 @import "quote.css";
+@import "register.css";
+@import "footer.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;700;800&display=swap");
 
 body {
