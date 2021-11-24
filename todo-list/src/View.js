@@ -33,6 +33,19 @@ const View = (() => {
     root.appendChild(createTodoCard(obj));
   };
 
+  // Create View Event Handlers
+
+  addTodoElement.addEventListener("click", showTodoForm);
+  addProjectElement.addEventListener("click", showProjectForm);
+
+  document
+    .querySelector("#project-container .cancel-button")
+    .addEventListener("click", hideProjectForm);
+
+  document
+    .querySelector("#todo-container .cancel-button")
+    .addEventListener("click", hideTodoForm);
+
   return {
     insertTodoCard,
     showTodoForm,
