@@ -3,7 +3,9 @@
 // Tried to use some kind of Repository Pattern
 export default class Repository {
   constructor() {
-    this.projectArray = [];
+    this.projectArray = {
+      today: [],
+    };
   }
 
   getTodos(projectName) {

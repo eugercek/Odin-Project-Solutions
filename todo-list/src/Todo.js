@@ -1,5 +1,6 @@
 /* eslint-disable func-names */
-export default function Todo(project, hasDone, title) {
+// -------------Model---------------
+export default function Todo({ project, hasDone, title }) {
   this.title = title;
   this.hasDone = hasDone;
 

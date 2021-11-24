@@ -1,16 +1,56 @@
-const View = (() => {
+const ViewFactory = (saveProject, saveTodo) => {
+  // Elements
   const root = document.getElementById("todo-list");
-  const addTodoElement = document.getElementById("add-todo");
-  const addProjectElement = document.getElementById("add-project");
-  const todoForm = document.getElementById("add-todo-form");
-  const projectForm = document.getElementById("add-project-form");
 
-  const createTodoCard = ({ title }) => {
+  const addProjectElement = document.getElementById("add-project");
+  const addTodoElement = document.getElementById("add-todo");
+
+  const projectForm = document.getElementById("add-project-form");
+  const todoForm = document.getElementById("add-todo-form");
+
+  const cancelProjectPopup = document.querySelector(
+    "#project-container .cancel-button"
+  );
+  const cancelTodoPopup = document.querySelector(
+    "#todo-container .cancel-button"
+  );
+
+  const submitProjectPopup = document.querySelector(
+    "#project-container .add-button"
+  );
+  const submitTodoPopup = document.querySelector("#todo-container .add-button");
+
+  const inputProjectPopup = document.querySelector(
+    "#project-container .input-title"
+  );
+
+  const inputTodoPopup = document.querySelector("#todo-container .input-title");
+
+  // Internal state values
+  // Internal state value are not about data nor logic
+  // It's purely related to what user select that's why it's on View
+  const currentProject = "today";
+
+  const createProjectElement = (projectName) => {
+    const ele = document.createElement("div");
+    ele.classList.add("project-item");
+    ele.innerText = projectName;
+
+    // TODO This should be on DOMClass
+    // return ele
+
+    document.getElementById("project-list").appendChild(ele);
+  };
+
+  const createTodoElement = ({ title }, id) => {
     const ele = document.createElement("div");
     ele.classList.add("todo-item");
+    ele.setAttribute("data-id", id);
     ele.innerText = title;
 
-    return ele;
+    // TODO This should be on DOMClass
+    // return ele;
+    document.getElementById("todo-list").appendChild(ele);
   };
 
   const showTodoForm = () => {
@@ -30,7 +70,7 @@ const View = (() => {
   };
 
   const insertTodoCard = (obj) => {
-    root.appendChild(createTodoCard(obj));
+    root.appendChild(createTodoElement(obj));
   };
 
   // Create View Event Handlers
@@ -38,13 +78,25 @@ const View = (() => {
   addTodoElement.addEventListener("click", showTodoForm);
   addProjectElement.addEventListener("click", showProjectForm);
 
-  document
-    .querySelector("#project-container .cancel-button")
-    .addEventListener("click", hideProjectForm);
+  cancelProjectPopup.addEventListener("click", hideProjectForm);
 
-  document
-    .querySelector("#todo-container .cancel-button")
-    .addEventListener("click", hideTodoForm);
+  cancelTodoPopup.addEventListener("click", hideTodoForm);
+
+  submitProjectPopup.addEventListener("click", () => {
+    const projectName = inputProjectPopup.value;
+
+    saveProject(projectName);
+
+    createProjectElement(projectName);
+  });
+
+  submitTodoPopup.addEventListener("click", () => {
+    const obj = { title: inputTodoPopup.value };
+
+    const { id } = saveTodo(obj, currentProject);
+
+    createTodoElement(obj, id);
+  });
 
   return {
     insertTodoCard,
@@ -53,6 +105,6 @@ const View = (() => {
     showProjectForm,
     hideProjectForm,
   };
-})();
+};
 
-export default View;
+export default ViewFactory;
