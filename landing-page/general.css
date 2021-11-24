@@ -1,0 +1,12 @@
+.c-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70vw;
+}

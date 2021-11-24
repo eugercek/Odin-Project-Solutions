@@ -1,47 +1,46 @@
- .main{
-    display: flex;
-    background-color: #1F2937;
-    gap: 72px;
-    align-items: center;
-    justify-content: center;
-    padding-top: 48px;
+main.c-cont {
+  background-color: #1f2937;
+  gap: 72px;
+  padding: 100px 0px;
 }
 
-.main-sign-container{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 300px;
+.main-sign-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 30vw;
 }
 
-.main-text{
-    font-size: 48px;
-    margin: 0px;
-    color: #F9FaF8;
+.main-sign-container h2 {
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: bold;
+  margin: 0px;
+  color: #f9faf8;
 }
 
-.secondary-text{
-    font-size: 18px;
-    color: #E5E7EB;
+.secondary-text {
+  font-size: 18px;
+  color: #e5e7eb;
 }
 
-.main button{
-    background-color: #3882F6;
-    color: white;
-    font-weight: bold;
-    padding: 8px 24px;
-    border: 0px;
-    margin: 10px;
-    border-radius: 5px;
+.main-sign-container button {
+  background-color: #3882f6;
+  color: white;
+  font-weight: bold;
+  padding: 8px 24px;
+  border: 0px;
+  margin: 20px 0px;
+  border-radius: 5px;
 }
 
-.image-placeholder{
-    width: 375px;
-    height: 175px;
-    flex-shrink: 0px;
-    background-color: #6C747C;
-    color: #F8F8F8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.image-placeholder {
+  width: 450px;
+  height: 200px;
+  flex-shrink: 0px;
+  background-color: #6c747c;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
