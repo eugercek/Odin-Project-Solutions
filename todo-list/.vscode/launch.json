@@ -2,12 +2,35 @@
   // "version": "0.2.0",
   "configurations": [
     {
+      "trace": true,
       "type": "pwa-chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
+      "name": "Chrome localhost:8080",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}",
-      "sourceMaps": true
+      "sourceMaps": true,
+      "disableNetworkCache": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///./*": "${webRoot}/js-src/*",
+        "webpack:///../*": "${webRoot}/js-src/*",
+        "webpack:///*": "*"
+      }
+    },
+    {
+      "name": "Launch Microsoft Edge and open the Edge DevTools",
+      "request": "launch",
+      "type": "vscode-edge-devtools.debug",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "disableNetworkCache": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///./*": "${webRoot}/js-src/*",
+        "webpack:///../*": "${webRoot}/js-src/*",
+        "webpack:///*": "*"
+      }
     }
   ]
 }
