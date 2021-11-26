@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable class-methods-use-this */
-
 /* eslint-disable no-param-reassign */
+
 export default class Controller {
   constructor(model, view, UI) {
     this.model = model;
@@ -57,24 +57,12 @@ export default class Controller {
 
   handleProjectSubmit = () => {
     const obj = this.#getFormProjectValues();
-
-    this.model.createNewProject(obj.title);
-
-    this.view.createProjectElement(obj);
-    this.#hide(this.UI.todo.form.self);
+    this.newProject(obj);
   };
 
   handleTodoSubmit = () => {
-    const project = this.currentProject;
     const obj = this.#getFormTodoValues();
-
-    this.model.createNewTodo(obj, this.currentProject);
-
-    this.view.createTodoElement(
-      Object.assign(obj, { id: this.lastId++ }),
-      project
-    );
-    this.#hide(this.UI.todo.form.self);
+    this.newTodo(obj);
   };
 
   #getFormTodoValues() {
@@ -109,4 +97,36 @@ export default class Controller {
     // One time function
     this.createInitialState = () => {};
   };
+
+  newProject(obj) {
+    this.model.createNewProject(obj.title);
+    const ele = this.view.createProjectElement(obj);
+
+    ele.addEventListener("click", (e) => {
+      this.view.resetTodoContainer();
+      const todoList = this.model.getTodoList(e.target.innerText);
+      this.view.createTodoElements(todoList, obj.title);
+    });
+
+    this.#hide(this.UI.todo.form.self);
+  }
+
+  newTodo(obj) {
+    const project = this.currentProject;
+
+    this.model.createNewTodo(obj, this.currentProject);
+
+    const ele = this.view.createTodoElement(
+      Object.assign(obj, { id: this.lastId++ }),
+      project
+    );
+
+    ele.addEventListener("click", () => {
+      this.view.resetTodoContainer();
+      const todoList = this.model.getTodoList(project);
+      this.view.createTodoElements(todoList, project);
+    });
+
+    this.#hide(this.UI.todo.form.self);
+  }
 }

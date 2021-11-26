@@ -10,6 +10,9 @@ export default class DOMFactory {
     ele.innerText = title;
 
     this.projectContainer.appendChild(ele);
+
+    // Need to invert inversion of control to explicitly and easily set event handlers in Controller
+    return ele;
   };
 
   createTodoElement = ({ title, id }, project) => {
@@ -20,5 +23,12 @@ export default class DOMFactory {
     ele.innerText = title;
 
     this.todoContainer.appendChild(ele);
+
+    // Need to invert inversion of control to explicitly and easily set event handlers in Controller
+    return ele;
+  };
+
+  createTodoElements = (todoList, project) => {
+    todoList.forEach((t) => this.createTodoElement(t, project));
   };
 }

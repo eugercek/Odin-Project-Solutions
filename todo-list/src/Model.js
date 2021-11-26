@@ -9,7 +9,7 @@ export default class Model {
     console.log(this.projectArray);
   }
 
-  getTodos(projectName) {
+  getTodoList(projectName) {
     this.#needProject(projectName);
 
     return this.projectArray[projectName];
