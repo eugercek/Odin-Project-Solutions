@@ -7,10 +7,11 @@ export default class Controller {
     this.view = view;
     this.UI = UI;
 
+    this.lastId = 0;
+    this.currentProject = "default";
+
     this.setAddEvents();
     this.setFormEvents();
-
-    this.currentProject = "Today";
   }
 
   setFormEvents() {
@@ -59,7 +60,8 @@ export default class Controller {
   handleTodoSubmit = () => {
     const project = this.currentProject;
     const obj = this.#getFormTodoValues();
-    this.view.createTodoElement(obj, 0);
+    // eslint-disable-next-line no-plusplus
+    this.view.createTodoElement(obj, this.lastId++, project);
   };
 
   #getFormTodoValues() {
@@ -75,5 +77,19 @@ export default class Controller {
 
   #getFormProjectValues() {
     return { title: this.UI.project.form.value.title.value };
+  }
+
+  createInitialState() {
+    this.currentProject = "today";
+
+    this.view.createProjectElement({ title: this.currentProject });
+
+    this.view.createTodoElement(
+      { title: "Do todo-list site!" },
+      0,
+      this.currentProject
+    );
+
+    this.lastId = 1; // First todo was element is 0
   }
 }

@@ -1,6 +1,6 @@
-import DOMHandler from "./DOMHandler";
+import DOMFactory from "./DOMHandler";
 
-export default class View extends DOMHandler {
+export default class View extends DOMFactory {
   constructor() {
     super(
       document.getElementById("project-list"),

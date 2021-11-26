@@ -8,3 +8,5 @@ import View from "./View";
 // Via controller (In this code `main.js`)
 
 const app = new Controller(new Repository(), new View(), UI);
+
+app.createInitialState();
