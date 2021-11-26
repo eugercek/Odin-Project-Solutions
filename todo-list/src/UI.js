@@ -25,6 +25,9 @@ const UI = (() => {
       },
       value: {
         title: $("#todo-container .input-title"),
+        checked: $("#todo-container .input-checked"),
+        priority: $("#todo-container .input-priority"),
+        dueDate: $("#todo-container .input-date"),
       },
       self: $("#add-todo-popup"),
     },

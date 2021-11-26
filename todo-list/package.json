@@ -22,6 +22,7 @@
     "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
-    "date-fns": "^2.26.0"
+    "date-fns": "^2.26.0",
+    "dom-create-element-query-selector": "^1.0.5"
   }
 }
