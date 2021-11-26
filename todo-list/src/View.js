@@ -1,4 +1,4 @@
-import DOMFactory from "./DOMHandler";
+import DOMFactory from "./DomFactory";
 
 export default class View extends DOMFactory {
   constructor() {

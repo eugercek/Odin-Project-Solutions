@@ -12,7 +12,7 @@ export default class DOMFactory {
     this.projectContainer.appendChild(ele);
   };
 
-  createTodoElement = ({ title }, id, project) => {
+  createTodoElement = ({ title, id }, project) => {
     const ele = document.createElement("div");
     ele.classList.add("todo-item");
     ele.setAttribute("data-id", id);
