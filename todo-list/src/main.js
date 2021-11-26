@@ -7,6 +7,6 @@ import View from "./View";
 // Afterwards repository should reflect its new state to View
 // Via controller (In this code `main.js`)
 
-const app = new Controller(new Model("today"), new View(), UI);
+const app = new Controller(new Model(), new View(), UI);
 
 app.createInitialState();

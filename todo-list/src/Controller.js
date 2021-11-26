@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable class-methods-use-this */
 
 /* eslint-disable no-param-reassign */
@@ -8,7 +9,7 @@ export default class Controller {
     this.UI = UI;
 
     this.lastId = 0;
-    this.currentProject = model.defaultProject;
+    this.currentProject = "today";
 
     this.setAddButtonEvents();
     this.setFormEvents();
@@ -56,17 +57,23 @@ export default class Controller {
 
   handleProjectSubmit = () => {
     const obj = this.#getFormProjectValues();
-    this.view.createProjectElement(obj);
 
+    this.model.createNewProject(obj.title);
+
+    this.view.createProjectElement(obj);
     this.#hide(this.UI.todo.form.self);
   };
 
   handleTodoSubmit = () => {
     const project = this.currentProject;
     const obj = this.#getFormTodoValues();
-    // eslint-disable-next-line no-plusplus
-    this.view.createTodoElement(obj, this.lastId++, project);
 
+    this.model.createNewTodo(obj, this.currentProject);
+
+    this.view.createTodoElement(
+      Object.assign(obj, { id: this.lastId++ }),
+      project
+    );
     this.#hide(this.UI.todo.form.self);
   };
 
@@ -85,22 +92,20 @@ export default class Controller {
   }
 
   createInitialState = () => {
-    this.currentProject = "today";
+    const todo = { title: "Do todo-list site!", id: this.lastId };
+    const project = this.currentProject;
 
-    this.view.createProjectElement({ title: this.currentProject });
+    this.view.createProjectElement({ title: project });
+    this.model.createNewProject(project);
 
-    this.view.createTodoElement(
-      { title: "Do todo-list site!" },
-      0,
-      this.currentProject
-    );
+    this.view.createTodoElement(todo, project);
+    this.model.createNewTodo(todo);
 
-    this.lastId = 1; // First todo was element is 0
+    this.lastId++;
 
     [this.UI.todo.form.self, this.UI.project.form.self].forEach((e) =>
       this.#hide(e)
     );
-
     // One time function
     this.createInitialState = () => {};
   };
