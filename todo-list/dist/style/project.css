@@ -43,3 +43,13 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.project-item {
+  padding: 5px;
+  border-radius: 3px;
+  width: min-content;
+}
+
+.project-item.active {
+  background-color: #ece5f0;
+}

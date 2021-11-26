@@ -83,10 +83,12 @@ export default class Controller {
     this.newProject({ title: this.currentProject });
     this.newTodo({ title: "Do todo-list site!" });
 
-    // Hide elements
-    [this.UI.todo.form.self, this.UI.project.form.self].forEach((e) =>
-      this.#hide(e)
-    );
+    document.querySelector(".project-item").classList.add("active");
+
+    [
+      // Hide elements
+      (this.UI.todo.form.self, this.UI.project.form.self),
+    ].forEach((e) => this.#hide(e));
 
     // One time function
     this.createInitialState = () => {};
@@ -99,7 +101,12 @@ export default class Controller {
     ele.addEventListener("click", (e) => {
       this.view.resetTodoContainer();
       const todoList = this.model.getTodoList(e.target.innerText);
+
+      this.deActivateAllProjects();
+      e.target.classList.toggle("active");
+
       this.view.createTodoElements(todoList, obj.title);
+      this.currentProject = obj.title;
     });
 
     this.#hide(this.UI.project.form.self);
@@ -123,4 +130,10 @@ export default class Controller {
 
     this.#hide(this.UI.todo.form.self);
   }
+
+  deActivateAllProjects = () => {
+    Array.from(document.querySelectorAll(".project-item")).forEach((p) => {
+      p.classList.remove("active");
+    });
+  };
 }
