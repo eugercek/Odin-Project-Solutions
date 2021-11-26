@@ -9,7 +9,7 @@ const UI = (() => {
         submit: $("#project-container .add-button"),
         cancel: $("#project-container .cancel-button"),
       },
-      input: {
+      value: {
         title: $("#project-container .input-title"),
       },
     },
@@ -22,7 +22,7 @@ const UI = (() => {
         submit: $("#todo-container .add-button"),
         cancel: $("#todo-container .cancel-button"),
       },
-      input: {
+      value: {
         title: $("#todo-container .input-title"),
       },
     },

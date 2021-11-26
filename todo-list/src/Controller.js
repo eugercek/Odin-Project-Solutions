@@ -4,12 +4,15 @@ export default class Controller {
     this.view = view;
     this.UI = UI;
 
-    this.setFormActions();
+    this.setAddEvents();
+    this.setFormEvents();
+
+    console.log(this.getTodoValues());
   }
 
-  setFormActions() {
+  setFormEvents() {
     this.UI.project.form.action.submit.addEventListener("click", () =>
-      console.log("Project Submit")
+      console.log(this.getProjectValues())
     );
 
     this.UI.project.form.action.cancel.addEventListener("click", () =>
@@ -23,5 +26,19 @@ export default class Controller {
     this.UI.todo.form.action.cancel.addEventListener("click", () =>
       console.log("Todo Cancel")
     );
+  }
+
+  setAddEvents() {
+    this.UI.project.add.addEventListener("click", () => console.log("Add"));
+
+    this.UI.todo.add.addEventListener("click", () => console.log("Add"));
+  }
+
+  getProjectValues() {
+    return { title: this.UI.project.form.value.title.value };
+  }
+
+  getTodoValues() {
+    return { title: this.UI.todo.form.value.title.value };
   }
 }
