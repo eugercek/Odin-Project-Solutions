@@ -9,12 +9,12 @@ export default class Controller {
     this.setAddEvents();
     this.setFormEvents();
 
-    console.log(this.getTodoValues());
+    this.currentProject = "Today";
   }
 
   setFormEvents() {
     this.UI.project.form.action.submit.addEventListener("click", () =>
-      console.log(this.getProjectValues())
+      console.log(this.#getFormTodoValues())
     );
 
     this.UI.project.form.action.cancel.addEventListener("click", () =>
@@ -40,19 +40,32 @@ export default class Controller {
     });
   }
 
-  getProjectValues() {
-    return { title: this.UI.project.form.value.title.value };
-  }
-
-  getTodoValues() {
-    return { title: this.UI.todo.form.value.title.value };
-  }
-
   #hide(ele) {
     ele.style.visibility = "hidden";
   }
 
   #show(ele) {
     ele.style.visibility = "visible";
+  }
+
+  handleTodoSubmit() {
+    const project = this.currentProject;
+    const obj = getTodoValues();
+    // TODO
+  }
+
+  #getFormTodoValues() {
+    const obj = {};
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(this.UI.todo.form.value)) {
+      obj[key] = value.value;
+    }
+
+    return obj;
+  }
+
+  #getFormProjectValues() {
+    return { title: this.UI.project.form.value.title.value };
   }
 }
