@@ -5,13 +5,34 @@
   border-radius: 6px;
 
   padding: 10px;
+  min-height: 50px;
   height: min-content;
+
+  min-width: 300px;
 }
 
 .add-project {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+
   background-color: inherit;
   border: 1px solid;
+}
+
+.add-project {
+  background-color: var(--main-color);
+  color: var(--second-color);
+
+  font-weight: bold;
+  padding: 4px 24px;
+
+  border: 0px;
+  border-radius: 5px;
+}
+
+#add-project-popup {
+  align-self: flex-start;
+  margin: 10px 0;
 }

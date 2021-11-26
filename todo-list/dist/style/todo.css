@@ -8,29 +8,33 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
 
-  max-height: 80vh;
+  min-height: 50px;
+  height: min-content;
+
+  /* TODO */
+  /* max-height: 80vh;
+  overflow-y: scroll; */
 }
 
 .add-todo {
   align-self: flex-start;
+  background-color: var(--main-color);
+  color: var(--second-color);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: inherit;
-  border: 1px solid;
+  font-weight: bold;
+  padding: 4px 24px;
+
+  border: 0px;
+  border-radius: 5px;
 }
 
 #todo-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 50px;
-
-  overflow-y: scroll;
+  gap: 10px;
 }
 
 .todo-item {
@@ -41,4 +45,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 3px 6px;
+}
+
+#add-todo-popup {
+  align-self: flex-start;
+
+  margin: 10px 0;
 }

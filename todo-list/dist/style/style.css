@@ -2,13 +2,19 @@
 @import "project.css";
 @import "todo.css";
 
+:root {
+  --main-color: black;
+  --second-color: white;
+}
+
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-star;
   height: 100vh;
 
   padding-bottom: 10vh;
+  padding-top: 10vh;
 }
 
 main {
@@ -16,5 +22,5 @@ main {
   gap: 50px;
   grid-template-columns: repeat(4, 1fr);
 
-  max-height: 60vh;
+  max-height: 90vh;
 }

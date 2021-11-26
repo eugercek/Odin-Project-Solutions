@@ -31,6 +31,22 @@ const ViewFactory = (saveProject, saveTodo) => {
   // It's purely related to what user select that's why it's on View
   const currentProject = "today";
 
+  const showTodoForm = () => {
+    todoForm.style.display = "flex";
+  };
+
+  const hideTodoForm = () => {
+    todoForm.style.display = "none";
+  };
+
+  const showProjectForm = () => {
+    projectForm.style.display = "flex";
+  };
+
+  const hideProjectForm = () => {
+    projectForm.style.display = "none";
+  };
+
   const createProjectElement = (projectName) => {
     const ele = document.createElement("div");
     ele.classList.add("project-item");
@@ -38,6 +54,10 @@ const ViewFactory = (saveProject, saveTodo) => {
 
     // TODO This should be on DOMClass
     // return ele
+
+    hideProjectForm();
+
+    projectForm.reset();
 
     document.getElementById("project-list").appendChild(ele);
   };
@@ -50,23 +70,12 @@ const ViewFactory = (saveProject, saveTodo) => {
 
     // TODO This should be on DOMClass
     // return ele;
+
+    hideTodoForm();
+
+    todoForm.reset();
+
     document.getElementById("todo-list").appendChild(ele);
-  };
-
-  const showTodoForm = () => {
-    todoForm.style.visibility = "visible";
-  };
-
-  const hideTodoForm = () => {
-    todoForm.style.visibility = "hidden";
-  };
-
-  const showProjectForm = () => {
-    projectForm.style.visibility = "visible";
-  };
-
-  const hideProjectForm = () => {
-    projectForm.style.visibility = "hidden";
   };
 
   const insertTodoCard = (obj) => {

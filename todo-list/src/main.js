@@ -20,3 +20,7 @@ const View = ViewFactory(
     return Object.assign(todo, { id: index });
   }
 );
+
+Array.from(document.querySelectorAll("form")).forEach((e) => {
+  e.style.display = "none";
+});
