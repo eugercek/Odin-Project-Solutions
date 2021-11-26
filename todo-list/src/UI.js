@@ -6,7 +6,7 @@ const UI = (() => {
     add: $(".add-project"),
     form: {
       action: {
-        add: $("#project-container .add-button"),
+        submit: $("#project-container .add-button"),
         cancel: $("#project-container .cancel-button"),
       },
       input: {
@@ -19,7 +19,7 @@ const UI = (() => {
     add: $(".add-todo"),
     form: {
       action: {
-        add: $("#todo-container .add-button"),
+        submit: $("#todo-container .add-button"),
         cancel: $("#todo-container .cancel-button"),
       },
       input: {
