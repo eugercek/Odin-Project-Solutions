@@ -8,7 +8,7 @@ export default class Controller {
     this.UI = UI;
 
     this.lastId = 0;
-    this.currentProject = "default";
+    this.currentProject = model.defaultProject;
 
     this.setAddButtonEvents();
     this.setFormEvents();
@@ -36,7 +36,7 @@ export default class Controller {
     );
   }
 
-  setAddEvents() {
+  setAddButtonEvents() {
     this.UI.project.add.addEventListener("click", () => {
       this.#show(this.UI.project.form.self);
     });
@@ -47,16 +47,18 @@ export default class Controller {
   }
 
   #hide(ele) {
-    ele.style.visibility = "hidden";
+    ele.style.display = "none";
   }
 
   #show(ele) {
-    ele.style.visibility = "visible";
+    ele.style.display = "flex";
   }
 
   handleProjectSubmit = () => {
     const obj = this.#getFormProjectValues();
     this.view.createProjectElement(obj);
+
+    this.#hide(this.UI.todo.form.self);
   };
 
   handleTodoSubmit = () => {
@@ -64,6 +66,8 @@ export default class Controller {
     const obj = this.#getFormTodoValues();
     // eslint-disable-next-line no-plusplus
     this.view.createTodoElement(obj, this.lastId++, project);
+
+    this.#hide(this.UI.todo.form.self);
   };
 
   #getFormTodoValues() {
@@ -73,7 +77,6 @@ export default class Controller {
     for (const [key, value] of Object.entries(this.UI.todo.form.value)) {
       obj[key] = value.value;
     }
-
     return obj;
   }
 
@@ -81,7 +84,7 @@ export default class Controller {
     return { title: this.UI.project.form.value.title.value };
   }
 
-  createInitialState() {
+  createInitialState = () => {
     this.currentProject = "today";
 
     this.view.createProjectElement({ title: this.currentProject });
@@ -93,5 +96,12 @@ export default class Controller {
     );
 
     this.lastId = 1; // First todo was element is 0
-  }
+
+    [this.UI.todo.form.self, this.UI.project.form.self].forEach((e) =>
+      this.#hide(e)
+    );
+
+    // One time function
+    this.createInitialState = () => {};
+  };
 }

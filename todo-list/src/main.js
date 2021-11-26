@@ -1,4 +1,4 @@
-import Repository from "./Repository";
+import Model from "./Model";
 import UI from "./UI";
 import Controller from "./Controller";
 import View from "./View";
@@ -7,6 +7,6 @@ import View from "./View";
 // Afterwards repository should reflect its new state to View
 // Via controller (In this code `main.js`)
 
-const app = new Controller(new Repository(), new View(), UI);
+const app = new Controller(new Model("today"), new View(), UI);
 
 app.createInitialState();
