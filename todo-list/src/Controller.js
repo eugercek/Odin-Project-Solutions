@@ -10,8 +10,10 @@ export default class Controller {
     this.lastId = 0;
     this.currentProject = "default";
 
-    this.setAddEvents();
+    this.setAddButtonEvents();
     this.setFormEvents();
+
+    this.createInitialState();
   }
 
   setFormEvents() {
