@@ -5,10 +5,9 @@
   border-radius: 6px;
 
   padding: 10px;
-  min-height: 50px;
-  height: min-content;
-
+  min-height: 60px;
   min-width: 300px;
+  height: min-content;
 }
 
 .add-project {
@@ -37,4 +36,10 @@
 #add-project-popup {
   align-self: flex-start;
   margin: 10px 0;
+}
+
+#project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

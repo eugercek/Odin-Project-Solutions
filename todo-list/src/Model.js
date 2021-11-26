@@ -5,8 +5,6 @@ export default class Model {
     this.projectArray = {
       [this.defaultProject]: [],
     };
-
-    console.log(this.projectArray);
   }
 
   getTodoList(projectName) {

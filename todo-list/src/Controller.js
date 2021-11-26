@@ -80,20 +80,14 @@ export default class Controller {
   }
 
   createInitialState = () => {
-    const todo = { title: "Do todo-list site!", id: this.lastId };
-    const project = this.currentProject;
+    this.newProject({ title: this.currentProject });
+    this.newTodo({ title: "Do todo-list site!" });
 
-    this.view.createProjectElement({ title: project });
-    this.model.createNewProject(project);
-
-    this.view.createTodoElement(todo, project);
-    this.model.createNewTodo(todo);
-
-    this.lastId++;
-
+    // Hide elements
     [this.UI.todo.form.self, this.UI.project.form.self].forEach((e) =>
       this.#hide(e)
     );
+
     // One time function
     this.createInitialState = () => {};
   };
@@ -108,7 +102,7 @@ export default class Controller {
       this.view.createTodoElements(todoList, obj.title);
     });
 
-    this.#hide(this.UI.todo.form.self);
+    this.#hide(this.UI.project.form.self);
   }
 
   newTodo(obj) {
