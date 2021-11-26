@@ -1,0 +1,17 @@
+#project-container {
+  grid-column: span 1;
+
+  border: 1px solid black;
+  border-radius: 6px;
+
+  padding: 10px;
+  height: min-content;
+}
+
+.add-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  border: 1px solid;
+}

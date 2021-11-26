@@ -2,8 +2,8 @@ const ViewFactory = (saveProject, saveTodo) => {
   // Elements
   const root = document.getElementById("todo-list");
 
-  const addProjectElement = document.getElementById("add-project");
-  const addTodoElement = document.getElementById("add-todo");
+  const addProjectElement = document.querySelector(".add-project");
+  const addTodoElement = document.querySelector(".add-todo");
 
   const projectForm = document.getElementById("add-project-form");
   const todoForm = document.getElementById("add-todo-form");

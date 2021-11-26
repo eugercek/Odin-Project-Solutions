@@ -1,0 +1,44 @@
+#todo-container {
+  grid-column: span 3;
+
+  border: 1px solid black;
+  border-radius: 6px;
+
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-height: 80vh;
+}
+
+.add-todo {
+  align-self: flex-start;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  border: 1px solid;
+}
+
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  overflow-y: scroll;
+}
+
+.todo-item {
+  border: 1px solid black;
+  border-radius: 6px;
+  min-width: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

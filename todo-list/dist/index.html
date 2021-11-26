@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
     <script src="main.js" defer></script>
     <main>
       <div id="project-container">
-        <div id="add-project">+</div>
+        <button class="add-project">Add Project</button>
         <div id="add-project-popup" style="visibility: hidden">
           <form
             id="add-project-form"
@@ -26,7 +26,7 @@
         <div id="project-list"></div>
       </div>
       <div id="todo-container">
-        <div id="add-todo">+</div>
+        <button class="add-todo">Add Todo</button>
         <div id="add-todo-popup" style="visibility: hidden">
           <form id="add-todo-form" autocomplete="off" onsubmit="return false">
             <input class="input-title" type="text" required />
