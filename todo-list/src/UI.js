@@ -12,6 +12,7 @@ const UI = (() => {
       value: {
         title: $("#project-container .input-title"),
       },
+      self: $("#add-project-popup"),
     },
   };
 
@@ -25,6 +26,7 @@ const UI = (() => {
       value: {
         title: $("#todo-container .input-title"),
       },
+      self: $("#add-todo-popup"),
     },
   };
 

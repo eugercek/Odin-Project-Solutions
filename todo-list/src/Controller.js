@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-param-reassign */
 export default class Controller {
   constructor(model, view, UI) {
     this.model = model;
@@ -16,7 +18,7 @@ export default class Controller {
     );
 
     this.UI.project.form.action.cancel.addEventListener("click", () =>
-      console.log("Project Cancel")
+      this.#hide(this.UI.project.form.self)
     );
 
     this.UI.todo.form.action.submit.addEventListener("click", () =>
@@ -24,14 +26,18 @@ export default class Controller {
     );
 
     this.UI.todo.form.action.cancel.addEventListener("click", () =>
-      console.log("Todo Cancel")
+      this.#hide(this.UI.todo.form.self)
     );
   }
 
   setAddEvents() {
-    this.UI.project.add.addEventListener("click", () => console.log("Add"));
+    this.UI.project.add.addEventListener("click", () => {
+      this.#show(this.UI.project.form.self);
+    });
 
-    this.UI.todo.add.addEventListener("click", () => console.log("Add"));
+    this.UI.todo.add.addEventListener("click", () => {
+      this.#show(this.UI.todo.form.self);
+    });
   }
 
   getProjectValues() {
@@ -40,5 +46,13 @@ export default class Controller {
 
   getTodoValues() {
     return { title: this.UI.todo.form.value.title.value };
+  }
+
+  #hide(ele) {
+    ele.style.visibility = "hidden";
+  }
+
+  #show(ele) {
+    ele.style.visibility = "visible";
   }
 }
