@@ -136,7 +136,10 @@ export default class Controller {
     );
 
     ele.querySelector(".delete-button").addEventListener("click", () => {
-      document.querySelector(`.todo-item[data-id="${objectId}"`).remove();
+      // Model
+      this.model.removeTodo(objectId, project);
+      // View
+      this.view.removeTodoItem(objectId);
     });
 
     this.lastId += 1;

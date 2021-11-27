@@ -14,4 +14,9 @@ export default class View extends DOMFactory {
   resetTodoContainer() {
     this.todoContainer.innerHTML = "";
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  removeTodoItem(id) {
+    document.querySelector(`.todo-item[data-id="${id}"`).remove();
+  }
 }

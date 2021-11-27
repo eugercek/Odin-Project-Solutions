@@ -30,4 +30,19 @@ export default class Model {
       throw Error(`There is no project named ${projectName}`);
     }
   }
+
+  #needId(id, projectName) {
+    // Liked below
+    if (this.projectArray[projectName].every((t) => t.id !== id)) {
+      throw Error(`There is no todo that has id:${id} in ${projectName}`);
+    }
+  }
+
+  removeTodo(id, projectName) {
+    this.#needProject(projectName);
+    this.#needId(id, projectName);
+
+    // Liked below too
+    this.projectArray[projectName].filter((t) => t.id === id);
+  }
 }
