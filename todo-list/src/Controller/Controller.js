@@ -74,7 +74,11 @@ export default class Controller {
 
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(this.UI.todo.form.value)) {
-      obj[key] = value.value;
+      if (key === "checked") {
+        obj[key] = value.checked;
+      } else {
+        obj[key] = value.value;
+      }
     }
     return obj;
   }
@@ -132,9 +136,9 @@ export default class Controller {
     );
 
     ele.addEventListener("click", () => {
-      this.view.resetTodoContainer();
-      const todoList = this.model.getTodoList(project);
-      this.view.createTodoElements(todoList, project);
+      // this.view.resetTodoContainer();
+      // const todoList = this.model.getTodoList(project);
+      // this.view.createTodoElements(todoList, project);
     });
 
     this.#hide(this.UI.todo.form.self);

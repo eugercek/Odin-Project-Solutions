@@ -81,6 +81,6 @@
   content: "🔴";
 }
 
-.false.checked ~ .title {
+.true.checked ~ .title {
   text-decoration: line-through;
 }
