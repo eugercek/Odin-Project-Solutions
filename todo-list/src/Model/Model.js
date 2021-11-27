@@ -45,4 +45,13 @@ export default class Model {
     // Liked below too
     this.projectArray[projectName].filter((t) => t.id === id);
   }
+
+  editTodo(id, projectName, obj) {
+    this.#needProject(projectName);
+    this.#needId(id, projectName);
+
+    this.projectArray[projectName] = this.projectArray[projectName].map((t) =>
+      t.id === id ? obj : t
+    );
+  }
 }

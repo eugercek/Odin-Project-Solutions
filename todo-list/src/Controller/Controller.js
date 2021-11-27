@@ -143,6 +143,19 @@ export default class Controller {
       this.view.removeTodoItem(objectId);
     });
 
+    ele.querySelector(".edit-button").addEventListener("click", () => {
+      const editedObject = {
+        checked: false,
+        priority: "low",
+        title: "Changed",
+        dueDate: "no",
+      };
+      // Model
+      this.model.editTodo(objectId, project, editedObject);
+      // // View
+      this.view.editTodoItem(objectId, editedObject);
+    });
+
     this.lastId += 1;
 
     this.#hide(this.UI.todo.form.self);

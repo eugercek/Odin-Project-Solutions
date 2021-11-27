@@ -19,4 +19,10 @@ export default class View extends DOMFactory {
   removeTodoItem(id) {
     document.querySelector(`.todo-item[data-id="${id}"`).remove();
   }
+
+  editTodoItem(id, obj) {
+    document
+      .querySelector(`.todo-item[data-id="${id}"`)
+      .replaceWith(this.createTodoElement(obj, true));
+  }
 }

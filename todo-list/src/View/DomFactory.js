@@ -6,18 +6,24 @@ export default class DOMFactory {
     this.todoContainer = todoContainer;
   }
 
-  createProjectElement = ({ title }) => {
+  createProjectElement = ({ title }, append = true) => {
     const ele = document.createElement("div");
     ele.classList.add("project-item");
     ele.innerText = title;
 
-    this.projectContainer.appendChild(ele);
+    if (append) {
+      this.projectContainer.appendChild(ele);
+    }
 
     // Need to invert inversion of control to explicitly and easily set event handlers in Controller
     return ele;
   };
 
-  createTodoElement = ({ checked, priority, title, dueDate, id }, project) => {
+  createTodoElement = (
+    { checked, priority, title, dueDate, id },
+    project,
+    append = true
+  ) => {
     const ele = document.createElement("div");
     ele.classList.add("todo-item");
     ele.setAttribute("data-id", id);
@@ -36,7 +42,9 @@ export default class DOMFactory {
     ele.appendChild(removeButton);
     ele.appendChild(editButton);
 
-    this.todoContainer.appendChild(ele);
+    if (append) {
+      this.todoContainer.appendChild(ele);
+    }
 
     // Need to invert inversion of control to explicitly and easily set event handlers in Controller
     return ele;
