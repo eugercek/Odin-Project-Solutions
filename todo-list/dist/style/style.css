@@ -10,7 +10,6 @@
 body {
   display: flex;
   justify-content: center;
-  align-items: flex-star;
   height: 100vh;
 
   padding-bottom: 10vh;

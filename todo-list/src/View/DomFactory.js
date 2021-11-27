@@ -23,12 +23,10 @@ export default class DOMFactory {
     ele.setAttribute("data-id", id);
     ele.setAttribute("data-project", project);
 
-    const dateText = `${dueDate.getDate()}/${dueDate.getMonth()}/${dueDate.getYear()}`;
-
-    ele.appendChild(createElement(`${priority} .priority`));
-    ele.appendChild(createElement(`${checked} .checked`));
-    ele.appendChild(createElement(`${title} .title`, title));
-    ele.appendChild(createElement(`${dueDate} .dueDate`, dateText));
+    ele.appendChild(createElement(`div.priority.${priority}`));
+    ele.appendChild(createElement(`div.${checked} .checked`));
+    ele.appendChild(createElement(`div.${title} .title`, title));
+    ele.appendChild(createElement(`.dueDate`, dueDate));
 
     this.todoContainer.appendChild(ele);
 

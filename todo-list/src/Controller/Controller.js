@@ -18,19 +18,23 @@ export default class Controller {
   }
 
   setFormEvents() {
-    this.UI.project.form.action.submit.addEventListener(
-      "click",
-      this.handleProjectSubmit
-    );
+    // Very good tip!
+    // Don't handle events from child elements of form
+    // Events propagates, handling submit event from parent is better
+    // Also with this approach you can use preventDefault easily
+    this.UI.project.form.self.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.handleProjectSubmit();
+    });
 
     this.UI.project.form.action.cancel.addEventListener("click", () =>
       this.#hide(this.UI.project.form.self)
     );
 
-    this.UI.todo.form.action.submit.addEventListener(
-      "click",
-      this.handleTodoSubmit
-    );
+    this.UI.todo.form.self.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.handleTodoSubmit();
+    });
 
     this.UI.todo.form.action.cancel.addEventListener("click", () =>
       this.#hide(this.UI.todo.form.self)

@@ -47,6 +47,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 
   padding: 3px 6px;
 }
@@ -55,4 +56,11 @@
   align-self: flex-start;
 
   margin: 10px 0;
+}
+
+.priority {
+  display: block;
+  width: 10px;
+  height: 10px;
+  color: black;
 }
