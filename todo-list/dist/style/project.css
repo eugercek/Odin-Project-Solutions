@@ -53,3 +53,15 @@
 .project-item.active {
   background-color: #ece5f0;
 }
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.action {
+  display: flex;
+  justify-tracks: center;
+  gap: 10px;
+}

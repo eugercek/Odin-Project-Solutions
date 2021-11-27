@@ -25,16 +25,20 @@
         <button class="add-todo">Add Todo</button>
         <div id="add-todo-popup">
           <form id="add-todo-form" autocomplete="off">
-            <input type="checkbox" class="input-checked" />
-            <select class="input-priority">
-              <option value="low">⚪️</option>
-              <option value="mid">🔵</option>
-              <option value="high">🔴</option>
-            </select>
-            <input type="date" class="input-date" />
-            <input class="input-title" type="text" required />
-            <button class="add-button" type="submit">Add</button>
-            <button class="cancel-button" type="reset">Cancel</button>
+            <div class="value">
+              <input type="checkbox" class="input-checked" />
+              <select class="input-priority">
+                <option value="low">⚪️</option>
+                <option value="mid">🔵</option>
+                <option value="high">🔴</option>
+              </select>
+              <input class="input-title" type="text" required />
+              <input type="date" class="input-date" />
+            </div>
+            <div class="action">
+              <button class="add-button" type="submit">Add</button>
+              <button class="cancel-button" type="reset">Cancel</button>
+            </div>
           </form>
         </div>
         <div id="todo-list"></div>

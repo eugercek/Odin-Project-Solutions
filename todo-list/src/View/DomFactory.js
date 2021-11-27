@@ -25,7 +25,7 @@ export default class DOMFactory {
 
     ele.appendChild(createElement(`div.priority.${priority}`));
     ele.appendChild(createElement(`div.${checked} .checked`));
-    ele.appendChild(createElement(`div.${title} .title`, title));
+    ele.appendChild(createElement(`.title`, title));
     ele.appendChild(createElement(`.dueDate`, dueDate));
 
     this.todoContainer.appendChild(ele);

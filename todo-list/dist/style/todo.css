@@ -42,14 +42,14 @@
 .todo-item {
   border: 1px solid black;
   border-radius: 6px;
-  min-width: 100px;
+  min-width: 200px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 
-  padding: 3px 6px;
+  padding: 6px 12px;
 }
 
 #add-todo-popup {
@@ -58,9 +58,29 @@
   margin: 10px 0;
 }
 
+#add-todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .priority {
-  display: block;
-  width: 10px;
-  height: 10px;
-  color: black;
+  display: inline;
+  width: 1em;
+}
+
+.priority.low::before {
+  content: "⚪️";
+}
+
+.priority.mid::before {
+  content: "🔵️";
+}
+
+.priority.high::before {
+  content: "🔴";
+}
+
+.false.checked ~ .title {
+  text-decoration: line-through;
 }
