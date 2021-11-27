@@ -87,12 +87,13 @@ export default class Controller {
   }
 
   createInitialState = () => {
+    const today = new Date();
     this.newProject({ title: this.currentProject });
     this.newTodo({
       checked: false,
       priority: "high",
       title: "Do todo-list site!",
-      dueDate: new Date(),
+      dueDate: `${today.getFullYear()}/${today.getMonth()}/${today.getDate()}`,
     });
 
     document.querySelector(".project-item").classList.add("active");
