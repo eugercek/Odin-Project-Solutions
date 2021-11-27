@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
 
@@ -129,17 +128,18 @@ export default class Controller {
     const project = this.currentProject;
 
     this.model.createNewTodo(obj, this.currentProject);
+    const objectId = this.lastId;
 
     const ele = this.view.createTodoElement(
-      Object.assign(obj, { id: this.lastId++ }),
+      Object.assign(obj, { id: objectId }),
       project
     );
 
-    ele.addEventListener("click", () => {
-      // this.view.resetTodoContainer();
-      // const todoList = this.model.getTodoList(project);
-      // this.view.createTodoElements(todoList, project);
+    ele.querySelector(".delete-button").addEventListener("click", () => {
+      document.querySelector(`.todo-item[data-id="${objectId}"`).remove();
     });
+
+    this.lastId += 1;
 
     this.#hide(this.UI.todo.form.self);
   }

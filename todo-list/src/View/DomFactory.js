@@ -28,6 +28,14 @@ export default class DOMFactory {
     ele.appendChild(createElement(`.title`, title));
     ele.appendChild(createElement(`.dueDate`, dueDate));
 
+    const removeButton = createElement("div.delete-button");
+    removeButton.innerText = "−";
+    const editButton = createElement("div.edit-button");
+    editButton.innerText = "✐";
+
+    ele.appendChild(removeButton);
+    ele.appendChild(editButton);
+
     this.todoContainer.appendChild(ele);
 
     // Need to invert inversion of control to explicitly and easily set event handlers in Controller
