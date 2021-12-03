@@ -1,4 +1,22 @@
+@import "./reset.css";
+
 body {
-  background-color: royalblue;
-  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20vh;
+
+  padding: 5vh;
+}
+
+.card {
+  width: 250px;
+  background: darkcyan;
+  height: 250px;
+  border-radius: 12px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
