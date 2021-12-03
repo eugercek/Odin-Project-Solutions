@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  opacity: 0.8;
 }
 
 .type {
@@ -42,7 +43,19 @@ form {
   gap: 10px;
 }
 
-input[type="submit"] {
+input,
+button {
   border: 0px;
   border-radius: 6px;
+  background-color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+input:focus,
+button:focus {
+  outline: 0px;
 }
