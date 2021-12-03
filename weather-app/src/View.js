@@ -1,16 +1,31 @@
-import createElement from "dom-create-element-query-selector";
+import createElement from "./util";
 
 export default class View {
-  constructor(root) {
-    this.root = root;
+  /**
+   * @param {string} selector
+   */
+  constructor(selector) {
+    this.root = document.querySelector(selector);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   createCard({ type, city, degree }) {
-    const ele = createElement(
-      div.weather - card,
-      createElement(div.city, city),
-      createElement(div.degree, degree),
-      createElement(div.type, type)
+    const card = createElement("div", "card");
+
+    console.log(type, city, degree);
+    const typeElement = createElement("div", "type", type);
+    const cityElement = createElement("div", "city", city);
+    const degreeElement = createElement("div", "degree", degree);
+
+    [typeElement, cityElement, degreeElement].forEach((e) =>
+      card.appendChild(e)
     );
+
+    return card;
   }
+
+  insertCard = (obj) => {
+    const card = this.createCard(obj);
+    this.root.appendChild(card);
+  };
 }
