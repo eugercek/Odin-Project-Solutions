@@ -8,6 +8,8 @@ body {
   gap: 20vh;
 
   padding: 5vh;
+
+  font-family: "Open Sans", sans-serif;
 }
 
 .card {
@@ -36,6 +38,10 @@ body {
 
 .degree {
   font-size: 16px;
+}
+
+.degree::after {
+  content: "°C";
 }
 
 form {

@@ -35,7 +35,7 @@ export default class Controller {
 
   async fetchData(cityName) {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${this.API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${this.API_KEY}&units=metric`
     );
 
     if (!response.ok) {
