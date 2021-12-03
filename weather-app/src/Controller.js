@@ -29,6 +29,7 @@ export default class Controller {
 
     this.lastCity = obj.city;
 
+    this.view.changeBackground(obj.type);
     this.view.insertCard(obj);
   }
 

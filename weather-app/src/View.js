@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import createElement from "./util";
 
 export default class View {
@@ -6,9 +7,14 @@ export default class View {
    */
   constructor(selector) {
     this.root = document.querySelector(selector);
+
+    this.bgImgDispatch = {
+      Clouds: "clouds.jpg",
+      Clear: "clear.jpg",
+      Snow: "snow.jpg",
+    };
   }
 
-  // eslint-disable-next-line class-methods-use-this
   createCard({ type, city, degree }) {
     const card = createElement("div", "card");
     const typeElement = createElement("div", "type", type);
@@ -27,4 +33,11 @@ export default class View {
     this.root.innerHTML = "";
     this.root.appendChild(card);
   };
+
+  changeBackground(type) {
+    if (type in this.bgImgDispatch) {
+      document.body.style.backgroundImage = `url(images/${this.bgImgDispatch[type]})`;
+      document.body.style.backgroundSize = "1920px 1080px";
+    }
+  }
 }
