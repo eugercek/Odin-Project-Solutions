@@ -2,14 +2,13 @@ import Controller from "./Controller";
 import View from "./View";
 
 const view = new View("#root");
-const app = new Controller(view);
+const app = new Controller(view, "#search-city-input");
 
-const searchCityForm = document.getElementById("search-city-form");
-const input = searchCityForm.querySelector("#search-city-input");
-
-searchCityForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  app.submitCity(input.value);
-});
+document
+  .getElementById("search-city-form")
+  .addEventListener("submit", (event) => {
+    event.preventDefault();
+    app.doSearch();
+  });
 
 app.initialState();

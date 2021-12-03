@@ -5,8 +5,9 @@ export default class Controller {
   /**
    * @param {View} view
    */
-  constructor(view) {
+  constructor(view, inputSelector) {
     this.view = view;
+    this.inputElement = document.querySelector(inputSelector);
 
     this.API_KEY = "0e53e87f32b3455f4c4a3fec3c04c53b";
 
@@ -52,5 +53,9 @@ export default class Controller {
     this.submitCity(cityName);
     this.lastCity = cityName;
     this.initialStateDone = true;
+  }
+
+  async doSearch() {
+    this.submitCity(this.inputElement.value);
   }
 }

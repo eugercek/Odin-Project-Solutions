@@ -11,8 +11,6 @@ export default class View {
   // eslint-disable-next-line class-methods-use-this
   createCard({ type, city, degree }) {
     const card = createElement("div", "card");
-
-    console.log(type, city, degree);
     const typeElement = createElement("div", "type", type);
     const cityElement = createElement("div", "city", city);
     const degreeElement = createElement("div", "degree", degree);
@@ -26,6 +24,7 @@ export default class View {
 
   insertCard = (obj) => {
     const card = this.createCard(obj);
+    this.root.innerHTML = "";
     this.root.appendChild(card);
   };
 }
