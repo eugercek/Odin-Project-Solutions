@@ -36,8 +36,8 @@ export default class View {
 
   changeBackground(type) {
     if (type in this.bgImgDispatch) {
-      document.body.style.backgroundImage = `url(images/${this.bgImgDispatch[type]})`;
-      document.body.style.backgroundSize = "1920px 1080px";
+      const html = document.querySelector("html");
+      html.style.backgroundImage = `url(images/${this.bgImgDispatch[type]})`;
     }
   }
 }
