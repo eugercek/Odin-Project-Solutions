@@ -11,7 +11,10 @@ export default class View {
     this.bgImgDispatch = {
       Clouds: "clouds.jpg",
       Clear: "clear.jpg",
+      Drizzle: "drizzle.jpg",
+      Mist: "mist.jpg",
       Snow: "snow.jpg",
+      Thunder: "thunder.jpg",
     };
   }
 
@@ -37,7 +40,7 @@ export default class View {
   changeBackground(type) {
     if (type in this.bgImgDispatch) {
       const html = document.querySelector("html");
-      html.style.backgroundImage = `url(images/${this.bgImgDispatch[type]})`;
+      html.style.backgroundImage = `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.30)), url(images/${this.bgImgDispatch[type]})`;
     }
   }
 }
