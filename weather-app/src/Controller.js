@@ -39,6 +39,7 @@ export default class Controller {
     );
 
     if (!response.ok) {
+      this.view.shakeInput();
       throw new Error(`Problem in fetch in ${cityName}`);
     }
 

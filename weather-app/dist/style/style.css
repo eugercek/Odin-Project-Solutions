@@ -72,3 +72,23 @@ input:focus,
 button:focus {
   outline: 0px;
 }
+
+.shaking {
+  animation: shake 0.5s;
+  font-weight: bold;
+  color: #cc0000;
+}
+@keyframes shake {
+  25% {
+    transform: translate(5px, 0px);
+  }
+  50% {
+    transform: translate(-5px, 0px);
+  }
+  75% {
+    transform: translate(-5x, 0px);
+  }
+  100% {
+    transform: translate(5x, 0px);
+  }
+}

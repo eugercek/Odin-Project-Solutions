@@ -43,4 +43,12 @@ export default class View {
       html.style.backgroundImage = `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.30)), url(images/${this.bgImgDispatch[type]})`;
     }
   }
+
+  shakeInput() {
+    const input = document.getElementById("search-city-input");
+
+    input.classList.add("shaking");
+
+    setTimeout(() => input.classList.remove("shaking"), 500);
+  }
 }
