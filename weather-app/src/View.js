@@ -24,9 +24,15 @@ export default class View {
     const cityElement = createElement("div", "city", city);
     const degreeElement = createElement("div", "degree", degree);
 
-    [typeElement, cityElement, degreeElement].forEach((e) =>
-      card.appendChild(e)
-    );
+    card.appendChild(cityElement);
+
+    const other = createElement("div", "other");
+    const degreeContainer = createElement("div", "degree-container");
+    degreeContainer.appendChild(degreeElement);
+
+    [degreeContainer, typeElement].forEach((e) => other.appendChild(e));
+
+    card.appendChild(other);
 
     return card;
   }

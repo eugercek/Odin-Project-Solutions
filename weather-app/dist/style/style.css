@@ -24,31 +24,52 @@ body {
   height: 200px;
   background-color: white;
   border-radius: 12px;
-  padding: 20px 30px;
+  padding: 20px 20px;
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
+
   opacity: 0.8;
 }
 
+.other {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
 .type {
+  font-size: 24px;
+  font-style: italic;
+}
+
+.city {
+  order: -1;
   font-size: 36px;
   font-weight: bold;
   text-align: center;
 }
 
-.city {
-  font-size: 24px;
-  font-style: italic;
-  text-align: right;
+.degree-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 3px solid black;
+
+  height: 80%;
 }
 
 .degree {
-  font-size: 16px;
+  font-size: 48px;
+  font-weight: bold;
+  align-self: flex-end;
+  padding-right: 20px;
 }
 
 .degree::after {
-  content: "°C";
+  content: "°";
 }
 
 form {
@@ -80,15 +101,15 @@ button:focus {
 }
 @keyframes shake {
   25% {
-    transform: translate(5px, 0px);
+    transform: translate(5px, 0);
   }
   50% {
-    transform: translate(-5px, 0px);
+    transform: translate(-5px, 0);
   }
   75% {
-    transform: translate(-5x, 0px);
+    transform: translate(-5px, 0);
   }
   100% {
-    transform: translate(5x, 0px);
+    transform: translate(5px, 0);
   }
 }
