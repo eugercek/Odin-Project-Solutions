@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import GeneralForm from "./components/GeneralForm";
+import GeneralPreview from "./components/GeneralPreview";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,14 +21,23 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <GeneralForm
-            name={this.state.name}
-            email={this.state.email}
-            phone={this.state.phone}
-            handleName={this.handleEmail}
-            handleEmail={this.handleEmail}
-            handlePhone={this.handlePhone}
-          />
+          <div className="forms">
+            <GeneralForm
+              name={this.state.name}
+              email={this.state.email}
+              phone={this.state.phone}
+              handleName={this.handleName}
+              handleEmail={this.handleEmail}
+              handlePhone={this.handlePhone}
+            />
+          </div>
+          <div className="preview">
+            <GeneralPreview
+              name={this.state.name}
+              email={this.state.email}
+              phone={this.state.phone}
+            />
+          </div>
         </header>
       </div>
     );
