@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import Input from "./Input";
 
-export default class EducationalForm extends Component {
-  render() {
-    return <div></div>;
-  }
+export default function EducationalForm({ name, start, end, major, handle }) {
+  return (
+    <div className="Education-form">
+      <Input value={name} callback={handle} />
+      <Input value={start} callback={handle} />
+      <Input value={end} callback={handle} />
+    </div>
+  );
 }
