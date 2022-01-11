@@ -8,6 +8,8 @@ import GeneralPreview from "./components/Previews/GeneralPreview";
 import EducationPreview from "./components/Previews/EducationPreview";
 import ExperiencePreview from "./components/Previews/ExperiencePreview";
 
+import "./styles/App.css";
+
 export default function App(props) {
   const [formData, setFormData] = useState({
     general: {
@@ -100,26 +102,26 @@ export default function App(props) {
     <main className="app">
       <div className="forms">
         <GeneralForm {...formData.general} handleForm={handleGeneralForm} />
-        <div className="education">
+        <div className="education-forms">
           {educationFormElements}
           <button
-            className="education--button"
+            className="education-forms--button add-button"
             onClick={(e) => addForm("education")}
           >
             Add education
           </button>
         </div>
-        <div className="experience">
+        <div className="experience-forms">
           {experienceFormElements}
           <button
-            className="experience--button"
+            className="experience-forms--button add-button"
             onClick={(e) => addForm("experience")}
           >
             Add experience
           </button>
         </div>
       </div>
-      <div className="preview">
+      <div clasName="previews">
         <GeneralPreview {...formData.general} />
         {educationPreviewElements}
         {experiencePreviewElements}

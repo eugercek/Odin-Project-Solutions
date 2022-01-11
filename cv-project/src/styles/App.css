@@ -1,0 +1,29 @@
+.app {
+  padding: 50px 0px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.forms {
+  width: 40vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.education-forms,
+.experience-forms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.previews {
+  width: 40vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}

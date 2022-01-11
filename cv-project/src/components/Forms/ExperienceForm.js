@@ -1,4 +1,5 @@
 import Input from "../Input";
+import "../../styles/Form.css";
 
 export default function ExperienceForm({
   name,
@@ -8,11 +9,13 @@ export default function ExperienceForm({
   deleteSelf,
 }) {
   return (
-    <div className="experience-form">
+    <div className="experience-form form-area">
       <Input value={name} callback={handleForm} name="name" />
       <Input value={start} callback={handleForm} name="start" />
       <Input value={end} callback={handleForm} name="end" />
-      <button onClick={deleteSelf}>Delete</button>
+      <button onClick={deleteSelf} className="delete-button">
+        Delete
+      </button>
     </div>
   );
 }

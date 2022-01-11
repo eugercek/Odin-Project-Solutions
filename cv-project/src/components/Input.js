@@ -1,3 +1,5 @@
+import "../styles/Input.css";
+
 export default function Input({ value, callback, type = "text", name }) {
   return (
     <div>
