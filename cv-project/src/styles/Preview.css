@@ -1,0 +1,13 @@
+.preview {
+  font-family: "Computer Modern Serif", "Times New Roman", Times, serif;
+
+  width: inherit;
+}
+
+.preview::after {
+  display: inline-block;
+  content: "";
+  border-top: 1px solid black;
+  margin-left: 25%;
+  width: 50%;
+}

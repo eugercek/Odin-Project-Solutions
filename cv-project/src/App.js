@@ -121,7 +121,7 @@ export default function App(props) {
           </button>
         </div>
       </div>
-      <div clasName="previews">
+      <div class="previews">
         <GeneralPreview {...formData.general} />
         {educationPreviewElements}
         {experiencePreviewElements}
