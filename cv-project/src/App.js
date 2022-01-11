@@ -1,10 +1,12 @@
 import "./styles/App.css";
 
 import { useState } from "react";
-import GeneralForm from "./components/GeneralForm";
-import EducationForm from "./components/EducationForm";
-import GeneralPreview from "./components/GeneralPreview";
-import EducationPreview from "./components/EducationPreview";
+import GeneralForm from "./components/Forms/GeneralForm";
+import EducationForm from "./components/Forms/EducationForm";
+import ExperienceForm from "./components/Forms/ExperienceForm";
+import GeneralPreview from "./components/Previews/GeneralPreview";
+import EducationPreview from "./components/Previews/EducationPreview";
+import ExperiencePreview from "./components/Previews/ExperiencePreview";
 
 export default function App(props) {
   const [formData, setFormData] = useState({
@@ -42,44 +44,56 @@ export default function App(props) {
     }));
   }
 
-  function handleEducationForm(event, index) {
+  function handleOtherForm(event, index, root) {
     const { name, value } = event.target;
-    const array = [...formData.education];
+    const array = [...formData[root]];
     array[index] = {
       ...array[index],
       [name]: value,
     };
     setFormData((p) => ({
       ...p,
-      education: array,
+      [root]: array,
     }));
   }
 
-  function addEducationForm() {
+  function addForm(root) {
     setFormData((p) => ({
       ...p,
-      education: [...p.education, { name: "", start: "", end: "" }],
+      [root]: [...p[root], {}],
     }));
   }
 
-  function deleteEducationForm(id) {
-    const willDelete = formData.education[id];
+  function deleteForm(id, root) {
+    const willDelete = formData[root][id];
     setFormData((p) => ({
       ...p,
-      education: p.education.filter((x) => x !== willDelete),
+      [root]: p[root].filter((x) => x !== willDelete),
     }));
   }
 
   const educationFormElements = formData.education.map((education, i) => (
     <EducationForm
       {...education}
-      handleForm={(event) => handleEducationForm(event, i)}
-      deleteSelf={() => deleteEducationForm(i)}
+      handleForm={(event) => handleOtherForm(event, i, "education")}
+      deleteSelf={() => deleteForm(i, "education")}
     />
   ));
 
   const educationPreviewElements = formData.education.map((education) => (
     <EducationPreview {...education} />
+  ));
+
+  const experienceFormElements = formData.experience.map((experience, i) => (
+    <ExperienceForm
+      {...experience}
+      handleForm={(event) => handleOtherForm(event, i, "experience")}
+      deleteSelf={() => deleteForm(i, "experience")}
+    />
+  ));
+
+  const experiencePreviewElements = formData.experience.map((experience) => (
+    <ExperiencePreview {...experience} />
   ));
 
   return (
@@ -88,14 +102,27 @@ export default function App(props) {
         <GeneralForm {...formData.general} handleForm={handleGeneralForm} />
         <div className="education">
           {educationFormElements}
-          <button className="education--button" onClick={addEducationForm}>
+          <button
+            className="education--button"
+            onClick={(e) => addForm("education")}
+          >
             Add education
+          </button>
+        </div>
+        <div className="experience">
+          {experienceFormElements}
+          <button
+            className="experience--button"
+            onClick={(e) => addForm("experience")}
+          >
+            Add experience
           </button>
         </div>
       </div>
       <div className="preview">
         <GeneralPreview {...formData.general} />
         {educationPreviewElements}
+        {experiencePreviewElements}
       </div>
     </main>
   );

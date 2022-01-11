@@ -1,4 +1,4 @@
-import Input from "./Input";
+import Input from "../Input";
 
 export default function GeneralForm({ name, email, phone, handleForm }) {
   return (

@@ -1,6 +1,6 @@
-import Input from "./Input";
+import Input from "../Input";
 
-export default function EducationalForm({
+export default function EducationForm({
   name,
   start,
   end,
@@ -8,7 +8,7 @@ export default function EducationalForm({
   deleteSelf,
 }) {
   return (
-    <div className="Education-form">
+    <div className="form-area">
       <Input value={name} callback={handleForm} name="name" />
       <Input value={start} callback={handleForm} name="start" />
       <Input value={end} callback={handleForm} name="end" />
