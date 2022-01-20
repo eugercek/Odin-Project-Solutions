@@ -1,0 +1,16 @@
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  color: #0fa3b1;
+  font-size: 48px;
+}
+
+h5 {
+  font-size: 24px;
+  color: #0fa3b1;
+}

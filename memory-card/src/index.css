@@ -3,4 +3,9 @@ body {
   padding: 0;
 
   height: 100vh;
+  overflow: hidden;
+
+  font-family: Inter;
+
+  background-color: #d9e5d6;
 }

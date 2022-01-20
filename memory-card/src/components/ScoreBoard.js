@@ -1,3 +1,5 @@
+import "../styles/ScoreBoard.css";
+
 export default function ScoreBoard({ score, maxScore }) {
   return (
     <div className="scoreboard">
