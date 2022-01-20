@@ -1,0 +1,11 @@
+.app {
+  height: 90vh;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: inherit;
+}
