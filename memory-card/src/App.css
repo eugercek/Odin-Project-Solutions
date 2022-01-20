@@ -1,11 +1,9 @@
-.app {
-  height: 40vh;
-}
-
 .cards {
   display: flex;
   justify-content: center;
   align-items: center;
 
   height: inherit;
+
+  margin-top: 5vh;
 }

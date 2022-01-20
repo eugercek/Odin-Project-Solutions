@@ -7,10 +7,10 @@ import ScoreBoard from "./components/ScoreBoard";
 
 function App() {
   const [cards, setCards] = useState([
-    CardFactory("A"),
-    CardFactory("B"),
-    CardFactory("C"),
-    CardFactory("D"),
+    CardFactory(),
+    CardFactory(),
+    CardFactory(),
+    CardFactory(),
   ]);
 
   const [score, setScore] = useState(0);
@@ -28,7 +28,9 @@ function App() {
       }
       setScore(0);
       newGame();
-    } else {
+    }
+    // New round
+    else {
       setScore((p) => p + 1);
       const oldArray = [...cards];
       oldArray[index].clicked = true;
@@ -54,7 +56,7 @@ function App() {
 
   // Game State Operations
   function newGame() {
-    setCards((p) => p.map((e) => ({ ...e, clicked: false })));
+    setCards(cards.map((c) => CardFactory()));
   }
 
   function shuffleCards() {
