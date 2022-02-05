@@ -1,19 +1,22 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const express = require("express");
 
 const PORT = process.env.PORT || 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  const route = req.url.slice(1);
-  const files = fs.readdirSync("./pages").map((file) => path.parse(file).name);
-  const [page, code] = files.some((x) => x == route)
-    ? [`./pages/${route}.html`, 200]
-    : ["404.html", 404];
-
-  res.statusCode = code;
-  res.setHeader("Content-Type", "text/html");
-  res.end(fs.readFileSync(page));
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "pages" });
 });
 
-server.listen(PORT);
+app.get("/about", (req, res) => {
+  res.sendFile("about.html", { root: "pages" });
+});
+
+app.get("/contact-me", (req, res) => {
+  res.sendFile("contact-me.html", { root: "pages" });
+});
+
+app.use((req, res) => {
+  res.sendFile("404.html", { root: "pages" });
+});
+
+app.listen(PORT);
