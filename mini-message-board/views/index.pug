@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  each message in messages
+    section.message
+      h2.text= message.text
+      p.user= message.user
+      p.added= message.added.toLocaleString()
