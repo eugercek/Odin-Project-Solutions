@@ -13,8 +13,22 @@ const messages = [
     added: new Date(),
   },
 ];
+
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Mini Messageboard", messages: messages });
+});
+
+router.get("/new", function (req, res, next) {
+  res.render("form");
+});
+
+router.post("/new", function (req, res, next) {
+  messages.push({
+    text: req.body.text,
+    user: req.body.author,
+    added: new Date(),
+  });
+  res.redirect("/");
 });
 
 module.exports = router;
