@@ -1,0 +1,17 @@
+extends layout
+
+mixin item(item)
+    .item
+        .item-name
+            | #{item.name}
+        .item-category
+            | #{item.category}
+        .item-description
+            | #{item.description}
+
+block content
+    a(href="/perfumes/add") Add Perfume
+    ul
+    each item of items
+        li
+            +item(item)

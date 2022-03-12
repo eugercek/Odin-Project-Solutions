@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    form(action='/perfumes/add' method='POST' )
+        div.form-group
+            .row
+                label Name:
+                    input(type='text' placeholder='Name' name='name'
+                    required='true' value=`${previousName ? previousName : ''}`)
+            .row
+                label Description:
+                    textarea(placeholder='Description' name='description'
+                    required='true' value=`${previousDescription ? previousDescription : ''}`)
+            .row
+            select(type='select' name='brand' required='true' )
+                - brands.sort((a,b) => a.name.localeCompare(b.name))
+                option(value='' disabled selected hidden) Select Brand
+                for brand in brands
+                    option(value=brand._id selected=(brand._id == previousBrand)) #{brand.name}
+            select(type='select'  name='category' required='true' )
+                - categories.sort((a,b) => a.name.localeCompare(b.name))
+                option(value='' disabled selected hidden) Select Category
+                for category in categories
+                    option(value=category._id selected=(category._id == previousCategory)) #{category.name}
+
+            button(type="submit", name="submit") Submit
+
+        if errors
+            ul
+                for error in errors
+                    li #{error}
