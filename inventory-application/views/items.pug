@@ -3,7 +3,7 @@ extends layout
 mixin item(item)
     .item
         .item-name
-            | #{item.name}
+            a(href=`${item.url}`) #{item.name}
         .item-category
             | #{item.category}
         .item-description

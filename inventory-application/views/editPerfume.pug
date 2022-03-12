@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    form(method='POST')
+        div.form-group
+            .row
+                label Name:
+                    input(type='text' placeholder='Name' name='name'
+                    required='true' value=`${perfume.name}`)
+            .row
+                label Description:
+                    textarea(placeholder='Description' name='description' required='true')
+                        =perfume.description
+            .row
+                select(type='select' name='brand' required='true' )
+                    - brands.sort((a,b) => a.name.localeCompare(b.name))
+                    option(value='' disabled selected hidden) Select Brand
+                    for brand in brands
+                        option(value=brand._id selected=(brand._id == perfume.brand.toString())) #{brand.name}
+            .row
+                select(type='select'  name='category' required='true' )
+                    - categories.sort((a,b) => a.name.localeCompare(b.name))
+                    option(value='' disabled selected hidden) Select Category
+                    for category in categories
+                        option(value=category._id selected=(category._id == perfume.category.toString())) #{category.name}
+            input(type='hidden' name='_id' value=`${perfume._id}`)
+
+            button(type="submit", name="submit") Edit
+
+        if errors
+            ul
+                for error in errors
+                    li #{error}

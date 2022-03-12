@@ -16,6 +16,9 @@ let schema = new Schema({
     required: [true, "Category is missing"],
   },
 });
+schema.virtual("url").get(function () {
+  return `/perfumes/${this._id}`;
+});
 
 let Perfume = new model("Perfume", schema);
 

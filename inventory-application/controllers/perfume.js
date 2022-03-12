@@ -53,3 +53,53 @@ export async function savePerfume(req, res) {
     });
   }
 }
+
+export async function deletePerfume(req, res) {
+  const { id } = req.params;
+  try {
+    let perfume = await Perfume.findByIdAndDelete(id);
+    res.redirect("items");
+  } catch (err) {
+    res.render("error", { err });
+  }
+}
+
+export async function editPerfume(req, res) {
+  const { id } = req.params;
+  const [brands, categories] = await Promise.all([
+    Brand.find({}),
+    Category.find({}),
+  ]);
+  try {
+    let perfume = await Perfume.findById(id);
+    console.log(perfume.url);
+    res.render("editPerfume", { perfume, brands, categories });
+  } catch (err) {
+    res.render("error", { err });
+  }
+}
+
+export async function saveEditPerfume(req, res) {
+  const { name, description, category, brand, _id } = req.body;
+  try {
+    await Perfume.findByIdAndUpdate(_id, {
+      name,
+      description,
+      category,
+      brand,
+    });
+    res.redirect("/perfumes/");
+  } catch (err) {
+    console.log(err);
+    const [brands, categories] = await Promise.all([
+      Brand.find({}),
+      Category.find({}),
+    ]);
+    res.render("editPerfume", {
+      perfume: { name, description, category, brand, _id },
+      brands,
+      categories,
+      errors: err,
+    });
+  }
+}

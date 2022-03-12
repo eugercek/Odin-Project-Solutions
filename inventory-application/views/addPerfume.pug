@@ -9,8 +9,8 @@ block content
                     required='true' value=`${previousName ? previousName : ''}`)
             .row
                 label Description:
-                    textarea(placeholder='Description' name='description'
-                    required='true' value=`${previousDescription ? previousDescription : ''}`)
+                    textarea(placeholder='Description' name='description' required='true')
+                    =  previousDescription ? previousDescription : ''
             .row
             select(type='select' name='brand' required='true' )
                 - brands.sort((a,b) => a.name.localeCompare(b.name))
@@ -23,7 +23,7 @@ block content
                 for category in categories
                     option(value=category._id selected=(category._id == previousCategory)) #{category.name}
 
-            button(type="submit", name="submit") Submit
+            button(type="submit", name="submit") Add
 
         if errors
             ul
