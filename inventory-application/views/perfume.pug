@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .perfume
+        .perfume-name
+            | #{perfume.name}
+        .perfume-category
+            | #{perfume.category}
+        .perfume-description
+            | #{perfume.description}
+
+    a(href=`/perfumes/${perfume._id}/edit`) Edit
+    br
+    a(href=`/perfumes/${perfume._id}/delete`) Delete
+    br
+    a(href='/perfumes')  Back to Perfumes

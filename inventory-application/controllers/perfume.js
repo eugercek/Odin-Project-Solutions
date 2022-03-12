@@ -7,8 +7,14 @@ export async function getAllPerfumes(req, res) {
   res.render("items", { items });
 }
 
-export function getPerfume(req, res) {
-  res.send("One Foo");
+export async function getPerfume(req, res) {
+  const { id } = req.params;
+  try {
+    let perfume = await Perfume.findById(id);
+    res.render("perfume", { perfume });
+  } catch (err) {
+    res.render("error", { err });
+  }
 }
 
 export async function addPerfume(req, res) {
