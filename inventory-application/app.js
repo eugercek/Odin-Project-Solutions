@@ -1,6 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import indexRouter from "./routes/index.js";
+import itemRouter from "./routes/item.js";
+import categoryRouter from "./routes/category.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
@@ -25,6 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/items", itemRouter);
+app.use("/categories", categoryRouter);
 
 app.use((req, res) => {
   res.render("error");
