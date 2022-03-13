@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    form(method='POST' )
+        div.form-group
+            .row
+                label Name:
+                    input(type='text' placeholder='Name' name='name'
+                    required='true' value=`${previousName ? previousName : ''}`)
+            button(type="submit", name="submit") Add
+
+        if errors
+            ul
+                for error in errors
+                    li #{error}

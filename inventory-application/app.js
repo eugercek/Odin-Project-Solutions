@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import indexRouter from "./routes/index.js";
 import perfumeRouter from "./routes/perfume.js";
 import categoryRouter from "./routes/category.js";
+import brandRouter from "./routes/brand.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/perfumes", perfumeRouter);
 app.use("/categories", categoryRouter);
+app.use("/brands", brandRouter);
 
 app.use((req, res) => {
   res.render("error");
