@@ -3,14 +3,14 @@ import Brand from "../models/Brand.js";
 import Category from "../models/Category.js";
 
 export async function getAllPerfumes(req, res) {
-  const items = await Perfume.find({});
-  res.render("items", { items });
+  const items = await Perfume.find({}).populate("category brand");
+  res.render("perfumes", { items });
 }
 
 export async function getPerfume(req, res) {
   const { id } = req.params;
   try {
-    let perfume = await Perfume.findById(id);
+    let perfume = await Perfume.findById(id).populate("category brand");
     res.render("perfume", { perfume });
   } catch (err) {
     res.render("error", { err });

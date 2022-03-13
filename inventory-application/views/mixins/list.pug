@@ -1,0 +1,5 @@
+mixin list(items)
+    ul.list-group
+        each item of items
+            li.list-group-item
+                a.h4(href=`${item.url}`) #{item.name}

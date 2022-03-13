@@ -1,0 +1,9 @@
+mixin UDcard(item, plural)
+    .container
+        h1.mb-5 #{item.name}
+        .row.mb-3.g-3
+            .col-6
+                a.btn.btn-warning.me-3(href=`${item.url}/edit`) Edit
+                a.btn.btn-danger(href=`${item.url}/delete`) Delete
+            .col-9
+                a.btn.btn-secondary.px-4(href=`/${plural}`)= `Back to ${plural[0].toUpperCase()}${plural.slice(1)}`

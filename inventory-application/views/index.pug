@@ -1,9 +1,12 @@
 extends layout
 
 block content
-  h1 Welcome!
-  a(href="/perfumes") Perfume List
-  br
-  a(href="/categories") Category List
-  br
-  a(href="/brands") Brand List
+    .container-fluid
+        nav.navbar.navbar-expand-sm.bg-light
+            ul.navbar-nav
+                li.nav-item
+                    a.nav-link(href="/perfumes" class="link-primary") Perfume List
+                li.nav-item
+                    a.nav-link(href="/categories" class="link-primary") Category List
+                li.nav-item
+                    a.nav-link(href="/brands" class="link-primary") Brand List

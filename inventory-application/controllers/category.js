@@ -1,4 +1,5 @@
 import Category from "../models/Category.js";
+import Perfume from "../models/Perfume.js";
 
 export async function getAllCategories(req, res) {
   const items = await Category.find({});
@@ -9,6 +10,8 @@ export async function getCategory(req, res) {
   const { id } = req.params;
   try {
     let category = await Category.findById(id);
+    let perfumes = await Perfume.find({ category: id });
+    console.log(perfumes);
     res.render("category", { category });
   } catch (err) {
     res.render("error", { err });

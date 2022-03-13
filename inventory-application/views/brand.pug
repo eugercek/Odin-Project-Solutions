@@ -1,12 +1,5 @@
 extends layout
+include mixins/UDcard
 
 block content
-    .brand
-        .name
-            | #{brand.name}
-
-    a(href=`${brand.url}/edit`) Edit
-    br
-    a(href=`${brand.url}/delete`) Delete
-    br
-    a(href='/brands')  Back to Brands
+    +UDcard(brand, "brands")

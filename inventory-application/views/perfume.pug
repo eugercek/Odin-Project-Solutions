@@ -1,16 +1,16 @@
 extends layout
 
 block content
-    .perfume
-        .perfume-name
-            | #{perfume.name}
-        .perfume-category
-            | #{perfume.category}
-        .perfume-description
-            | #{perfume.description}
-
-    a(href=`${perfume.url}/edit`) Edit
-    br
-    a(href=`${perfume.url}/delete`) Delete
-    br
-    a(href='/perfumes')  Back to Perfumes
+    .container
+        .card.mb-5(style="width : 24rem;")
+            .card-header.h2 #{perfume.name}
+            .card-body.p-2
+                .h3.card-title #{perfume.brand.name}
+                .h5.float-right #{perfume.category.name}
+                p.card-text #{perfume.description}
+                .row.mb-3.g-3
+                    .col-6
+                        a.btn.btn-warning.me-3(href=`${perfume.url}/edit`) Edit
+                        a.btn.btn-danger(href=`${perfume.url}/delete`) Delete
+        .col-9
+            a.btn.btn-secondary.px-4(href="/perfumes") Back to perfumes

@@ -1,17 +1,15 @@
 extends layout
+include mixins/error
 
 block content
-    form(method='POST')
-        div.form-group
-            .row
-                label Name:
-                    input(type='text' placeholder='Name' name='name'
-                    required='true' value=`${category.name}`)
-            input(type='hidden' name='_id' value=`${category._id}`)
+    form(method='POST').container.mb-5
+        .form-group.mb-3
+            label Name:
+                input.form-control(type='text' placeholder='Name' name='name'
+                required='true' value=`${category.name}`)
+        .row
+        input.form-control(type='hidden' name='_id' value=`${category._id}`)
 
-            button(type="submit", name="submit") Edit
+        button.btn.btn-primary(type="submit", name="submit") Edit
 
-        if errors
-            ul
-                for error in errors
-                    li #{error}
+        +printErrors(errors)

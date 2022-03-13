@@ -1,0 +1,5 @@
+mixin printErrors(errors)
+    if errors
+        ul.list-unstyled.mt-3
+            for error in errors
+                li.text-danger #{error}

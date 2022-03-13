@@ -1,13 +1,5 @@
 extends layout
-
-mixin item(item)
-    .category-card
-        .category-name
-            a(href=`${item.url}`) #{item.name}
-
+include mixins/list
 block content
-    a(href="/categories/add") Add Category
-    ul
-    each item of items
-        li
-            +item(item)
+    a.btn.btn-success.mb-5(href="/categories/add") Add Category
+    +list(items)

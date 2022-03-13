@@ -1,33 +1,34 @@
 extends layout
+include mixins/error
 
 block content
-    form(method='POST')
-        div.form-group
+    .container
+        form(method='POST' )
             .row
-                label Name:
-                    input(type='text' placeholder='Name' name='name'
-                    required='true' value=`${perfume.name}`)
-            .row
-                label Description:
-                    textarea(placeholder='Description' name='description' required='true')
-                        =perfume.description
-            .row
-                select(type='select' name='brand' required='true' )
-                    - brands.sort((a,b) => a.name.localeCompare(b.name))
-                    option(value='' disabled selected hidden) Select Brand
-                    for brand in brands
-                        option(value=brand._id selected=(brand._id == perfume.brand.toString())) #{brand.name}
-            .row
-                select(type='select'  name='category' required='true' )
-                    - categories.sort((a,b) => a.name.localeCompare(b.name))
-                    option(value='' disabled selected hidden) Select Category
-                    for category in categories
-                        option(value=category._id selected=(category._id == perfume.category.toString())) #{category.name}
+                .form-group.mb-3.col-4
+                    label Name:
+                        input.form-control(type='text' placeholder='Name' name='name'
+                        required='true' value=`${perfume.name}`)
+                .form-group.mb-3.col-8
+                    label(style='width: 100%') Description:
+                        textarea.form-control(placeholder='Description' name='description'
+                        required='true') =  perfume.description
+            .row.mb-3
+                .form-group.col-6
+                    select.form-control(type='select' name='brand' required='true' )
+                        - brands.sort((a,b) => a.name.localeCompare(b.name))
+                        option(value='' disabled selected hidden) Select Brand
+                        for brand in brands
+                            option(value=brand._id selected=(brand._id == perfume.brand.toString())) #{brand.name}
+                .form-group.col-6
+                    select.form-control(type='select'  name='category' required='true' )
+                        - categories.sort((a,b) => a.name.localeCompare(b.name))
+                        option(value='' disabled selected hidden) Select Category
+                        for category in categories
+                            option(value=category._id selected=(category._id == perfume.category.toString())) #{category.name}
+
             input(type='hidden' name='_id' value=`${perfume._id}`)
 
-            button(type="submit", name="submit") Edit
+            button.btn.btn-primary(type="submit", name="submit") Edit
 
-        if errors
-            ul
-                for error in errors
-                    li #{error}
+            +printErrors(errors)
