@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    form(method='POST')
+        div.form-group
+            .row
+                label Name:
+                    input(type='text' placeholder='Name' name='name'
+                    required='true' value=`${category.name}`)
+            input(type='hidden' name='_id' value=`${category._id}`)
+
+            button(type="submit", name="submit") Edit
+
+        if errors
+            ul
+                for error in errors
+                    li #{error}

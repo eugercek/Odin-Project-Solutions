@@ -1,0 +1,13 @@
+extends layout
+
+mixin item(item)
+    .category-card
+        .category-name
+            a(href=`${item.url}`) #{item.name}
+
+block content
+    a(href="/categories/add") Add Category
+    ul
+    each item of items
+        li
+            +item(item)

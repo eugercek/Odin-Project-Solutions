@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    .category
+        .name
+            | #{category.name}
+
+    a(href=`${category.url}/edit`) Edit
+    br
+    a(href=`${category.url}/delete`) Delete
+    br
+    a(href='/categories')  Back to Categories
