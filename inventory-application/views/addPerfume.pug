@@ -12,8 +12,7 @@ block content
                 .form-group.mb-3.col-8
                     label(style='width: 100%') Description:
                         textarea.form-control(placeholder='Description' name='description'
-                        required='true')
-                        =  previousDescription ? previousDescription : ''
+                        required='true')=  previousDescription ? previousDescription : ''
             .row.mb-3
                 .form-group.col-6
                     select.form-control(type='select' name='brand' required='true' )
