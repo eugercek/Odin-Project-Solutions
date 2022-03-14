@@ -9,6 +9,7 @@ import { dirname } from "path";
 import path from "path";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import perfumeInstanceRouter from "./routes/perfumeInstance.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use("/", indexRouter);
 app.use("/perfumes", perfumeRouter);
 app.use("/categories", categoryRouter);
 app.use("/brands", brandRouter);
+app.use("/stocks", perfumeInstanceRouter);
 
 app.use((req, res) => {
   res.render("error");

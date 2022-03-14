@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .container
+        .card.mb-5(style="width : 24rem;")
+            .card-header.h2 #{perfume.name}
+            .card-body.p-2
+                .h5.badge.bg-secondary #{stock}
+                .h3.card-title #{perfume.brand.name}
+                .h4 #{dealer.name}
+                .h5.float-right #{perfume.category.name}
+                p.card-text #{perfume.description}
+                .row.mb-3.g-3
+                    .col-6
+                        a.btn.btn-warning.me-3(href=`${obj.url}/edit`) Edit
+                        a.btn.btn-danger(href=`${obj.url}/delete`) Delete
+        .col-9
+            a.btn.btn-secondary.px-4(href="/stocks") Back to Stocks
