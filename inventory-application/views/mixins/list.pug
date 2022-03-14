@@ -1,5 +1,13 @@
 mixin list(items)
     ul.list-group
         each item of items
-            li.list-group-item
+            li.list-group-item.d-flex.justify-content-between.align-items-center
                 a.h4(href=`${item.url}`) #{item.name}
+                if item.number === 0
+                    span.badge.bg-secondary= item.number
+                else if item.number < 10
+                    span.badge.bg-danger= item.number
+                else if item.info < 20
+                    span.badge.bg-warning= item.number
+                else if item.info >= 20
+                    span.badge.bg-success= item.number

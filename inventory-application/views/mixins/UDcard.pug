@@ -1,3 +1,5 @@
+include error
+
 mixin UDcard(item, plural)
     .container
         h1.mb-5 #{item.name}
@@ -7,3 +9,5 @@ mixin UDcard(item, plural)
                 a.btn.btn-danger(href=`${item.url}/delete`) Delete
             .col-9
                 a.btn.btn-secondary.px-4(href=`/${plural}`)= `Back to ${plural[0].toUpperCase()}${plural.slice(1)}`
+        +printErrors(errors)
+

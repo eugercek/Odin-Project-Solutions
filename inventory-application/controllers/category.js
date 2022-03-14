@@ -2,7 +2,20 @@ import Category from "../models/Category.js";
 import Perfume from "../models/Perfume.js";
 
 export async function getAllCategories(req, res) {
-  const items = await Category.find({});
+  const [perfumes, items] = await Promise.all([
+    Perfume.find({}).populate("category"),
+    Category.find({}),
+  ]);
+
+  const numbers = perfumes.reduce(
+    (acc, { category: { name } }) => ({ ...acc, [name]: acc[name] + 1 || 1 }),
+    {}
+  );
+
+  for (const ele of items) {
+    ele.number = numbers?.[ele.name] ?? 0;
+  }
+
   res.render("categories", { items });
 }
 
@@ -41,6 +54,16 @@ export async function saveCategory(req, res) {
 export async function deleteCategory(req, res) {
   const { id } = req.params;
   try {
+    let perfumes = await Perfume.find({ brand: id });
+
+    if (perfumes !== []) {
+      let brand = await Brand.findById(id);
+      return res.render("brand", {
+        brand,
+        errors: ["There are perfumes of this category!"],
+      });
+    }
+
     let category = await Category.findByIdAndDelete(id);
     res.redirect("/categories");
   } catch (error) {
