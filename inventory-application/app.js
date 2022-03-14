@@ -4,12 +4,13 @@ import indexRouter from "./routes/index.js";
 import perfumeRouter from "./routes/perfume.js";
 import categoryRouter from "./routes/category.js";
 import brandRouter from "./routes/brand.js";
+import perfumeInstanceRouter from "./routes/perfumeInstance.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import perfumeInstanceRouter from "./routes/perfumeInstance.js";
+import morgan from "morgan";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ mongoose.connect(process.env.DB_STRING);
 
 let app = express();
 
+app.use(morgan("tiny"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
