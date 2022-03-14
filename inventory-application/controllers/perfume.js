@@ -12,8 +12,8 @@ export async function getPerfume(req, res) {
   try {
     let perfume = await Perfume.findById(id).populate("category brand");
     res.render("perfume", { perfume });
-  } catch (err) {
-    res.render("error", { err });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -33,7 +33,7 @@ export async function savePerfume(req, res) {
     console.log(user);
     res.redirect("/perfumes/");
   } catch (err) {
-    const errors = Object.values(err.errors).map(
+    const errors = Object.values(errors.errors).map(
       ({ properties }) => properties.message
     );
     const [brands, categories] = await Promise.all([
@@ -59,8 +59,8 @@ export async function deletePerfume(req, res) {
   try {
     let perfume = await Perfume.findByIdAndDelete(id);
     res.redirect("items");
-  } catch (err) {
-    res.render("error", { err });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -74,7 +74,7 @@ export async function editPerfume(req, res) {
     let perfume = await Perfume.findById(id);
     console.log(perfume.url);
     res.render("editPerfume", { perfume, brands, categories });
-  } catch (err) {
+  } catch (errors) {
     res.render("error", { err });
   }
 }

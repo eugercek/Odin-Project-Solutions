@@ -26,8 +26,8 @@ export async function getCategory(req, res) {
     let perfumes = await Perfume.find({ category: id });
     console.log(perfumes);
     res.render("category", { category });
-  } catch (err) {
-    res.render("error", { err });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -41,7 +41,7 @@ export async function saveCategory(req, res) {
     let category = await Category.create({ name });
     res.redirect("/categories/");
   } catch (err) {
-    const errors = Object.values(err.errors).map(
+    const errors = Object.values(errors.errors).map(
       ({ properties }) => properties.message
     );
     res.render("addCategory", {
@@ -66,8 +66,8 @@ export async function deleteCategory(req, res) {
 
     let category = await Category.findByIdAndDelete(id);
     res.redirect("/categories");
-  } catch (error) {
-    res.render("error", { error });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -76,8 +76,8 @@ export async function editCategory(req, res) {
   try {
     let category = await Category.findById(id);
     res.render("editCategory", { category });
-  } catch (err) {
-    res.render("error", { err });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -88,11 +88,11 @@ export async function saveEditCategory(req, res) {
       name,
     });
     res.redirect("/categories");
-  } catch (err) {
-    console.log(err);
+  } catch (errors) {
+    console.log(errors);
     res.render("editCategory", {
       perfume: { name, _id },
-      errors: err,
+      errors: errors,
     });
   }
 }

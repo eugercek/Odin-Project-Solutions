@@ -25,8 +25,8 @@ export async function getBrand(req, res) {
   try {
     let brand = await Brand.findById(id);
     res.render("brand", { brand });
-  } catch (err) {
-    res.render("error", { err });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -40,7 +40,7 @@ export async function saveBrand(req, res) {
     let brand = await Brand.create({ name });
     res.redirect("/brands");
   } catch (err) {
-    const errors = Object.values(err.errors).map(
+    const errors = Object.values(errors.errors).map(
       ({ properties }) => properties.message
     );
     res.render("addBrand", {
@@ -65,8 +65,8 @@ export async function deleteBrand(req, res) {
 
     await Brand.findByIdAndDelete(id);
     res.redirect("/brands");
-  } catch (error) {
-    res.render("error", { error });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -75,8 +75,8 @@ export async function editBrand(req, res) {
   try {
     let brand = await Brand.findById(id);
     res.render("editBrand", { brand });
-  } catch (err) {
-    res.render("error", { err });
+  } catch (errors) {
+    res.render("error", { errors });
   }
 }
 
@@ -87,11 +87,11 @@ export async function saveEditBrand(req, res) {
       name,
     });
     res.redirect("/brands");
-  } catch (err) {
-    console.log(err);
+  } catch (errors) {
+    console.log(errors);
     res.render("editBrand", {
       brand: { name, _id },
-      errors: err,
+      errors: errors,
     });
   }
 }
