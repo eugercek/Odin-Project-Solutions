@@ -1,0 +1,15 @@
+extends ../layout
+include ../mixins/error
+
+block content
+    form(method='POST').container.mb-5
+        .form-group.mb-3
+            label Name:
+                input.form-control(type='text' placeholder='Name' name='name'
+                required='true' value=`${item.name}`)
+
+        input.form-control(type='hidden' name='_id' value=`${item._id}`)
+
+        button.btn.btn-primary(type="submit", name="submit") Edit
+
+        +printErrors(errors)
