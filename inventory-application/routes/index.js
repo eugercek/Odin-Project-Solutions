@@ -1,9 +1,8 @@
 import express from "express";
+import { index } from "../controllers/index.js";
 
 let indexRouter = express.Router();
 
-indexRouter.get("/", function (req, res) {
-  res.render("index");
-});
+indexRouter.get("/", index);
 
 export default indexRouter;

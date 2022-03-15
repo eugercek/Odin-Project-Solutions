@@ -7,7 +7,7 @@ html
     meta(name='viewport' content="width=device-width, initial-scale=1")
   body
     .container-fluid
-        nav.navbar.navbar-expand-sm.bg-light
+        nav.navbar.navbar-expand-sm.bg-light.mb-5
             ul.navbar-nav
                 li.nav-item
                     a.nav-link(href="/stocks" class="link-primary") Stock List
@@ -19,3 +19,18 @@ html
                     a.nav-link(href="/categories" class="link-primary") Category List
                 li.nav-item
                     a.nav-link(href="/brands" class="link-primary") Brand List
+
+        if perfumes.length !== 0
+        .row
+            h1.h1.mb-3 Out of stock
+            .col-6
+                table.table.table-bordered.col-6(style="width: fit-content;")
+                    thead
+                        tr
+                            th Name
+                            th Dealer
+                    tbody
+                        each perfume in perfumes
+                            tr
+                                th #{perfume.perfume.name}
+                                th.pe-5 #{perfume.dealer.name}
