@@ -1,0 +1,40 @@
+.general-preview {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.all-infos {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  border-left: 2px solid #cad593;
+}
+
+.info-container {
+  display: flex;
+  padding: 0 50px;
+  align-items: center;
+  gap: 50px;
+
+  min-width: 500px;
+}
+
+.user-image {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.name {
+  font-family: "Computer Modern Serif" "Times New Roman", Times, serif;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #cad593;
+}
+.icon-glue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

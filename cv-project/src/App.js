@@ -4,9 +4,7 @@ import { useState } from "react";
 import GeneralForm from "./components/Forms/GeneralForm";
 import EducationForm from "./components/Forms/EducationForm";
 import ExperienceForm from "./components/Forms/ExperienceForm";
-import GeneralPreview from "./components/Previews/GeneralPreview";
-import EducationPreview from "./components/Previews/EducationPreview";
-import ExperiencePreview from "./components/Previews/ExperiencePreview";
+import Preview from "./components/Previews/Preview";
 
 import "./styles/App.css";
 
@@ -82,20 +80,12 @@ export default function App(props) {
     />
   ));
 
-  const educationPreviewElements = formData.education.map((education) => (
-    <EducationPreview {...education} />
-  ));
-
   const experienceFormElements = formData.experience.map((experience, i) => (
     <ExperienceForm
       {...experience}
       handleForm={(event) => handleOtherForm(event, i, "experience")}
       deleteSelf={() => deleteForm(i, "experience")}
     />
-  ));
-
-  const experiencePreviewElements = formData.experience.map((experience) => (
-    <ExperiencePreview {...experience} />
   ));
 
   return (
@@ -121,10 +111,12 @@ export default function App(props) {
           </button>
         </div>
       </div>
-      <div class="previews">
-        <GeneralPreview {...formData.general} />
-        {educationPreviewElements}
-        {experiencePreviewElements}
+      <div className="previews">
+        <Preview
+          general={formData.general}
+          education={formData.education}
+          experience={formData.experience}
+        />
       </div>
     </main>
   );
