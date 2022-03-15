@@ -8,6 +8,10 @@ import Preview from "./components/Previews/Preview";
 
 import "./styles/App.css";
 
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
+import { VscFilePdf } from "react-icons/vsc";
+
 export default function App(props) {
   const [formData, setFormData] = useState({
     general: {
@@ -88,8 +92,17 @@ export default function App(props) {
     />
   ));
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   return (
     <main className="app">
+      <div className="print" onClick={handlePrint}>
+        <h5>Print</h5>
+        <VscFilePdf color="red" size="36px" />
+      </div>
       <div className="forms">
         <GeneralForm {...formData.general} handleForm={handleGeneralForm} />
         <div className="education-forms">
@@ -111,8 +124,9 @@ export default function App(props) {
           </button>
         </div>
       </div>
-      <div className="previews">
+      <div className="preview">
         <Preview
+          ref={componentRef}
           general={formData.general}
           education={formData.education}
           experience={formData.experience}

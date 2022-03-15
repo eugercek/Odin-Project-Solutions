@@ -8,3 +8,12 @@ img {
   border-radius: 50%;
   width: 120px;
 }
+
+@media print {
+  body {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

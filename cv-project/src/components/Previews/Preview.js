@@ -1,10 +1,11 @@
 import GeneralPreview from "./GeneralPreview";
 import EducationPreview from "./EducationPreview";
 import ExperiencePreview from "./ExperiencePreview";
+import React from "react";
 
-export default function Preview({ general, education, experience }) {
+const Preview = React.forwardRef(({ general, education, experience }, ref) => {
   return (
-    <div className="previews">
+    <div className="previews" ref={ref}>
       <GeneralPreview {...general} />
       <h1>Education</h1>
       {education.map((e) => (
@@ -16,4 +17,6 @@ export default function Preview({ general, education, experience }) {
       ))}
     </div>
   );
-}
+});
+
+export default Preview;
