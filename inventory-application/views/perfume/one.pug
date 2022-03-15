@@ -2,7 +2,7 @@ extends ../layout
 
 block content
     .container
-        .card.mb-5(style="width : 24rem;")
+        .card.mb-5(style="width : min(24rem, 100%);")
             .card-header.h2 #{perfume.name}
             .card-body.p-2
                 .h3.card-title #{perfume.brand.name}
@@ -12,5 +12,3 @@ block content
                     .col-6
                         a.btn.btn-warning.me-3(href=`${perfume.url}/edit`) Edit
                         a.btn.btn-danger(href=`${perfume.url}/delete`) Delete
-        .col-9
-            a.btn.btn-secondary.px-4(href="/perfumes") Back to perfumes

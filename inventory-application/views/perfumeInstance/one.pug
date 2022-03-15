@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
-    .container
-        .card.mb-5(style="width : 24rem;")
+    .container.p-2.p-md-5
+        .card.mb-5(style="width : min(24rem, 100%);")
             .card-header.h2 #{perfume.name}
             .card-body.p-2
                 .h5.badge.bg-secondary #{stock}
@@ -14,5 +14,3 @@ block content
                     .col-6
                         a.btn.btn-warning.me-3(href=`${obj.url}/edit`) Edit
                         a.btn.btn-danger(href=`${obj.url}/delete`) Delete
-        .col-9
-            a.btn.btn-secondary.px-4(href="/stocks") Back to Stocks
