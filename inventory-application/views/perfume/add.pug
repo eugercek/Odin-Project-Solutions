@@ -1,5 +1,5 @@
-extends layout
-include mixins/error
+extends ../layout
+include ../mixins/error
 
 block content
     .container
@@ -8,27 +8,25 @@ block content
                 .form-group.mb-3.col-4
                     label Name:
                         input.form-control(type='text' placeholder='Name' name='name'
-                        required='true' value=`${perfume.name}`)
+                        required='true' value=`${previousName ? previousName : ''}`)
                 .form-group.mb-3.col-8
                     label(style='width: 100%') Description:
                         textarea.form-control(placeholder='Description' name='description'
-                        required='true') =  perfume.description
+                        required='true')=  previousDescription ? previousDescription : ''
             .row.mb-3
                 .form-group.col-6
                     select.form-control(type='select' name='brand' required='true' )
                         - brands.sort((a,b) => a.name.localeCompare(b.name))
                         option(value='' disabled selected hidden) Select Brand
                         for brand in brands
-                            option(value=brand._id selected=(brand._id == perfume.brand.toString())) #{brand.name}
+                            option(value=brand._id selected=(brand._id == previousBrand)) #{brand.name}
                 .form-group.col-6
                     select.form-control(type='select'  name='category' required='true' )
                         - categories.sort((a,b) => a.name.localeCompare(b.name))
                         option(value='' disabled selected hidden) Select Category
                         for category in categories
-                            option(value=category._id selected=(category._id == perfume.category.toString())) #{category.name}
+                            option(value=category._id selected=(category._id == previousCategory)) #{category.name}
 
-            input(type='hidden' name='_id' value=`${perfume._id}`)
-
-            button.btn.btn-primary(type="submit", name="submit") Edit
+            button.btn.btn-primary(type="submit", name="submit") Add
 
             +printErrors(errors)

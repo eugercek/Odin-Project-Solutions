@@ -7,7 +7,7 @@ mixin list(items)
                     span.badge.bg-secondary= item.number
                 else if item.number < 10
                     span.badge.bg-danger= item.number
-                else if item.info < 20
+                else if item.number < 20
                     span.badge.bg-warning= item.number
-                else if item.info >= 20
+                else if item.number >= 20
                     span.badge.bg-success= item.number

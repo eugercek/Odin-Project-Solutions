@@ -5,7 +5,7 @@ import Dealer from "../models/Dealer.js";
 export async function getAllPerfumeInstances(req, res) {
   const items = await PerfumeInstance.find({}).populate("perfume dealer");
 
-  res.render("perfumeInstances", { items });
+  res.render("perfumeInstance/all", { items });
 }
 
 export async function getPerfumeInstance(req, res) {
@@ -14,7 +14,7 @@ export async function getPerfumeInstance(req, res) {
     let perfume = await PerfumeInstance.findById(id).populate("perfume dealer");
 
     console.log(perfume);
-    res.render("perfumeInstance", {
+    res.render("perfumeInstance/one", {
       perfume: perfume.perfume,
       dealer: perfume.dealer,
       stock: perfume.stock,
@@ -31,7 +31,7 @@ export async function addPerfumeInstance(req, res) {
     Dealer.find({}),
     Perfume.find({}),
   ]);
-  res.render("addPerfumeInstance", { dealers, perfumes });
+  res.render("perfumeInstance/add", { dealers, perfumes });
 }
 
 export async function savePerfumeInstance(req, res) {
@@ -48,7 +48,7 @@ export async function savePerfumeInstance(req, res) {
       Dealer.find({}),
       Perfume.find({}),
     ]);
-    res.render("addPerfumeInstance", {
+    res.render("perfumeInstance/add", {
       dealers,
       categories,
       errors,
@@ -77,7 +77,7 @@ export async function editPerfumeInstance(req, res) {
   try {
     let perfume = await PerfumeInstance.findById(id).populate("perfume dealer");
     console.log(perfume);
-    res.render("editPerfumeInstance", { obj: perfume, dealers, perfumes });
+    res.render("perfumeInstance/edit", { obj: perfume, dealers, perfumes });
   } catch (errors) {
     console.log(errors);
     res.render("error", { errors });
@@ -102,7 +102,7 @@ export async function saveEditPerfumeInstance(req, res) {
       Perfume.find({}),
     ]);
     let perfume = await PerfumeInstance.findById(id).populate("perfume dealer");
-    res.render("editPerfumeInstance", {
+    res.render("perfumeInstance/edit", {
       obj: perfume,
       dealers,
       perfumes,

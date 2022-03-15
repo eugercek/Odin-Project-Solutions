@@ -1,28 +1,25 @@
-extends layout
-include mixins/error
+extends ../layout
+include ../mixins/error
 
 block content
     .container
-        form(method='POST')
+        form(method='POST' )
             .row.mb-3
                 .form-group.col-6
                     select.form-control(type='select' name='perfume' required)
                         - perfumes.sort((a,b) => a.name.localeCompare(b.name))
                         option(value='' disabled selected hidden) Select Perfume
                         for perfume in perfumes
-                            option(value=perfume._id selected=(perfume._id == obj.perfume._id.toString())) #{perfume.name}
+                            option(value=perfume._id selected=(perfume._id == previousPerfume._id)) #{perfume.name}
                 .form-group.col-6
                     select.form-control(type='select' name='dealer' required)
                         - dealers.sort((a,b) => a.name.localeCompare(b.name))
                         option(value='' disabled selected hidden) Select Dealer
                         for dealer in dealers
-                            option(value=dealer._id selected=(dealer._id == obj.dealer._id.toString())) #{dealer.name}
+                            option(value=dealer._id selected=(dealer._id == previousDealer._id)) #{dealer.name}
             .row.mb-3
                 .form-group
-                    input.form-control(type="number", name="stock" value=`${obj.stock}` required)
-
-            input(type='hidden' name='_id' value=`${obj._id}`)
-
-            button.btn.btn-success(type="submit", name="submit") Edit
+                    input.form-control(type="number", name="stock" value="${obj.stock}" required)
+            button.btn.btn-primary(type="submit", name="submit") Add
 
             +printErrors(errors)

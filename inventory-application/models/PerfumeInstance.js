@@ -24,6 +24,10 @@ schema.virtual("name").get(function () {
   return `${this.perfume.name} by ${this.dealer.name}`;
 });
 
+schema.virtual("number").get(function () {
+  return this.stock;
+});
+
 let PerfumeInstance = new model("PerfumeInstance", schema);
 
 export default PerfumeInstance;

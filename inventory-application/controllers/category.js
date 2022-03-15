@@ -25,14 +25,14 @@ export async function getCategory(req, res) {
     let category = await Category.findById(id);
     let perfumes = await Perfume.find({ category: id });
     console.log(perfumes);
-    res.render("category", { category });
+    res.render("templates/UDcard", { item: category });
   } catch (errors) {
     res.render("error", { errors });
   }
 }
 
 export async function addCategory(req, res) {
-  res.render("addCategory");
+  res.render("templates/nameFormAdd");
 }
 
 export async function saveCategory(req, res) {
@@ -44,7 +44,7 @@ export async function saveCategory(req, res) {
     const errors = Object.values(errors.errors).map(
       ({ properties }) => properties.message
     );
-    res.render("addCategory", {
+    res.render("nameFormAdd", {
       errors,
       previousName: name,
     });
@@ -75,7 +75,7 @@ export async function editCategory(req, res) {
   const { id } = req.params;
   try {
     let category = await Category.findById(id);
-    res.render("editCategory", { category });
+    res.render("templates/nameFormEdit", { item: category });
   } catch (errors) {
     res.render("error", { errors });
   }
@@ -90,8 +90,8 @@ export async function saveEditCategory(req, res) {
     res.redirect("/categories");
   } catch (errors) {
     console.log(errors);
-    res.render("editCategory", {
-      perfume: { name, _id },
+    res.render("templates/nameFormEdit", {
+      item: { name, _id },
       errors: errors,
     });
   }

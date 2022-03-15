@@ -4,14 +4,14 @@ import Category from "../models/Category.js";
 
 export async function getAllPerfumes(req, res) {
   const items = await Perfume.find({}).populate("category brand");
-  res.render("perfumes", { items });
+  res.render("perfume/all", { items });
 }
 
 export async function getPerfume(req, res) {
   const { id } = req.params;
   try {
     let perfume = await Perfume.findById(id).populate("category brand");
-    res.render("perfume", { perfume });
+    res.render("perfume/one", { perfume });
   } catch (errors) {
     res.render("error", { errors });
   }
@@ -22,7 +22,7 @@ export async function addPerfume(req, res) {
     Brand.find({}),
     Category.find({}),
   ]);
-  res.render("addPerfume", { brands, categories });
+  res.render("perufme/add", { brands, categories });
 }
 
 export async function savePerfume(req, res) {
@@ -42,7 +42,7 @@ export async function savePerfume(req, res) {
     ]);
     // Optional is broken on pug
     // Can't use {previous: {name, brand ...}}
-    res.render("addPerfume", {
+    res.render("add", {
       brands,
       categories,
       errors,
@@ -58,7 +58,7 @@ export async function deletePerfume(req, res) {
   const { id } = req.params;
   try {
     let perfume = await Perfume.findByIdAndDelete(id);
-    res.redirect("items");
+    res.redirect("/perfumes");
   } catch (errors) {
     res.render("error", { errors });
   }
@@ -73,7 +73,7 @@ export async function editPerfume(req, res) {
   try {
     let perfume = await Perfume.findById(id);
     console.log(perfume.url);
-    res.render("editPerfume", { perfume, brands, categories });
+    res.render("perfume/edit", { perfume, brands, categories });
   } catch (errors) {
     res.render("error", { err });
   }
@@ -95,7 +95,7 @@ export async function saveEditPerfume(req, res) {
       Brand.find({}),
       Category.find({}),
     ]);
-    res.render("editPerfume", {
+    res.render("perfume/edit", {
       perfume: { name, description, category, brand, _id },
       brands,
       categories,
