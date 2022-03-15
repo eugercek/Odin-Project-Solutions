@@ -7,7 +7,7 @@ let schema = new Schema({
 });
 
 schema.virtual("url").get(function () {
-  return `/dealer/${this._id}`;
+  return `/dealers/${this._id}`;
 });
 
 let Dealer = new model("Dealer", schema);

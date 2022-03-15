@@ -11,6 +11,7 @@ import path from "path";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import dealerRouter from "./routes/dealer.js";
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ mongoose.connect(process.env.DB_STRING);
 let app = express();
 
 app.use(morgan("tiny"));
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views/"));
 app.set("view engine", "pug");
 
 app.use(express.json());
@@ -35,6 +36,7 @@ app.use("/perfumes", perfumeRouter);
 app.use("/categories", categoryRouter);
 app.use("/brands", brandRouter);
 app.use("/stocks", perfumeInstanceRouter);
+app.use("/dealers", dealerRouter);
 
 app.use((req, res) => {
   res.render("error");
