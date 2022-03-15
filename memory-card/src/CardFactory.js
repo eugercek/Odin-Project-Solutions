@@ -4,7 +4,7 @@ export default function CardFactory(content = randomChineseCharacter()) {
   return {
     id: id++,
     content: content,
-    clicked: false,
+    haveClicked: false,
   };
 }
 

@@ -6,12 +6,7 @@ import CardFactory from "./CardFactory";
 import ScoreBoard from "./components/ScoreBoard";
 
 function App() {
-  const [cards, setCards] = useState([
-    CardFactory(),
-    CardFactory(),
-    CardFactory(),
-    CardFactory(),
-  ]);
+  const [cards, setCards] = useState(() => initialCardArray());
 
   const [score, setScore] = useState(0);
   const [maxScore, setMaxScore] = useState(
@@ -19,32 +14,33 @@ function App() {
   );
 
   function clickCard(event, id) {
-    const index = cards.findIndex((c) => c.id === id);
+    const card = cards.find((c) => c.id === id);
 
-    // Game End
-    if (cards[index].clicked) {
+    // Game end
+    if (card.haveClicked) {
       if (score > maxScore) {
         setMaxScore(score);
       }
       setScore(0);
-      newGame();
-    }
-    // New round
-    else {
+      lose();
+    } else {
       setScore((p) => p + 1);
-      const oldArray = [...cards];
-      oldArray[index].clicked = true;
-      setCards(oldArray);
-      shuffleCards();
+
+      if (
+        (cards.length === 3 && score === 2) ||
+        score - consecutive(cards.length - 1) === cards.length - 1
+      ) {
+        win();
+      }
+      // New round with same cards
+      else {
+        setCards((p) =>
+          p.map((o) => (o.id === id ? { ...o, haveClicked: true } : o))
+        );
+        shuffleCards();
+      }
     }
   }
-
-  useEffect(() => {
-    const localMaxScore = localStorage.getItem("maxScore");
-    if (localMaxScore < maxScore) {
-      localStorage.setItem("maxScore", maxScore);
-    }
-  }, [maxScore]);
 
   const cardElements = cards.map((card) => (
     <Card
@@ -55,8 +51,12 @@ function App() {
   ));
 
   // Game State Operations
-  function newGame() {
-    setCards(cards.map((c) => CardFactory()));
+  function win() {
+    setCards([...cards.map((c) => CardFactory()), CardFactory()]);
+  }
+
+  function lose() {
+    setCards(initialCardArray());
   }
 
   function shuffleCards() {
@@ -72,4 +72,12 @@ function App() {
   );
 }
 
+function initialCardArray() {
+  return [CardFactory(), CardFactory(), CardFactory()];
+}
+
+// returns: 1 + 2 + ... + n
+function consecutive(n) {
+  return (n * (n + 1)) / 2;
+}
 export default App;
