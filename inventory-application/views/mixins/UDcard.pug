@@ -5,7 +5,7 @@ mixin UDcard(item)
         h1.mb-5 #{item.name}
         .row.mb-3.g-3
             .col-6
-                a.btn.btn-warning.me-3.mb-2(href=`${item.url}/edit`) Edit
+                a.btn.btn-warning.me-3(href=`${item.url}/edit`) Edit
                 a.btn.btn-danger(href=`${item.url}/delete`) Delete
         +printErrors(errors)
 

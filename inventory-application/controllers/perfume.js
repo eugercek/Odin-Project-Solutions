@@ -22,7 +22,7 @@ export async function addPerfume(req, res) {
     Brand.find({}),
     Category.find({}),
   ]);
-  res.render("perufme/add", { brands, categories });
+  res.render("perfume/add", { brands, categories });
 }
 
 export async function savePerfume(req, res) {

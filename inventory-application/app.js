@@ -12,6 +12,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import dealerRouter from "./routes/dealer.js";
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ mongoose.connect(process.env.DB_STRING);
 
 let app = express();
 
+app.use(helmet());
 app.use(morgan("tiny"));
 app.set("views", path.join(__dirname, "views/"));
 app.set("view engine", "pug");
